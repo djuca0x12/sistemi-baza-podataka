@@ -1,0 +1,1 @@
+- deljeni dokument izdvojiti u odgovarajuće fajlove kako se traži za predaju
