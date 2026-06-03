@@ -27,22 +27,41 @@ namespace Poljoprivredno_gazdinstvo
             {
                 ISession s = DataLayer.GetSession();
 
-                Mehanizacija probniTraktor = new Mehanizacija
+                Traktor probniTraktor = new Traktor
                 {
-                    BrojSasije = "SAS-ELFAK-2026",
+                    BrojSasije = "SAS-TRAKTOR-2027",
                     Status = "u upotrebi",
                     Model = "IMT 539",
-                    TipMehanizacije = "traktor",
+                    Komentar = "u dobrom stanju",
+                    DatumKupovine = DateTime.Now,
+                    GodinaProizvodnje = 2020,
+
                     Snaga = 39,
                     RadniSati = 12,
                     BrojMotora = "MOT-12345"
                 };
 
                 s.Save(probniTraktor);
+                s.Flush();
+
+                Masina probnaMasina = new Masina
+                {
+                    BrojSasije = "SAS-MASINA-2028",
+                    Status = "u upotrebi",
+                    Komentar = "u dobrom stanju",
+                    Model = "Sejalica S-100",
+                    DatumKupovine = DateTime.Now,
+                    GodinaProizvodnje = 2023,
+
+                    BrojTockova = 4
+                };
+
+                s.Save(probnaMasina);
+                s.Flush();
 
                 s.Close();
 
-                MessageBox.Show("Upesno upisan traktor!?");
+                MessageBox.Show("Upesno upisani traktor i masina!?");
             }
             catch (Exception ex)
             {

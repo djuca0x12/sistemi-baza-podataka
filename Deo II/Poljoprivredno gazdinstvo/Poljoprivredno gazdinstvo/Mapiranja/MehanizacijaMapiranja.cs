@@ -10,7 +10,7 @@ namespace Poljoprivredno_gazdinstvo.Mapiranja
 {
     public class MehanizacijaMapiranja : ClassMap<Mehanizacija>
     {
-        public MehanizacijaMapiranja() 
+        public MehanizacijaMapiranja()
         {
             Table("MEHANIZACIJA");
 
@@ -22,11 +22,8 @@ namespace Poljoprivredno_gazdinstvo.Mapiranja
             Map(x => x.Model, "MODEL");
             Map(x => x.DatumKupovine, "DATUMKUPOVINE");
             Map(x => x.GodinaProizvodnje, "GODINAPROIZVODNJE");
-            Map(x => x.TipMehanizacije, "TIPMEHANIZACIJE");
-            Map(x => x.Snaga, "SNAGA");
-            Map(x => x.RadniSati, "RADNISATI");
-            Map(x => x.BrojMotora, "BROJMOTORA");
-            Map(x => x.BrojTockova, "BROJTOCKOVA");
+
+            DiscriminateSubClassesOnColumn("TipMehanizacije");
 
             // Veza N:M:
             HasMany(x => x.KoriscenjeZaPrinose)
@@ -35,4 +32,29 @@ namespace Poljoprivredno_gazdinstvo.Mapiranja
                 .Inverse();
         }
     }
+
+    public class TraktorMapiranja : SubclassMap<Traktor>
+    {
+        public TraktorMapiranja()
+        {
+            DiscriminatorValue("TRKATOR");
+
+            Map(x => x.Snaga, "SNAGA");
+            Map(x => x.RadniSati, "RADNISATI");
+            Map(x => x.BrojMotora, "BROJMOTORA");
+        }
+    }
+
+    public class MasinaMapiranja : SubclassMap<Masina>
+    {
+        public MasinaMapiranja()
+        {
+            DiscriminatorValue("MASINA");
+
+            // Specifično polje za mašinu
+            Map(x => x.BrojTockova, "BROJTOCKOVA");
+        }
+    }
 }
+
+
