@@ -18,7 +18,8 @@ namespace Poljoprivredno_gazdinstvo.Entiteti
         public virtual string Status { get; set; }
         public virtual string Komentar { get; set; }
 
-        // todo: referenca na kategoriju
+        // referenca na kategoriju nije obavezna, možda se entitet ne prodaje
+        public virtual UseviZivotinje? Kategorija { get; set; }
 
         public Usevi() { }
     }

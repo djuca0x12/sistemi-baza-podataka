@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-
-namespace Poljoprivredno_gazdinstvo.Entiteti
+﻿namespace Poljoprivredno_gazdinstvo.Entiteti
 {
     public class KrmnoBilje : Usevi
     {
@@ -9,6 +7,7 @@ namespace Poljoprivredno_gazdinstvo.Entiteti
         public virtual string VrstaKrme { get; set; }
         public virtual int BrojKosnjiGodisnje { get; set; }
         public virtual int ProcenatProteina { get; set; }
+        // todo: proveriti!
         public virtual int IshranaStokeFlag { get; set; }
         public virtual int ZaProdajuFlag { get; set; }
 
