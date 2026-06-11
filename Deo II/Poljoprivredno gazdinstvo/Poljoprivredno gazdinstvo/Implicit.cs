@@ -1,0 +1,14 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using System.Reflection;
+global using NHibernate;
+global using Poljoprivredno_gazdinstvo.Entiteti;
+global using FluentNHibernate.Mapping;
+global using FluentNHibernate.Cfg;
+global using FluentNHibernate.Cfg.Db;
+global using System.Configuration;
+global using NHibernate.Criterion;
+global using NHibernate.Linq;

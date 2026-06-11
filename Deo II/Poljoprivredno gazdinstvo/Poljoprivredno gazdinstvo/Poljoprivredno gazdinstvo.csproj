@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <LangVersion>10.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -109,18 +110,25 @@
   <ItemGroup>
     <Compile Include="DataLayer.cs" />
     <Compile Include="Entiteti\KoristiZa.cs" />
+    <Compile Include="Entiteti\KrmnoBilje.cs" />
     <Compile Include="Entiteti\Kupac.cs" />
     <Compile Include="Entiteti\Mehanizacija.cs" />
+    <Compile Include="Entiteti\Povrce.cs" />
     <Compile Include="Entiteti\Prinos.cs" />
     <Compile Include="Entiteti\Prodaja.cs" />
     <Compile Include="Entiteti\Subvencija.cs" />
+    <Compile Include="Entiteti\Usevi.cs" />
     <Compile Include="Entiteti\UseviZivotinje.cs" />
+    <Compile Include="Entiteti\Vocnjaci.cs" />
+    <Compile Include="Entiteti\Zitarice.cs" />
+    <Compile Include="Entiteti\Zivotinje.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Implicit.cs" />
     <Compile Include="Mapiranja\KoristiZaMapiranja.cs" />
     <Compile Include="Mapiranja\KupacMapiranja.cs" />
     <Compile Include="Mapiranja\MehanizacijaMapiranja.cs" />

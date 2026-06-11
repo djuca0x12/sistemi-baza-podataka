@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Poljoprivredno_gazdinstvo.Entiteti
+﻿namespace Poljoprivredno_gazdinstvo.Entiteti
 {
     public class UseviZivotinje
     {
