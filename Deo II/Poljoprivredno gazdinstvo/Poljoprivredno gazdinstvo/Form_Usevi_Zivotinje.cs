@@ -12,9 +12,44 @@ namespace Poljoprivredno_gazdinstvo
 {
     public partial class Form_Usevi_Zivotinje : Form
     {
+        Zivotinje zivotinje;
         public Form_Usevi_Zivotinje()
         {
             InitializeComponent();
+        }
+
+        public Form_Usevi_Zivotinje(Zivotinje z)
+        {
+            InitializeComponent();
+            zivotinje = z;
+        }
+
+        private void Form_Usevi_Zivotinje_Load(object sender, EventArgs e)
+        {
+            PopuniPodacima();
+        }
+
+        public void PopuniPodacima()
+        {
+            // todo: treba pozvati DTOManager, koji pokupi sve životinje bez kategorije
+            // (očigledno dto treba da izbaci tu vezu?)
+            try
+            {
+                dgv_Zivotinje.DataSource = null;
+
+                using (ISession s = DataLayer.GetSession())
+                {
+                    List<Zivotinje> sveZivotinje = s.Query<Zivotinje>().ToList();
+
+                    s.Close();
+
+                    dgv_Zivotinje.DataSource = sveZivotinje;
+                }
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri čitanju podataka: {ec.FormatExceptionMessage()}");
+            }
         }
 
         private void Dodaj_Životinju_Click(object sender, EventArgs e)
@@ -211,6 +246,16 @@ namespace Poljoprivredno_gazdinstvo
             {
                 MessageBox.Show(ec.FormatExceptionMessage());
             }
+        }
+
+        private void btn_Izmeni_Zivotinju_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Obrisi_Zivotinju_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
