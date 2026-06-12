@@ -129,6 +129,42 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Form_Krmno_Bilje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Krmno_Bilje.Designer.cs">
+      <DependentUpon>Form_Krmno_Bilje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Mehanizacija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Mehanizacija.Designer.cs">
+      <DependentUpon>Form_Mehanizacija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Povrce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Povrce.Designer.cs">
+      <DependentUpon>Form_Povrce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Start.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Start.Designer.cs">
+      <DependentUpon>Form_Start.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Vocnjaci.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Vocnjaci.Designer.cs">
+      <DependentUpon>Form_Vocnjaci.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Zitarice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Zitarice.Designer.cs">
+      <DependentUpon>Form_Zitarice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Usevi_Zivotinje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +189,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Start.resx">
+      <DependentUpon>Form_Start.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Usevi_Zivotinje.resx">
       <DependentUpon>Form_Usevi_Zivotinje.cs</DependentUpon>
@@ -186,8 +225,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forme\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
