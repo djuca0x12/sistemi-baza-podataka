@@ -16,6 +16,8 @@ namespace Poljoprivredno_gazdinstvo.Mapiranja
 
             Id(x => x.UseviZivotinjeId, "USEVIZIVOTINJEID").GeneratedBy.TriggerIdentity();
 
+            Map(x => x.KategorijaTip, "KATEGORIJATIP");
+
             // Veza 1:N (slabi tip entiteta)
             HasMany(x => x.Subvencije).KeyColumn("USEVIZIVOTINJEID").Cascade.All().Inverse();
         }

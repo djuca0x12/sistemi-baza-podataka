@@ -37,7 +37,7 @@ namespace Poljoprivredno_gazdinstvo.Mapiranja
     {
         public TraktorMapiranja()
         {
-            DiscriminatorValue("TRKATOR");
+            DiscriminatorValue("TRAKTOR");
 
             Map(x => x.Snaga, "SNAGA");
             Map(x => x.RadniSati, "RADNISATI");

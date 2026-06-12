@@ -58,18 +58,28 @@ namespace Poljoprivredno_gazdinstvo
             {
                 ISession s = DataLayer.GetSession();
 
+                // prvo se upiše novi red u tabeli za kategoriju
+                //UseviZivotinje uz = new()
+                //{
+                //    // sekvenca popuni id
+                //    KategorijaTip = 'z'
+                //};
+
+                //s.Save(uz);
+                //s.Flush();
+
                 Zivotinje z = new()
                 {
-                    BrojUha = "TEST001",
-                    Vrsta = "krava",
-                    Pol = 'Z',
-                    Rasa = "Simmental",
+                    BrojUha = "TEST002",
+                    Vrsta = "prase",
+                    Pol = 'M',
+                    Rasa = "test",
                     BrojJedinki = 1,
                     DatumRodjenja = new DateTime(2021, 11, 11),
                     DatumUlaska = new DateTime(2021, 12, 12),
                     Tezina = 750,
                     Status = "aktivna",
-                    //z.Kategorija = s.Load<UseviZivotinje>(4),
+                    //Kategorija = uz,
                     Komentar = "Test unos!"
                 };
 
@@ -92,10 +102,20 @@ namespace Poljoprivredno_gazdinstvo
             {
                 ISession s = DataLayer.GetSession();
 
+                // prvo se upiše novi red u tabeli za kategoriju
+                //UseviZivotinje uz = new()
+                //{
+                //    // sekvenca popuni id
+                //    KategorijaTip = 'u'
+                //};
+
+                //s.Save(uz);
+                //s.Flush();
+
                 Povrce p = new()
                 {
-                    Naziv = "Brokoli",
-                    Lokacija = "Plastenik Novi",
+                    Naziv = "Kupus 5",
+                    Lokacija = "Plastenik 5",
                     Vrsta = "povrce",
                     Povrsina = 500,
                     KvalitetZemljista = "Visok",
@@ -104,7 +124,7 @@ namespace Poljoprivredno_gazdinstvo
                     DatumZetveStvarni = DateTime.Now.AddDays(55),
                     Status = "u toku",
                     Komentar = "Redovno tretirati protiv puževa",
-                    Kategorija = s.Load<UseviZivotinje>(4),
+                    //Kategorija = uz,
 
                     BrojSetviGodisnje = 3,
                     ZastitneMere = "Fizičke mreže",
@@ -133,8 +153,8 @@ namespace Poljoprivredno_gazdinstvo
 
                 Vocnjaci v = new()
                 {
-                    Naziv = "Proba",
-                    Lokacija = "Niš 2",
+                    Naziv = "Kategorija test",
+                    Lokacija = "Niš Kat",
                     Vrsta = "voce",
                     Povrsina = 10000,
                     KvalitetZemljista = "plodno",
@@ -143,7 +163,7 @@ namespace Poljoprivredno_gazdinstvo
                     DatumZetveStvarni = new DateTime(2026, 5, 5),
                     Status = "zavrseno",
                     Komentar = "test",
-                    Kategorija = s.Load<UseviZivotinje>(3),
+                    //Kategorija = s.Load<UseviZivotinje>(3),
 
                     // atributi izvedene klase
                     GodinaSadnje = 2026,
@@ -153,6 +173,17 @@ namespace Poljoprivredno_gazdinstvo
                     RodniCiklus = "test!"
                 };
 
+                s.Save(v);
+
+                // prvo se upiše novi red u tabeli za kategoriju
+                UseviZivotinje uz = new()
+                {
+                    // sekvenca popuni id
+                    KategorijaTip = 'u'
+                };
+                s.Save(uz);
+
+                v.Kategorija = uz;
                 s.Save(v);
 
                 s.Flush();
