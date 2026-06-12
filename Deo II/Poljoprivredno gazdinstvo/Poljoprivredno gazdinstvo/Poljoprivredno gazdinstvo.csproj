@@ -135,6 +135,24 @@
     <Compile Include="Forme\Form_Krmno_Bilje.Designer.cs">
       <DependentUpon>Form_Krmno_Bilje.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Form_KoristiZa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_KoristiZa.Designer.cs">
+      <DependentUpon>Form_KoristiZa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Kupac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Kupac.Designer.cs">
+      <DependentUpon>Form_Kupac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Masine.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Masine.Designer.cs">
+      <DependentUpon>Form_Masine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\Form_Mehanizacija.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +164,18 @@
     </Compile>
     <Compile Include="Forme\Form_Povrce.Designer.cs">
       <DependentUpon>Form_Povrce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Prinos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Prinos.Designer.cs">
+      <DependentUpon>Form_Prinos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Proizvode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Proizvode.Designer.cs">
+      <DependentUpon>Form_Proizvode.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\Form_Start.cs">
       <SubType>Form</SubType>
@@ -164,6 +194,18 @@
     </Compile>
     <Compile Include="Forme\Form_Zitarice.Designer.cs">
       <DependentUpon>Form_Zitarice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Subvencije.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Subvencije.Designer.cs">
+      <DependentUpon>Form_Subvencije.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Traktor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Traktor.Designer.cs">
+      <DependentUpon>Form_Traktor.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_Usevi_Zivotinje.cs">
       <SubType>Form</SubType>
