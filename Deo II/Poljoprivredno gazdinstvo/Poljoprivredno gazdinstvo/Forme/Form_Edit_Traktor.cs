@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace Poljoprivredno_gazdinstvo.Forme
 {
-    public partial class Form_Start : Form
+    public partial class Form_Edit_Traktor : Form
     {
-        public Form_Start()
+        public Form_Edit_Traktor()
         {
             InitializeComponent();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            Form mehanizacija = new Form_Mehanizacija();
-
-            mehanizacija.ShowDialog();
         }
     }
 }

@@ -109,6 +109,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataLayer.cs" />
+    <Compile Include="DTOManager.cs" />
+    <Compile Include="DTOs.cs" />
     <Compile Include="Entiteti\KoristiZa.cs" />
     <Compile Include="Entiteti\KrmnoBilje.cs" />
     <Compile Include="Entiteti\Kupac.cs" />
@@ -128,6 +130,18 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Traktor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Traktor.Designer.cs">
+      <DependentUpon>Form_Dodaj_Traktor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Traktor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Traktor.Designer.cs">
+      <DependentUpon>Form_Edit_Traktor.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\Form_Krmno_Bilje.cs">
       <SubType>Form</SubType>
@@ -229,11 +243,25 @@
     <Compile Include="Mapiranja\ZivotinjeMapiranja.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Dodaj_Traktor.resx">
+      <DependentUpon>Form_Dodaj_Traktor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Mehanizacija.resx">
+      <DependentUpon>Form_Mehanizacija.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Start.resx">
       <DependentUpon>Form_Start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Traktor.resx">
+      <DependentUpon>Form_Traktor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Usevi_Zivotinje.resx">
       <DependentUpon>Form_Usevi_Zivotinje.cs</DependentUpon>
@@ -246,7 +274,12 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -267,6 +300,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Traktor.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Traktor1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Traktor2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Masina2.png" />
+    <None Include="Resources\Masina21.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

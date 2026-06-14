@@ -29,7 +29,7 @@ namespace Poljoprivredno_gazdinstvo
 
                 Traktor probniTraktor = new Traktor
                 {
-                    BrojSasije = "SAS-TRAKTOR-2027",
+                    BrojSasije = "SAS-TRAKTOR-2028",
                     Status = "u upotrebi",
                     Model = "IMT 539",
                     Komentar = "u dobrom stanju",
@@ -46,7 +46,7 @@ namespace Poljoprivredno_gazdinstvo
 
                 Masina probnaMasina = new Masina
                 {
-                    BrojSasije = "SAS-MASINA-2028",
+                    BrojSasije = "SAS-MASINA-2029",
                     Status = "u upotrebi",
                     Komentar = "u dobrom stanju",
                     Model = "Sejalica S-100",
