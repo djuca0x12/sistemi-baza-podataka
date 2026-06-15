@@ -22,8 +22,6 @@ namespace Poljoprivredno_gazdinstvo.Forme
             // slucajno - mrezlo me da skidam!
         }
 
-        
-
         private void btnSacuvaj_Click(object sender, EventArgs e)
         {
             string unetiBrojSasije = txtBrojSasije.Text.Trim();
@@ -59,7 +57,13 @@ namespace Poljoprivredno_gazdinstvo.Forme
             DTOManager.DodajTraktor(noviTraktor);
 
             MessageBox.Show("Traktor je uspešno dodat!");
+
             this.Close(); 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

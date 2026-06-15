@@ -14,10 +14,15 @@ namespace Poljoprivredno_gazdinstvo.Mapiranja
         {
             Table("KUPAC");
 
-            CompositeId()
-                .KeyProperty(x => x.KupacIme, "KUPAC") // PK
-                .KeyReference(x => x.Prodaja, "IDPRODAJA") // PK + FK
-                .KeyReference(x => x.Prinos, "IDPRINOSA"); // PK + FK
+            // 1. Definišemo novi primarni ključ
+            // 'GeneratedBy.Native()' govori Fluent-u da koristi triger/sekvencu iz baze
+            Id(x => x.IdKupac, "IDKUPAC").GeneratedBy.TriggerIdentity();
+
+            Map(x => x.KupacIme, "KUPAC");
+
+            // Veze sa ostalim tabelama:
+            References(x => x.Prodaja, "IDPRODAJA");
+            References(x => x.Prinos, "IDPRINOSA");
         }
     }
 }

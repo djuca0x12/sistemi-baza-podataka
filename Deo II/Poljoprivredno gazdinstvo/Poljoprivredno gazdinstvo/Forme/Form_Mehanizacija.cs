@@ -34,5 +34,10 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
             masine.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

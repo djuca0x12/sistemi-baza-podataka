@@ -73,6 +73,46 @@ namespace Poljoprivredno_gazdinstvo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Prinos1 {
+            get {
+                object obj = ResourceManager.GetObject("Prinos1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Prinos1_ig_thumbnail_161_161 {
+            get {
+                object obj = ResourceManager.GetObject("Prinos1-ig-thumbnail-161-161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Prinos2_ig_thumbnail_161_161 {
+            get {
+                object obj = ResourceManager.GetObject("Prinos2-ig-thumbnail-161-161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Prodaja_ig_thumbnail_161_161 {
+            get {
+                object obj = ResourceManager.GetObject("Prodaja-ig-thumbnail-161-161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Traktor {
             get {
                 object obj = ResourceManager.GetObject("Traktor", resourceCulture);

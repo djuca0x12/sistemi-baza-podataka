@@ -80,7 +80,19 @@ END;
 
 *Kupac:
 
-=> Ne treba
+CREATE SEQUENCE kupac_id_seq
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+CREATE OR REPLACE TRIGGER trg_kupac_id
+BEFORE INSERT ON KUPAC
+FOR EACH ROW
+BEGIN
+  IF :NEW.IdKupac IS NULL THEN
+    SELECT kupac_id_seq.NEXTVAL INTO :NEW.IdKupac FROM DUAL;
+  END IF;
+END;
 
 *Zivotinje:
 

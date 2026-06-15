@@ -131,11 +131,47 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Form_Dodaj_Masinu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Masinu.Designer.cs">
+      <DependentUpon>Form_Dodaj_Masinu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Prinos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Prinos.Designer.cs">
+      <DependentUpon>Form_Dodaj_Prinos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Prodaju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Prodaju.Designer.cs">
+      <DependentUpon>Form_Dodaj_Prodaju.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\Form_Dodaj_Traktor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forme\Form_Dodaj_Traktor.Designer.cs">
       <DependentUpon>Form_Dodaj_Traktor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Masina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Masina.Designer.cs">
+      <DependentUpon>Form_Edit_Masina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Prinos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Prinos.Designer.cs">
+      <DependentUpon>Form_Edit_Prinos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Prodaju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Prodaju.Designer.cs">
+      <DependentUpon>Form_Edit_Prodaju.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\Form_Edit_Traktor.cs">
       <SubType>Form</SubType>
@@ -184,6 +220,12 @@
     </Compile>
     <Compile Include="Forme\Form_Prinos.Designer.cs">
       <DependentUpon>Form_Prinos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Prodaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Prodaja.Designer.cs">
+      <DependentUpon>Form_Prodaja.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\Form_Proizvode.cs">
       <SubType>Form</SubType>
@@ -251,11 +293,41 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Dodaj_Masinu.resx">
+      <DependentUpon>Form_Dodaj_Masinu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Dodaj_Prinos.resx">
+      <DependentUpon>Form_Dodaj_Prinos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Dodaj_Prodaju.resx">
+      <DependentUpon>Form_Dodaj_Prodaju.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Dodaj_Traktor.resx">
       <DependentUpon>Form_Dodaj_Traktor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Edit_Masina.resx">
+      <DependentUpon>Form_Edit_Masina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Edit_Prinos.resx">
+      <DependentUpon>Form_Edit_Prinos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Edit_Prodaju.resx">
+      <DependentUpon>Form_Edit_Prodaju.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Edit_Traktor.resx">
+      <DependentUpon>Form_Edit_Traktor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Masine.resx">
+      <DependentUpon>Form_Masine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Mehanizacija.resx">
       <DependentUpon>Form_Mehanizacija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Prinos.resx">
+      <DependentUpon>Form_Prinos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Prodaja.resx">
+      <DependentUpon>Form_Prodaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Start.resx">
       <DependentUpon>Form_Start.cs</DependentUpon>
@@ -311,6 +383,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Masina2.png" />
+    <None Include="Resources\Prinos2-ig-thumbnail-161-161.png" />
+    <None Include="Resources\Prodaja-ig-thumbnail-161-161.png" />
+    <None Include="Resources\Prinos1-ig-thumbnail-161-161.png" />
+    <None Include="Resources\Prinos1.png" />
     <None Include="Resources\Masina21.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

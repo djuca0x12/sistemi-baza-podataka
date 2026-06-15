@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Poljoprivredno_gazdinstvo
 {
@@ -112,5 +113,116 @@ namespace Poljoprivredno_gazdinstvo
             BrojTockova = brojTockova;
         }
     }
+    #endregion
+
+    #region Prinos
+
+    public class PrinosBasic
+    {
+        public int IdPrinosa { get; set; }
+        public string Tip { get; set; }
+        public decimal Kolicina { get; set; }
+        public string Komentar { get; set; }
+        public string KvalitetProizvoda { get; set; }
+        public string JedinicaMere { get; set; }
+
+        public PrinosBasic()
+        {
+        }
+
+        public PrinosBasic(int idPrinosa, string tip, decimal kolicina, string komentar, string kvalitetProizvoda, string jedinicaMere)
+        {
+            IdPrinosa = idPrinosa;
+            Tip = tip;
+            Kolicina = kolicina;
+            Komentar = komentar;
+            KvalitetProizvoda = kvalitetProizvoda;
+            JedinicaMere = jedinicaMere;
+        }
+    }
+
+    #endregion
+
+    #region Prodaja
+
+    public class ProdajaBasic
+    {
+        public int IdProdaja { get; set; }
+        public string BrojFakture { get; set; }
+        public int IdPrinosa { get; set; } 
+        public string TipPlacanja { get; set; }
+        public string Komentar { get; set; }
+        public decimal CenaPoJedinici { get; set; }
+        public string JedinicaMere { get; set; }
+        public DateTime Datum { get; set; }
+        public decimal Kolicina { get; set; }
+        public string Kupac {  get; set; }
+
+        public ProdajaBasic() { }
+
+        public ProdajaBasic(int idProdaja, string brojFakture, int idPrinosa, string tipPlacanja, string komentar, decimal cenaPoJedinici, string jedinicaMere, DateTime datum, decimal kolicina, string kupac)
+        {
+            IdProdaja = idProdaja;
+            BrojFakture = brojFakture;
+            IdPrinosa = idPrinosa;
+            TipPlacanja = tipPlacanja;
+            Komentar = komentar;
+            CenaPoJedinici = cenaPoJedinici;
+            JedinicaMere = jedinicaMere;
+            Datum = datum;
+            Kolicina = kolicina;
+            Kupac = kupac;
+        }
+    }
+
+    public class ProdajaPregled
+    {
+        public int IdProdaja { get; set; }
+        public string BrojFakture { get; set; }
+        public int IdPrinosa { get; set; }
+        public string TipPlacanja { get; set; }
+        public string Komentar { get; set; }
+        public decimal CenaPoJedinici { get; set; }
+        public string JedinicaMere { get; set; }
+        public DateTime Datum { get; set; }
+        public decimal Kolicina { get; set; }
+        public IList<KupacBasic> Kupci { get; set; }
+
+        public ProdajaPregled() { Kupci = new List<KupacBasic>(); }
+
+        public ProdajaPregled(int idProdaja, string brojFakture, int idPrinosa, string tipPlacanja, string komentar, decimal cenaPoJedinici, string jedinicaMere, DateTime datum, decimal kolicina, IList<KupacBasic> Kupci)
+        {
+            IdProdaja = idProdaja;
+            BrojFakture = brojFakture;
+            IdPrinosa = idPrinosa;
+            TipPlacanja = tipPlacanja;
+            Komentar = komentar;
+            CenaPoJedinici = cenaPoJedinici;
+            JedinicaMere = jedinicaMere;
+            Datum = datum;
+            Kolicina = kolicina;
+            this.Kupci = Kupci;
+        }
+    }
+
+    #endregion
+
+
+    #region Kupac
+
+    public class KupacBasic
+    {
+        public int IdKupac { get; set; }
+        public string Kupac { get; set; } 
+
+        public KupacBasic() { }
+
+        public KupacBasic(int idKupac, string kupac)
+        {
+            IdKupac = idKupac;
+            Kupac = kupac;
+        }
+    }
+
     #endregion
 }

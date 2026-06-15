@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btn_Zivotinje = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnProdaje = new System.Windows.Forms.Button();
             this.btn_Povrce = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -40,6 +40,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Zivotinje
@@ -51,14 +52,15 @@
             this.btn_Zivotinje.Text = "Životinje";
             this.btn_Zivotinje.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnProdaje
             // 
-            this.button1.Location = new System.Drawing.Point(305, 184);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 41);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Životinje";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnProdaje.Location = new System.Drawing.Point(305, 184);
+            this.btnProdaje.Name = "btnProdaje";
+            this.btnProdaje.Size = new System.Drawing.Size(154, 41);
+            this.btnProdaje.TabIndex = 2;
+            this.btnProdaje.Text = "Prodaje";
+            this.btnProdaje.UseVisualStyleBackColor = true;
+            this.btnProdaje.Click += new System.EventHandler(this.btnProdaje_Click);
             // 
             // btn_Povrce
             // 
@@ -75,8 +77,9 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(154, 41);
             this.button3.TabIndex = 4;
-            this.button3.Text = "Životinje";
+            this.button3.Text = "Prinos";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -150,12 +153,24 @@
             this.button11.TabIndex = 12;
             this.button11.Text = "Životinje";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(305, 445);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(154, 41);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Zatvori";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form_Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 489);
+            this.ClientSize = new System.Drawing.Size(819, 509);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
@@ -166,7 +181,7 @@
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btn_Povrce);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnProdaje);
             this.Controls.Add(this.btn_Zivotinje);
             this.Name = "Form_Start";
             this.Text = "Form_Start";
@@ -177,7 +192,7 @@
         #endregion
 
         private System.Windows.Forms.Button btn_Zivotinje;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnProdaje;
         private System.Windows.Forms.Button btn_Povrce;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
@@ -188,5 +203,6 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button2;
     }
 }

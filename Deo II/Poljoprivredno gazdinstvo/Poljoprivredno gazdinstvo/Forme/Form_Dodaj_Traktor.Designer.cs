@@ -47,6 +47,7 @@
             this.numRadniSati = new System.Windows.Forms.NumericUpDown();
             this.btnSacuvaj = new System.Windows.Forms.Button();
             this.txtBrojMotora = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numGodinaProizvodnje)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSnaga)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRadniSati)).BeginInit();
@@ -134,9 +135,19 @@
             // numGodinaProizvodnje
             // 
             this.numGodinaProizvodnje.Location = new System.Drawing.Point(534, 134);
+            this.numGodinaProizvodnje.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.numGodinaProizvodnje.Name = "numGodinaProizvodnje";
             this.numGodinaProizvodnje.Size = new System.Drawing.Size(159, 22);
             this.numGodinaProizvodnje.TabIndex = 10;
+            this.numGodinaProizvodnje.Value = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
@@ -199,7 +210,7 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(525, 332);
+            this.btnSacuvaj.Location = new System.Drawing.Point(445, 332);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(99, 35);
             this.btnSacuvaj.TabIndex = 21;
@@ -214,11 +225,22 @@
             this.txtBrojMotora.Size = new System.Drawing.Size(121, 22);
             this.txtBrojMotora.TabIndex = 22;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(594, 332);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 35);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Otkazi";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form_Dodaj_Traktor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtBrojMotora);
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.label8);
@@ -238,6 +260,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtBrojSasije);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form_Dodaj_Traktor";
             this.Text = "Form_Add_Traktor";
             ((System.ComponentModel.ISupportInitialize)(this.numGodinaProizvodnje)).EndInit();
@@ -269,5 +293,6 @@
         private System.Windows.Forms.NumericUpDown numRadniSati;
         private System.Windows.Forms.Button btnSacuvaj;
         private System.Windows.Forms.TextBox txtBrojMotora;
+        private System.Windows.Forms.Button button1;
     }
 }
