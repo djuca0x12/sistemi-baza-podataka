@@ -225,4 +225,38 @@ namespace Poljoprivredno_gazdinstvo
     }
 
     #endregion
+
+    #region Zivotinje
+    public class ZivotinjeBasic
+    {
+        public int IdZivotinje { get; set; }
+        public string BrojUha { get; set; }
+        public string Vrsta { get; set; }
+        public char Pol { get; set; }
+        public string Rasa { get; set; }
+        public int BrojJedinki { get; set; } 
+        public DateTime DatumRodjenja { get; set; }
+        public DateTime DatumUlaska { get; set; }
+        public double Tezina { get; set; }
+        public string Status { get; set; }
+        public string Komentar { get; set; }
+
+        public ZivotinjeBasic() { }
+        public ZivotinjeBasic(int idZivotinje, string brojUha, string vrsta, char pol, string rasa, int brojJedinki, DateTime datumRodjenja, DateTime datumUlaska, double tezina, string status, string komentar)
+        {
+            IdZivotinje = idZivotinje;
+            BrojUha = brojUha;
+            Vrsta = vrsta;
+            Pol = pol;
+            Rasa = rasa;
+            BrojJedinki = brojJedinki;
+            DatumRodjenja = datumRodjenja;
+            DatumUlaska = datumUlaska;
+            Tezina = tezina;
+            Status = status;
+            Komentar = komentar;
+        }
+    }
+
+    #endregion
 }

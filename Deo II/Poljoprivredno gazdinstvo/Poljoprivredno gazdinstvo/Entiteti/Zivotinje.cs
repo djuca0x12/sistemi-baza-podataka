@@ -26,13 +26,5 @@
         {
 
         }
-
-        public Zivotinje(int idZivotinje, string brojUha, string vrsta, double tezina)
-        {
-            IdZivotinje = idZivotinje;
-            BrojUha = brojUha;
-            Vrsta = vrsta;
-            Tezina = tezina;
-        }
     }
 }

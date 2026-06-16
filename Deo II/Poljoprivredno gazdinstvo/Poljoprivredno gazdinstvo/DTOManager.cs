@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Poljoprivredno_gazdinstvo.Forme;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -193,9 +194,9 @@ namespace Poljoprivredno_gazdinstvo
             try
             {
                 using (var session = DataLayer.GetSession())
-                {                   
+                {
                     var sveMasine = session.Query<Masina>().ToList();
-               
+
                     foreach (var p in sveMasine)
                     {
                         masine.Add(new MasinaBasic(
@@ -531,10 +532,10 @@ namespace Poljoprivredno_gazdinstvo
                         prodajeDTO.Add(new ProdajaBasic(
                             p.IdProdaja,
                             p.BrojFakture,
-                            p.Prinos.IdPrinosa,                            
+                            p.Prinos.IdPrinosa,
                             p.TipPlacanja,
                             p.Komentar,
-                            (decimal) p.CenaPoJedinici,
+                            (decimal)p.CenaPoJedinici,
                             p.JedinicaMere,
                             p.Datum,
                             (decimal)p.Kolicina,
@@ -595,7 +596,7 @@ namespace Poljoprivredno_gazdinstvo
                 {
                     Prodaja p = session.Load<Prodaja>(prodajaDTO.IdProdaja);
 
-                    p.BrojFakture = prodajaDTO.BrojFakture;                
+                    p.BrojFakture = prodajaDTO.BrojFakture;
                     p.TipPlacanja = prodajaDTO.TipPlacanja;
                     p.Komentar = prodajaDTO.Komentar;
                     p.CenaPoJedinici = (double)prodajaDTO.CenaPoJedinici;
@@ -710,11 +711,11 @@ namespace Poljoprivredno_gazdinstvo
             try
             {
                 using (var session = DataLayer.GetSession())
-                {                 
+                {
                     Kupac k = session.Load<Kupac>(kupacDTO.IdKupac);
-                 
+
                     k.KupacIme = kupacDTO.Kupac;
-                    
+
                     session.Update(k);
                     session.Flush();
                 }
@@ -741,7 +742,131 @@ namespace Poljoprivredno_gazdinstvo
 
         #endregion
 
+        #region Zivotinje
+        public static List<ZivotinjeBasic> VratiSveZivotinje()
+        {
+            List<ZivotinjeBasic> zivotinje = new List<ZivotinjeBasic>();
+            try
+            {
 
+                ISession s = DataLayer.GetSession();
+
+                List<Zivotinje> sveZivotinje = s.Query<Zivotinje>().ToList();
+
+                foreach (Zivotinje z in sveZivotinje)
+                    zivotinje.Add(new ZivotinjeBasic(z.IdZivotinje, z.BrojUha, z.Vrsta, z.Pol, z.Rasa, z.BrojJedinki, z.DatumRodjenja, z.DatumUlaska, z.Tezina, z.Status, z.Komentar));
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri čitanju podataka o životinjama: {ec.FormatExceptionMessage()}");
+            }
+            return zivotinje;
+        }
+        public static void DodajZivotinju(ZivotinjeBasic z)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zivotinje zivotinja = new Zivotinje();
+
+                // baza popunjava id preko sekvence
+                zivotinja.BrojUha = z.BrojUha;
+                zivotinja.Vrsta = z.Vrsta;
+                zivotinja.Pol = z.Pol;
+                zivotinja.Rasa = z.Rasa;
+                zivotinja.BrojJedinki = z.BrojJedinki;
+                zivotinja.DatumRodjenja = z.DatumRodjenja;
+                zivotinja.DatumUlaska = z.DatumUlaska;
+                zivotinja.Tezina = z.Tezina;
+                zivotinja.Status = z.Status;
+                zivotinja.Komentar = z.Komentar;
+
+                // todo: dodati kategoriju
+
+                s.SaveOrUpdate(zivotinja);
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri dodavanju životinje: {ec.FormatExceptionMessage()}");
+            }
+        }
+
+        public static ZivotinjeBasic VratiZivotinju(int id)
+        {
+            ZivotinjeBasic zb = new ZivotinjeBasic();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zivotinje z = s.Load<Zivotinje>(id);
+                zb = new ZivotinjeBasic(z.IdZivotinje, z.BrojUha, z.Vrsta, z.Pol, z.Rasa, z.BrojJedinki, z.DatumRodjenja, z.DatumUlaska, z.Tezina, z.Status, z.Komentar);
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri pribavljanju životinje: {ec.FormatExceptionMessage()}");
+            }
+            return zb;
+        }
+
+        public static void IzmeniZivotinju(ZivotinjeBasic z)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zivotinje zivotinja = s.Load<Zivotinje>(z.IdZivotinje);
+
+                zivotinja.BrojUha = z.BrojUha;
+                zivotinja.Vrsta = z.Vrsta;
+                zivotinja.Pol = z.Pol;
+                zivotinja.Rasa = z.Rasa;
+                zivotinja.BrojJedinki = z.BrojJedinki;
+                zivotinja.DatumRodjenja = z.DatumRodjenja;
+                zivotinja.DatumUlaska = z.DatumUlaska;
+                zivotinja.Tezina = z.Tezina;
+                zivotinja.Status = z.Status;
+                zivotinja.Komentar = z.Komentar;
+
+                s.Update(zivotinja);
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri izmeni životinje: {ec.FormatExceptionMessage()}");
+            }
+        }
+
+        public static void ObrisiZivotinju(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Zivotinje z = s.Load<Zivotinje>(id);
+
+                s.Delete(z);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri brisanju životinje: {ec.FormatExceptionMessage()}");
+
+            }
+        }
+        #endregion
 
     }
 }

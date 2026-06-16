@@ -149,6 +149,12 @@
     <Compile Include="Forme\Form_Dodaj_Prodaju.Designer.cs">
       <DependentUpon>Form_Dodaj_Prodaju.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Form_Dodaj_Zivotinju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Zivotinju.Designer.cs">
+      <DependentUpon>Form_Dodaj_Zivotinju.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\Form_Dodaj_Traktor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,12 @@
     </Compile>
     <Compile Include="Forme\Form_Edit_Traktor.Designer.cs">
       <DependentUpon>Form_Edit_Traktor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Zivotinja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Zivotinja.Designer.cs">
+      <DependentUpon>Form_Edit_Zivotinja.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\Form_Krmno_Bilje.cs">
       <SubType>Form</SubType>
@@ -263,6 +275,12 @@
     <Compile Include="Forme\Form_Traktor.Designer.cs">
       <DependentUpon>Form_Traktor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Form_Zivotinje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Zivotinje.Designer.cs">
+      <DependentUpon>Form_Zivotinje.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Usevi_Zivotinje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -305,6 +323,9 @@
     <EmbeddedResource Include="Forme\Form_Dodaj_Traktor.resx">
       <DependentUpon>Form_Dodaj_Traktor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Dodaj_Zivotinju.resx">
+      <DependentUpon>Form_Dodaj_Zivotinju.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Edit_Masina.resx">
       <DependentUpon>Form_Edit_Masina.cs</DependentUpon>
     </EmbeddedResource>
@@ -316,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Edit_Traktor.resx">
       <DependentUpon>Form_Edit_Traktor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Edit_Zivotinja.resx">
+      <DependentUpon>Form_Edit_Zivotinja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Masine.resx">
       <DependentUpon>Form_Masine.cs</DependentUpon>
@@ -334,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Traktor.resx">
       <DependentUpon>Form_Traktor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Zivotinje.resx">
+      <DependentUpon>Form_Zivotinje.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Usevi_Zivotinje.resx">
       <DependentUpon>Form_Usevi_Zivotinje.cs</DependentUpon>
