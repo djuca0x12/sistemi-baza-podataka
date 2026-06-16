@@ -149,6 +149,12 @@
     <Compile Include="Forme\Form_Dodaj_Prodaju.Designer.cs">
       <DependentUpon>Form_Dodaj_Prodaju.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Form_Dodaj_Vocnjak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Vocnjak.Designer.cs">
+      <DependentUpon>Form_Dodaj_Vocnjak.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\Form_Dodaj_Zitaricu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +196,12 @@
     </Compile>
     <Compile Include="Forme\Form_Edit_Traktor.Designer.cs">
       <DependentUpon>Form_Edit_Traktor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Vocnjak.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Vocnjak.Designer.cs">
+      <DependentUpon>Form_Edit_Vocnjak.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\Form_Edit_Zitarice.cs">
       <SubType>Form</SubType>
@@ -335,6 +347,9 @@
     <EmbeddedResource Include="Forme\Form_Dodaj_Traktor.resx">
       <DependentUpon>Form_Dodaj_Traktor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Dodaj_Vocnjak.resx">
+      <DependentUpon>Form_Dodaj_Vocnjak.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Dodaj_Zitaricu.resx">
       <DependentUpon>Form_Dodaj_Zitaricu.cs</DependentUpon>
     </EmbeddedResource>
@@ -352,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Edit_Traktor.resx">
       <DependentUpon>Form_Edit_Traktor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Edit_Vocnjak.resx">
+      <DependentUpon>Form_Edit_Vocnjak.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Edit_Zitarice.resx">
       <DependentUpon>Form_Edit_Zitarice.cs</DependentUpon>
@@ -376,6 +394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Traktor.resx">
       <DependentUpon>Form_Traktor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Vocnjaci.resx">
+      <DependentUpon>Form_Vocnjaci.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Zitarice.resx">
       <DependentUpon>Form_Zitarice.cs</DependentUpon>

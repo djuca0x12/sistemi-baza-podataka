@@ -28,12 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dgvVocnjaci = new System.Windows.Forms.DataGridView();
+            this.btnProdajVoćnjak = new System.Windows.Forms.Button();
+            this.btnObrisiVocnjak = new System.Windows.Forms.Button();
+            this.btnIzmeniVocnjak = new System.Windows.Forms.Button();
+            this.btnDodajVocnjak = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVocnjaci)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dgvVocnjaci
+            // 
+            this.dgvVocnjaci.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVocnjaci.Location = new System.Drawing.Point(36, 75);
+            this.dgvVocnjaci.Name = "dgvVocnjaci";
+            this.dgvVocnjaci.ReadOnly = true;
+            this.dgvVocnjaci.RowHeadersWidth = 51;
+            this.dgvVocnjaci.RowTemplate.Height = 24;
+            this.dgvVocnjaci.Size = new System.Drawing.Size(1178, 308);
+            this.dgvVocnjaci.TabIndex = 15;
+            // 
+            // btnProdajVoćnjak
+            // 
+            this.btnProdajVoćnjak.Location = new System.Drawing.Point(1263, 342);
+            this.btnProdajVoćnjak.Name = "btnProdajVoćnjak";
+            this.btnProdajVoćnjak.Size = new System.Drawing.Size(154, 41);
+            this.btnProdajVoćnjak.TabIndex = 14;
+            this.btnProdajVoćnjak.Text = "Prodaj voćnjak";
+            this.btnProdajVoćnjak.UseVisualStyleBackColor = true;
+            this.btnProdajVoćnjak.Click += new System.EventHandler(this.btnProdajVoćnjak_Click);
+            // 
+            // btnObrisiVocnjak
+            // 
+            this.btnObrisiVocnjak.Location = new System.Drawing.Point(1263, 253);
+            this.btnObrisiVocnjak.Name = "btnObrisiVocnjak";
+            this.btnObrisiVocnjak.Size = new System.Drawing.Size(154, 41);
+            this.btnObrisiVocnjak.TabIndex = 13;
+            this.btnObrisiVocnjak.Text = "Obriši voćnjak";
+            this.btnObrisiVocnjak.UseVisualStyleBackColor = true;
+            this.btnObrisiVocnjak.Click += new System.EventHandler(this.btnObrisiVocnjak_Click);
+            // 
+            // btnIzmeniVocnjak
+            // 
+            this.btnIzmeniVocnjak.Location = new System.Drawing.Point(1263, 164);
+            this.btnIzmeniVocnjak.Name = "btnIzmeniVocnjak";
+            this.btnIzmeniVocnjak.Size = new System.Drawing.Size(154, 41);
+            this.btnIzmeniVocnjak.TabIndex = 12;
+            this.btnIzmeniVocnjak.Text = "Izmeni voćnjak";
+            this.btnIzmeniVocnjak.UseVisualStyleBackColor = true;
+            this.btnIzmeniVocnjak.Click += new System.EventHandler(this.btnIzmeniVocnjak_Click);
+            // 
+            // btnDodajVocnjak
+            // 
+            this.btnDodajVocnjak.Location = new System.Drawing.Point(1263, 75);
+            this.btnDodajVocnjak.Name = "btnDodajVocnjak";
+            this.btnDodajVocnjak.Size = new System.Drawing.Size(154, 41);
+            this.btnDodajVocnjak.TabIndex = 11;
+            this.btnDodajVocnjak.Text = "Dodaj voćnjak";
+            this.btnDodajVocnjak.UseVisualStyleBackColor = true;
+            this.btnDodajVocnjak.Click += new System.EventHandler(this.btnDodajVocnjak_Click);
+            // 
+            // Form_Vocnjaci
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form_Vocnjaci";
+            this.ClientSize = new System.Drawing.Size(1449, 450);
+            this.Controls.Add(this.dgvVocnjaci);
+            this.Controls.Add(this.btnProdajVoćnjak);
+            this.Controls.Add(this.btnObrisiVocnjak);
+            this.Controls.Add(this.btnIzmeniVocnjak);
+            this.Controls.Add(this.btnDodajVocnjak);
+            this.Name = "Form_Vocnjaci";
+            this.Text = "Voćnjaci";
+            this.Load += new System.EventHandler(this.Form_Vocnjaci_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVocnjaci)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dgvVocnjaci;
+        private System.Windows.Forms.Button btnProdajVoćnjak;
+        private System.Windows.Forms.Button btnObrisiVocnjak;
+        private System.Windows.Forms.Button btnIzmeniVocnjak;
+        private System.Windows.Forms.Button btnDodajVocnjak;
     }
 }

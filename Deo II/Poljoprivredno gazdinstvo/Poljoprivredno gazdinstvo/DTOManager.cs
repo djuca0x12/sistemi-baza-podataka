@@ -1013,6 +1013,143 @@ namespace Poljoprivredno_gazdinstvo
         #endregion
 
         #region Vocnjaci
+        public static List<VocnjaciBasic> VratiSveVocnjake()
+        {
+            List<VocnjaciBasic> vocnjaci = new();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                List<Vocnjaci> sviVocnjaci = s.Query<Vocnjaci>().ToList();
+
+                foreach (Vocnjaci v in sviVocnjaci)
+                    vocnjaci.Add(new VocnjaciBasic(v.Id, v.Naziv, v.Lokacija, v.Vrsta, v.Povrsina, v.KvalitetZemljista,
+                        v.DatumSetve, v.DatumZetvePlanirani, v.DatumZetveStvarni, v.Status, v.Komentar,
+                        v.GodinaSadnje, v.BrojStabala, v.Sorta, v.DatumRezidbe, v.RodniCiklus));
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri čitanju podataka o voćnjacima: {ec.FormatExceptionMessage()}");
+            }
+            return vocnjaci;
+        }
+        public static VocnjaciBasic VratiVocnjak(int id)
+        {
+            VocnjaciBasic vb = new();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Vocnjaci v = s.Load<Vocnjaci>(id);
+                vb = new VocnjaciBasic(v.Id, v.Naziv, v.Lokacija, v.Vrsta, v.Povrsina, v.KvalitetZemljista,
+                    v.DatumSetve, v.DatumZetvePlanirani, v.DatumZetveStvarni, v.Status, v.Komentar,
+                    v.GodinaSadnje, v.BrojStabala, v.Sorta, v.DatumRezidbe, v.RodniCiklus);
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri pribavljanju voćnjaka: {ec.FormatExceptionMessage()}");
+            }
+            return vb;
+        }
+
+        public static void DodajVocnjak(VocnjaciBasic v)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Vocnjaci vocnjak = new()
+                {
+                    // baza popunjava id preko sekvence
+                    Naziv = v.Naziv,
+                    Lokacija = v.Lokacija,
+                    Vrsta = v.Vrsta,
+                    Povrsina = v.Povrsina,
+                    KvalitetZemljista = v.KvalitetZemljista,
+                    DatumSetve = v.DatumSetve,
+                    DatumZetvePlanirani = v.DatumZetvePlanirani,
+                    DatumZetveStvarni = v.DatumZetveStvarni,
+                    Status = v.Status,
+                    Komentar = v.Komentar,
+                    // properties izvedene klase
+                    GodinaSadnje = v.GodinaSadnje,
+                    BrojStabala = v.BrojStabala,
+                    Sorta = v.Sorta,
+                    DatumRezidbe = v.DatumRezidbe,
+                    RodniCiklus = v.RodniCiklus
+                };
+
+                // todo: dodati kategoriju
+
+                s.SaveOrUpdate(vocnjak);
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri dodavanju voćnjaka: {ec.FormatExceptionMessage()}");
+            }
+        }
+        public static void IzmeniVocnjak(VocnjaciBasic v)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Vocnjaci vocnjak = s.Get<Vocnjaci>(v.Id);
+
+                vocnjak.Naziv = v.Naziv;
+                vocnjak.Lokacija = v.Lokacija;
+                vocnjak.Povrsina = v.Povrsina;
+                vocnjak.KvalitetZemljista = v.KvalitetZemljista;
+                vocnjak.DatumSetve = v.DatumSetve;
+                vocnjak.DatumZetvePlanirani = v.DatumZetvePlanirani;
+                vocnjak.DatumZetveStvarni = v.DatumZetveStvarni;
+                vocnjak.Status = v.Status;
+                vocnjak.Komentar = v.Komentar;
+                vocnjak.GodinaSadnje = v.GodinaSadnje;
+                vocnjak.BrojStabala = v.BrojStabala;
+                vocnjak.Sorta = v.Sorta;
+                vocnjak.DatumRezidbe = v.DatumRezidbe;
+                vocnjak.DatumRezidbe = v.DatumRezidbe;
+                vocnjak.RodniCiklus = v.RodniCiklus;
+
+                s.SaveOrUpdate(vocnjak);
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri izmeni voćnjaka: {ec.FormatExceptionMessage()}");
+            }
+        }
+
+        public static void ObrisiVocnjak(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Vocnjaci v = s.Load<Vocnjaci>(id);
+                // todo: brisanje kategorije!
+                s.Delete(v);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri brisanju voćnjaka: {ec.FormatExceptionMessage()}");
+            }
+        }
+
         #endregion
 
         #region Povrce
