@@ -9,6 +9,5 @@
         public virtual DateTime DatumRezidbe { get; set; }
         public virtual string RodniCiklus { get; set; }
 
-        public Vocnjaci() { }
     }
 }

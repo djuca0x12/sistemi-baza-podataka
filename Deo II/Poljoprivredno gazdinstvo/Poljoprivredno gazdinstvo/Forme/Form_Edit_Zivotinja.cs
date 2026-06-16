@@ -26,7 +26,7 @@ namespace Poljoprivredno_gazdinstvo.Forme
         private void Form_Edit_Zivotinja_Load(object sender, EventArgs e)
         {
             PopuniPodacima();
-            this.Text = $"Izmena životinje {zivotinja.Vrsta}";
+            this.Text = $"Izmena životinje: {zivotinja.Vrsta}";
         }
 
         private void PopuniPodacima()

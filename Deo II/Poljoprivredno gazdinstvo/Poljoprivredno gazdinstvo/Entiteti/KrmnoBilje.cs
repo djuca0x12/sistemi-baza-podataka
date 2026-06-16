@@ -11,6 +11,5 @@
         public virtual int IshranaStokeFlag { get; set; }
         public virtual int ZaProdajuFlag { get; set; }
 
-        public KrmnoBilje() { }
     }
 }

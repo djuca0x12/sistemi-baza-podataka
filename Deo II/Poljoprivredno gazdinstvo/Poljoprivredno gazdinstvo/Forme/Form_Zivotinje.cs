@@ -24,9 +24,22 @@ namespace Poljoprivredno_gazdinstvo.Forme
             zivotinje = z;
         }
 
+        private void Form_Zivotinje_Load(object sender, EventArgs e)
+        {
+            PopuniPodacima();
+        }
+
+        private void PopuniPodacima()
+        {
+            dgvZivotinje.DataSource = null;
+            dgvZivotinje.Rows.Clear();
+            dgvZivotinje.DataSource = DTOManager.VratiSveZivotinje();
+            dgvZivotinje.Refresh();
+        }
+
         private void btnDodajZivotinju_Click(object sender, EventArgs e)
         {
-            Form_Dodaj_Zivotinju form = new Form_Dodaj_Zivotinju();
+            Form_Dodaj_Zivotinju form = new();
             form.ShowDialog();
             this.PopuniPodacima();
         }
@@ -42,7 +55,7 @@ namespace Poljoprivredno_gazdinstvo.Forme
             int idZivotinje = Int32.Parse(dgvZivotinje.SelectedRows[0].Cells[0].Value.ToString());
             ZivotinjeBasic z = DTOManager.VratiZivotinju(idZivotinje);
 
-            Form_Edit_Zivotinja formUpdate = new Form_Edit_Zivotinja(z);
+            Form_Edit_Zivotinja formUpdate = new(z);
             formUpdate.ShowDialog();
 
             this.PopuniPodacima();
@@ -77,20 +90,6 @@ namespace Poljoprivredno_gazdinstvo.Forme
             Form_Prinos form = new Form_Prinos();
             form.ShowDialog();
             this.PopuniPodacima();
-        }
-
-        private void Form_Zivotinje_Load(object sender, EventArgs e)
-        {
-            PopuniPodacima();
-        }
-
-        private void PopuniPodacima()
-        {
-            dgvZivotinje.DataSource = null;
-            dgvZivotinje.Rows.Clear();
-            dgvZivotinje.DataSource = DTOManager.VratiSveZivotinje();
-            dgvZivotinje.Refresh();
-
         }
     }
 }

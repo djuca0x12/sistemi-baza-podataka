@@ -21,6 +21,5 @@ namespace Poljoprivredno_gazdinstvo.Entiteti
         // referenca na kategoriju nije obavezna, možda se entitet ne prodaje
         public virtual UseviZivotinje? Kategorija { get; set; }
 
-        public Usevi() { }
     }
 }
