@@ -95,7 +95,23 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
         private void btnProdaja_Click(object sender, EventArgs e)
         {
+            if (dataGridViewPrinos.SelectedRows.Count > 0)
+            {
+                int idSelektovanogPrinosa = (int)dataGridViewPrinos.SelectedRows[0].Cells["IdPrinosa"].Value;
 
+                string nazivPrinosa = dataGridViewPrinos.SelectedRows[0].Cells["Tip"].Value.ToString();
+                string jedinica = dataGridViewPrinos.SelectedRows[0].Cells["JedinicaMere"].Value.ToString();
+
+                // Otvaramo formu i prosledjujemo joj neophodne parametre
+                Form_Dodaj_Prodaju formaProdaja = new Form_Dodaj_Prodaju(idSelektovanogPrinosa, nazivPrinosa, jedinica);
+                formaProdaja.ShowDialog();
+
+                UcitajPrinoseUGrid();
+            }
+            else
+            {
+                MessageBox.Show("Molimo vas da prvo selektujete prinos koji želite da prodate.", "Obaveštenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

@@ -16,11 +16,9 @@ namespace Poljoprivredno_gazdinstvo.Entiteti
         public virtual string JedinicaMere { get; set; }
         public virtual DateTime Datum { get; set; }
         public virtual double Kolicina { get; set; }
+        public virtual string Kupac { get; set; }
 
         // Veza 1:N:
         public virtual Prinos Prinos { get; set; }
-
-        // Visevrednosni atribut:
-        public virtual IList<Kupac> Kupci { get; set; } = new List<Kupac>();
     }
 }

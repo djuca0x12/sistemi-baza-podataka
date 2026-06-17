@@ -63,9 +63,29 @@ namespace Poljoprivredno_gazdinstvo.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap KoristiZa1_ig_thumbnail_161_161 {
+            get {
+                object obj = ResourceManager.GetObject("KoristiZa1-ig-thumbnail-161-161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Masina2 {
             get {
                 object obj = ResourceManager.GetObject("Masina2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Pocetna1_ig_profile_photo_320_320 {
+            get {
+                object obj = ResourceManager.GetObject("Pocetna1-ig-profile-photo-320-320", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +126,16 @@ namespace Poljoprivredno_gazdinstvo.Properties {
         internal static System.Drawing.Bitmap Prodaja_ig_thumbnail_161_161 {
             get {
                 object obj = ResourceManager.GetObject("Prodaja-ig-thumbnail-161-161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Subvencija1_ig_thumbnail_161_161 {
+            get {
+                object obj = ResourceManager.GetObject("Subvencija1-ig-thumbnail-161-161", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

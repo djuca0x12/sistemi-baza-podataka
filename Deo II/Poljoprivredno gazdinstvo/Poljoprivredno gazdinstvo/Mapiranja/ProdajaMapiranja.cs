@@ -23,12 +23,10 @@ namespace Poljoprivredno_gazdinstvo.Mapiranja
             Map(x => x.JedinicaMere, "JEDINICAMERE");
             Map(x => x.Datum, "DATUM");
             Map(x => x.Kolicina, "KOLICINA");
+            Map(x => x.Kupac, "KUPAC");
 
             // Veza 1:N (slabi tip entieta)
             References(x => x.Prinos, "IDPRINOSA");
-
-            // Visevrednosni atribut:
-            HasMany(x => x.Kupci).KeyColumn("IDPRODAJA").Cascade.All().Inverse();
         }
     }
 }

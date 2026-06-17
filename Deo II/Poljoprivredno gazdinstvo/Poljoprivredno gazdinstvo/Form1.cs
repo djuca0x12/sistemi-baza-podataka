@@ -122,7 +122,7 @@ namespace Poljoprivredno_gazdinstvo
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        /*private void button3_Click(object sender, EventArgs e)
         {
             try
             {
@@ -160,7 +160,7 @@ namespace Poljoprivredno_gazdinstvo
 
                 MessageBox.Show($"Greška prilikom upisa: {stvarnaGreska}");
             }
-        }
+        }*/
 
         private void button4_Click(object sender, EventArgs e)
         {

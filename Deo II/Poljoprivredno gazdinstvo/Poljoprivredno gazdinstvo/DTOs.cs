@@ -145,6 +145,42 @@ namespace Poljoprivredno_gazdinstvo
 
     #endregion
 
+    #region KoristiZa
+
+    public class KoristiZaBasic
+    {
+        public int IdMehanizacija { get; set; }
+        public int IdPrinos { get; set; }
+        public string TipPrinos { get; set; }
+        public string ModelMehanizacije { get; set; }
+        public string BrojSasije { get; set; }
+        public DateTime DatumOd { get; set; }
+        public DateTime? DatumDo { get; set; }
+        public KoristiZaBasic() { }
+
+        //public KoristiZaBasic()
+    }
+
+    public class KoristiZaDto
+    {
+        public int IdMehanizacija { get; set; }
+        public int IdPrinos { get; set; }
+        public DateTime DatumOd { get; set; }
+        public DateTime? DatumDo { get; set; }
+
+        public KoristiZaDto() { }
+
+        public KoristiZaDto(int idM, int idP, DateTime datumOd, DateTime datumDo)
+        {
+            IdMehanizacija = idM; 
+            IdPrinos = idP;
+            DatumOd = datumOd;
+            DatumDo = datumDo;
+        }
+    }
+
+    #endregion
+
     #region Prodaja
 
     public class ProdajaBasic
@@ -177,52 +213,24 @@ namespace Poljoprivredno_gazdinstvo
         }
     }
 
-    public class ProdajaPregled
-    {
-        public int IdProdaja { get; set; }
-        public string BrojFakture { get; set; }
-        public int IdPrinosa { get; set; }
-        public string TipPlacanja { get; set; }
-        public string Komentar { get; set; }
-        public decimal CenaPoJedinici { get; set; }
-        public string JedinicaMere { get; set; }
-        public DateTime Datum { get; set; }
-        public decimal Kolicina { get; set; }
-        public IList<KupacBasic> Kupci { get; set; }
-
-        public ProdajaPregled() { Kupci = new List<KupacBasic>(); }
-
-        public ProdajaPregled(int idProdaja, string brojFakture, int idPrinosa, string tipPlacanja, string komentar, decimal cenaPoJedinici, string jedinicaMere, DateTime datum, decimal kolicina, IList<KupacBasic> Kupci)
-        {
-            IdProdaja = idProdaja;
-            BrojFakture = brojFakture;
-            IdPrinosa = idPrinosa;
-            TipPlacanja = tipPlacanja;
-            Komentar = komentar;
-            CenaPoJedinici = cenaPoJedinici;
-            JedinicaMere = jedinicaMere;
-            Datum = datum;
-            Kolicina = kolicina;
-            this.Kupci = Kupci;
-        }
-    }
-
     #endregion
 
-    #region Kupac
+    #region Subvencija
 
-    public class KupacBasic
+    public class SubvencijaBasic
     {
-        public int IdKupac { get; set; }
-        public string Kupac { get; set; }
+        public int IdSubvencija { get; set; }
+        public string BrojResenja { get; set; }
+        public string Vrsta { get; set; }
+        public decimal Iznos { get; set; }
+        public string Valuta { get; set; }
+        public DateTime DatumPodnosenja { get; set; }
+        public DateTime? DatumOdobrenja { get; set; }
+        public string Status { get; set; }
+        public string Komentar { get; set; }
+        public int UseviZivotinjeId { get; set; } // FK
 
-        public KupacBasic() { }
-
-        public KupacBasic(int idKupac, string kupac)
-        {
-            IdKupac = idKupac;
-            Kupac = kupac;
-        }
+        public SubvencijaBasic() { }
     }
 
     #endregion

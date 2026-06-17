@@ -32,15 +32,16 @@
             this.btnProdaje = new System.Windows.Forms.Button();
             this.btn_Povrce = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnProizvode = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.btnSubvencije = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnImage = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_Zivotinje
@@ -54,7 +55,7 @@
             // 
             // btnProdaje
             // 
-            this.btnProdaje.Location = new System.Drawing.Point(305, 184);
+            this.btnProdaje.Location = new System.Drawing.Point(712, 329);
             this.btnProdaje.Name = "btnProdaje";
             this.btnProdaje.Size = new System.Drawing.Size(154, 41);
             this.btnProdaje.TabIndex = 2;
@@ -64,7 +65,7 @@
             // 
             // btn_Povrce
             // 
-            this.btn_Povrce.Location = new System.Drawing.Point(305, 71);
+            this.btn_Povrce.Location = new System.Drawing.Point(64, 490);
             this.btn_Povrce.Name = "btn_Povrce";
             this.btn_Povrce.Size = new System.Drawing.Size(154, 41);
             this.btn_Povrce.TabIndex = 3;
@@ -73,7 +74,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(64, 184);
+            this.button3.Location = new System.Drawing.Point(712, 246);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(154, 41);
             this.button3.TabIndex = 4;
@@ -81,18 +82,19 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // btnProizvode
             // 
-            this.button4.Location = new System.Drawing.Point(305, 276);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(154, 41);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Životinje";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnProizvode.Location = new System.Drawing.Point(712, 406);
+            this.btnProizvode.Name = "btnProizvode";
+            this.btnProizvode.Size = new System.Drawing.Size(154, 41);
+            this.btnProizvode.TabIndex = 5;
+            this.btnProizvode.Text = "Proizvode";
+            this.btnProizvode.UseVisualStyleBackColor = true;
+            this.btnProizvode.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(64, 276);
+            this.button5.Location = new System.Drawing.Point(64, 246);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(154, 41);
             this.button5.TabIndex = 6;
@@ -101,7 +103,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(305, 368);
+            this.button6.Location = new System.Drawing.Point(64, 406);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(154, 41);
             this.button6.TabIndex = 7;
@@ -110,7 +112,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(64, 368);
+            this.button7.Location = new System.Drawing.Point(64, 329);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(154, 41);
             this.button7.TabIndex = 8;
@@ -119,7 +121,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(563, 71);
+            this.button8.Location = new System.Drawing.Point(712, 71);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(154, 41);
             this.button8.TabIndex = 9;
@@ -129,35 +131,36 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(563, 184);
+            this.button9.Location = new System.Drawing.Point(712, 169);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(154, 41);
             this.button9.TabIndex = 10;
-            this.button9.Text = "Životinje";
+            this.button9.Text = "KoristiZa";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(563, 276);
+            this.button10.Location = new System.Drawing.Point(64, 169);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(154, 41);
             this.button10.TabIndex = 11;
             this.button10.Text = "Životinje";
             this.button10.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // btnSubvencije
             // 
-            this.button11.Location = new System.Drawing.Point(563, 368);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(154, 41);
-            this.button11.TabIndex = 12;
-            this.button11.Text = "Životinje";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.btnSubvencije.Location = new System.Drawing.Point(712, 490);
+            this.btnSubvencije.Name = "btnSubvencije";
+            this.btnSubvencije.Size = new System.Drawing.Size(154, 41);
+            this.btnSubvencije.TabIndex = 12;
+            this.btnSubvencije.Text = "Subvencije";
+            this.btnSubvencije.UseVisualStyleBackColor = true;
+            this.btnSubvencije.Click += new System.EventHandler(this.button11_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(305, 445);
+            this.button2.Location = new System.Drawing.Point(385, 511);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(154, 41);
             this.button2.TabIndex = 13;
@@ -165,24 +168,36 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // btnImage
+            // 
+            this.btnImage.Image = global::Poljoprivredno_gazdinstvo.Properties.Resources.Pocetna1_ig_profile_photo_320_320;
+            this.btnImage.Location = new System.Drawing.Point(267, 54);
+            this.btnImage.Name = "btnImage";
+            this.btnImage.Size = new System.Drawing.Size(404, 404);
+            this.btnImage.TabIndex = 14;
+            this.btnImage.UseVisualStyleBackColor = true;
+            // 
             // Form_Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 509);
+            this.ClientSize = new System.Drawing.Size(925, 589);
+            this.Controls.Add(this.btnImage);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button11);
+            this.Controls.Add(this.btnSubvencije);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnProizvode);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btn_Povrce);
             this.Controls.Add(this.btnProdaje);
             this.Controls.Add(this.btn_Zivotinje);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form_Start";
             this.Text = "Form_Start";
             this.ResumeLayout(false);
@@ -195,14 +210,15 @@
         private System.Windows.Forms.Button btnProdaje;
         private System.Windows.Forms.Button btn_Povrce;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnProizvode;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnSubvencije;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnImage;
     }
 }

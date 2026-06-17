@@ -18,9 +18,9 @@ namespace Poljoprivredno_gazdinstvo
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
             //Application.Run(new Form_Usevi_Zivotinje());
-            //Application.Run(new Forme.Form_Start());
+            Application.Run(new Forme.Form_Start());
             //Application.Run(new Forme.Form_Traktor());
-            Application.Run(new Forme.Form_Vocnjaci());
+            //Application.Run(new Forme.Form_Vocnjaci());
         }
     }
 }

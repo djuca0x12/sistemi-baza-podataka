@@ -496,6 +496,51 @@ namespace Poljoprivredno_gazdinstvo
 
         #region Prodaja
 
+        public static bool DodajProdaju(ProdajaBasic prodaja)
+        {
+            try
+            {
+                using (ISession session = DataLayer.GetSession())
+                {
+                    // Transtakcija
+                    using (ITransaction transaction = session.BeginTransaction())
+                    {
+                        // Prinos
+                        Prinos prinos = session.Load<Prinos>(prodaja.IdPrinosa);
+
+                        // Azuriramo kolicinu
+                        prinos.Kolicina -= (double)prodaja.Kolicina;
+
+                        // Prodaja
+                        Prodaja novaProdaja = new Prodaja
+                        {
+                            BrojFakture = prodaja.BrojFakture,
+                            Prinos = prinos,
+                            TipPlacanja = prodaja.TipPlacanja,
+                            Komentar = prodaja.Komentar,
+                            CenaPoJedinici = (double)prodaja.CenaPoJedinici,
+                            JedinicaMere = prodaja.JedinicaMere,
+                            Datum = prodaja.Datum,
+                            Kolicina = (double)prodaja.Kolicina,
+                            Kupac = prodaja.Kupac
+                        };
+                   
+                        session.Save(novaProdaja);
+                        session.Update(prinos); 
+
+                        transaction.Commit();
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Ako bilo šta pođe po zlu, transakcija se neće potvrditi (Commit)
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
         public static bool ProveriDaLiBrojFakturePostoji(string brojFakture, int trenutniId = 0)
         {
             using (var session = DataLayer.GetSession())
@@ -523,12 +568,7 @@ namespace Poljoprivredno_gazdinstvo
                     var sveProdaje = session.Query<Prodaja>().ToList();
 
                     foreach (var p in sveProdaje)
-                    {
-                        var kupacObj = session.Query<Kupac>()
-                                .FirstOrDefault(k => k.Prodaja.IdProdaja == p.IdProdaja);
-
-                        string nazivKupca = kupacObj != null ? kupacObj.KupacIme : "Nepoznat";
-
+                    {                   
                         prodajeDTO.Add(new ProdajaBasic(
                             p.IdProdaja,
                             p.BrojFakture,
@@ -539,15 +579,16 @@ namespace Poljoprivredno_gazdinstvo
                             p.JedinicaMere,
                             p.Datum,
                             (decimal)p.Kolicina,
-                            nazivKupca
+                            p.Kupac
                         ));
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška prilikom učitavanja prodaja: {ex.Message}");
+                MessageBox.Show($"Greška prilikom učitavanja prodaja: {ex.FormatExceptionMessage}");
             }
+
             return prodajeDTO;
         }
 
@@ -560,12 +601,7 @@ namespace Poljoprivredno_gazdinstvo
                 {
                     Prodaja p = session.Get<Prodaja>(id);
                     if (p != null)
-                    {
-                        var kupacObj = session.Query<Kupac>()
-                                .FirstOrDefault(k => k.Prodaja.IdProdaja == p.IdProdaja);
-
-                        string nazivKupca = kupacObj != null ? kupacObj.KupacIme : "Nepoznat";
-
+                    { 
                         prodajaDTO = new ProdajaBasic(
                             p.IdProdaja,
                             p.BrojFakture,
@@ -576,7 +612,7 @@ namespace Poljoprivredno_gazdinstvo
                             p.JedinicaMere,
                             p.Datum,
                             (decimal)p.Kolicina,
-                            nazivKupca
+                            p.Kupac
                         );
                     }
                 }
@@ -603,6 +639,7 @@ namespace Poljoprivredno_gazdinstvo
                     p.JedinicaMere = prodajaDTO.JedinicaMere;
                     p.Datum = prodajaDTO.Datum;
                     p.Kolicina = (double)prodajaDTO.Kolicina;
+                    p.Kupac = prodajaDTO.Kupac;
 
                     session.Update(p);
                     session.Flush();
@@ -634,109 +671,207 @@ namespace Poljoprivredno_gazdinstvo
             }
         }
 
-        #endregion
-
-        #region Kupac
-
-        public static void ObrisiKupca(int kupacId)
+        public static bool DaLiImaDovoljnoPrinosa(int idPrinosa, decimal kolicinaZaProdaju, string jedinicaSaForme)
         {
             using (var session = DataLayer.GetSession())
             {
-                Kupac k = session.Load<Kupac>(kupacId);
-                session.Delete(k);
+                var prinos = session.Get<Prinos>(idPrinosa);
+
+                if (prinos == null) return false;
+
+                
+                if (!prinos.JedinicaMere.Equals(jedinicaSaForme, StringComparison.OrdinalIgnoreCase))
+                {
+                    MessageBox.Show($"Greška: Jedinica mere na prinosu je '{prinos.JedinicaMere}', a na prodaji pokušavate da koristite '{jedinicaSaForme}'.");
+                    return false;
+                }
+
+                return kolicinaZaProdaju <= (decimal)prinos.Kolicina;
+            }
+        }
+
+        #endregion
+
+        #region KoristiZa
+
+        public static List<KoristiZaBasic> VratiPregledKoriscenja()
+        {
+            using (var session = DataLayer.GetSession())
+            {
+                // LINQ to NHibernate join
+                var rezultat = from k in session.Query<KoristiZa>()
+                               join m in session.Query<Mehanizacija>() on k.Mehanizacija.IdMehanizacija equals m.IdMehanizacija
+                               join p in session.Query<Prinos>() on k.Prinos.IdPrinosa equals p.IdPrinosa
+                               select new KoristiZaBasic
+                               {
+                                   TipPrinos = p.Tip,
+                                   ModelMehanizacije = m.Model,
+                                   BrojSasije = m.BrojSasije,
+                                   DatumOd = k.DatumOd,
+                                   DatumDo = k.DatumDo,
+                                   IdMehanizacija = m.IdMehanizacija,
+                                   IdPrinos = p.IdPrinosa
+                               };
+
+                return rezultat.ToList();
+            }
+        }
+
+        public static void PoveziMehanizacijuIPrinos(int idMehanizacija, int idPrinos, DateTime datumOd)
+        {
+            using (var session = DataLayer.GetSession())
+            {               
+                var meh = session.Load<Mehanizacija>(idMehanizacija);
+                var pr = session.Load<Prinos>(idPrinos);
+
+                KoristiZa novaVeza = new KoristiZa
+                {
+                    Mehanizacija = meh,
+                    Prinos = pr,
+                    DatumOd = datumOd
+                };
+
+                session.Save(novaVeza);
                 session.Flush();
             }
         }
 
-        /*public static void DodajKupceIzSkripte()
+        public static string VratiTipMehanizacije(int idMehanizacija)
         {
             using (var session = DataLayer.GetSession())
             {
-                Prodaja prodaja1 = session.Load<Prodaja>(1);
-                Prinos prinos1 = session.Load<Prinos>(1);
+                // Ucitavamo traktor/masina
+                var meh = session.Get<Mehanizacija>(idMehanizacija);
+                
+                if (meh is Traktor) return "Traktor";
+                if (meh is Masina) return "Masina";             
 
-                Kupac kupac1 = new Kupac
-                {
-                    KupacIme = "Milan Banatski",
-                    Prodaja = prodaja1,
-                    Prinos = prinos1
-                };
-
-                session.Save(kupac1);
-                session.Flush();
-
-                Prodaja prodaja2 = session.Load<Prodaja>(2);
-                Prinos prinos2 = session.Load<Prinos>(2);
-
-                Kupac kupac2 = new Kupac
-                {
-                    KupacIme = "Zadruga Srem",
-                    Prodaja = prodaja2,
-                    Prinos = prinos2
-                };
-
-                session.Save(kupac2);
-                session.Flush();
-
-                Prodaja prodaja3 = session.Load<Prodaja>(6);
-                Prinos prinos3 = session.Load<Prinos>(3);
-
-                Kupac kupac3 = new Kupac
-                {
-                    KupacIme = "Pijaca Topola",
-                    Prodaja = prodaja3,
-                    Prinos = prinos3
-                };
-
-                session.Save(kupac2);
-                session.Flush();
-
-                Prodaja prodaja4 = session.Load<Prodaja>(7);
-                Prinos prinos4 = session.Load<Prinos>(4);
-
-                Kupac kupac4 = new Kupac
-                {
-                    KupacIme = "Otkupljivac Arilje",
-                    Prodaja = prodaja4,
-                    Prinos = prinos4
-                };
-
-                session.Save(kupac4);
-                session.Flush();
+                return "Nepoznato";
             }
-        }*/
+        }
 
-        public static void IzmeniKupca(KupacBasic kupacDTO)
+        public static void AzurirajKoriscenje(int stariIdMehanizacija, int idPrinos, DateTime datumOd, int noviIdMehanizacija, DateTime? noviDatumDo)
         {
-            try
+            using (var session = DataLayer.GetSession())
             {
-                using (var session = DataLayer.GetSession())
+                var zapis = session.Query<KoristiZa>()
+                    .FirstOrDefault(k => k.Mehanizacija.IdMehanizacija == stariIdMehanizacija
+                                      && k.Prinos.IdPrinosa == idPrinos
+                                      && k.DatumOd == datumOd);
+
+                if (zapis != null)
                 {
-                    Kupac k = session.Load<Kupac>(kupacDTO.IdKupac);
+                    if (stariIdMehanizacija != noviIdMehanizacija)
+                    {
+                        zapis.Mehanizacija = session.Load<Mehanizacija>(noviIdMehanizacija);
+                    }
 
-                    k.KupacIme = kupacDTO.Kupac;
+                    zapis.DatumDo = noviDatumDo;
 
-                    session.Update(k);
+                    session.Update(zapis);
                     session.Flush();
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Greška prilikom izmene kupca: {ex.Message}");
-            }
         }
 
-        public static void IzmeniKupcaZaProdaju(int prodajaId, string novoIme)
+        #endregion
+
+        #region Subvencija
+
+        public static List<SubvencijaBasic> VratiSveSubvencije()
         {
             using (var session = DataLayer.GetSession())
             {
-                var kupac = session.Query<Kupac>().FirstOrDefault(k => k.Prodaja.IdProdaja == prodajaId);
+                return session.Query<Subvencija>()
+                    .Select(s => new SubvencijaBasic
+                    {
+                        IdSubvencija = s.IdSubvencija,
+                        BrojResenja = s.BrojResenja,
+                        Vrsta = s.Vrsta,
+                        Iznos = (decimal)s.Iznos,
+                        Valuta = s.Valuta,
+                        DatumPodnosenja = s.DatumPodnosenja,
+                        DatumOdobrenja = s.DatumOdobrenja,
+                        Status = s.Status,
+                        Komentar = s.Komentar,
+                        UseviZivotinjeId = s.Kategorija.UseviZivotinjeId
+                    }).ToList();
+            }
+        }
 
-                if (kupac != null)
+        public static void ObrisiSubvenciju(int id)
+        {
+            using (var session = DataLayer.GetSession())
+            {
+                var subvencija = session.Get<Subvencija>(id);
+                if (subvencija != null)
                 {
-                    KupacBasic kDTO = new KupacBasic(kupac.IdKupac, novoIme);
-                    IzmeniKupca(kDTO);
+                    session.Delete(subvencija);
+                    session.Flush();
                 }
+            }
+        }
+
+        public static bool DaLiBrojResenjaPostoji(string brojResenja, int? trenutniId = null)
+        {
+            using (var session = DataLayer.GetSession())
+            {
+                var postojeca = session.Query<Subvencija>()
+                    .FirstOrDefault(s => s.BrojResenja == brojResenja);
+
+                if (postojeca != null && (trenutniId == null || postojeca.IdSubvencija != trenutniId))
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+        public static void AzurirajSubvenciju(SubvencijaBasic s)
+        {
+            using (var session = DataLayer.GetSession())
+            {
+                var subvencija = session.Get<Subvencija>(s.IdSubvencija);
+                if (subvencija != null)
+                {
+                    subvencija.BrojResenja = s.BrojResenja;
+                    subvencija.Vrsta = s.Vrsta;
+                    subvencija.Iznos = (double)s.Iznos;
+                    subvencija.Valuta = s.Valuta;
+                    subvencija.DatumPodnosenja = s.DatumPodnosenja;
+                    subvencija.DatumOdobrenja = s.DatumOdobrenja;
+                    subvencija.Status = s.Status;
+                    subvencija.Komentar = s.Komentar;
+
+                    // Azuriranje kategorije
+                    subvencija.Kategorija = session.Load<UseviZivotinje>(s.UseviZivotinjeId);
+
+                    session.Update(subvencija);
+                    session.Flush();
+                }
+            }
+        }
+
+        public static void DodajSubvenciju(SubvencijaBasic s)
+        {
+            using (var session = DataLayer.GetSession())
+            {
+                Subvencija nova = new Subvencija();
+                nova.BrojResenja = s.BrojResenja;
+                nova.Vrsta = s.Vrsta;
+                nova.Iznos = (double)s.Iznos;
+                nova.Valuta = s.Valuta;
+                nova.DatumPodnosenja = s.DatumPodnosenja;
+                nova.DatumOdobrenja = null;
+                nova.Status = s.Status;
+                nova.Komentar = s.Komentar;
+
+                // Povezivanje sa kategorijom
+                nova.Kategorija = session.Load<UseviZivotinje>(s.UseviZivotinjeId);
+
+                session.Save(nova);
+                session.Flush();
             }
         }
 

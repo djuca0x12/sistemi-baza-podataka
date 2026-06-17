@@ -45,7 +45,21 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
         private void button11_Click(object sender, EventArgs e)
         {
-            //DTOManager.DodajKupceIzSkripte();
+            Form sub = new Form_Subvencije();
+
+            sub.ShowDialog();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Form koristiZa = new Form_KoristiZa();
+
+            koristiZa.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

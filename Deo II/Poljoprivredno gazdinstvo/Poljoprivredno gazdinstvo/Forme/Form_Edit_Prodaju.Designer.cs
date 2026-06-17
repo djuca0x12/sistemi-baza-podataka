@@ -52,7 +52,7 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(412, 282);
+            this.btnSacuvaj.Location = new System.Drawing.Point(412, 286);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(85, 38);
             this.btnSacuvaj.TabIndex = 0;
@@ -89,7 +89,7 @@
             // 
             // btnZatvori
             // 
-            this.btnZatvori.Location = new System.Drawing.Point(553, 282);
+            this.btnZatvori.Location = new System.Drawing.Point(553, 286);
             this.btnZatvori.Name = "btnZatvori";
             this.btnZatvori.Size = new System.Drawing.Size(85, 38);
             this.btnZatvori.TabIndex = 4;
@@ -183,7 +183,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(383, 77);
+            this.label6.Location = new System.Drawing.Point(409, 78);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 16);
             this.label6.TabIndex = 13;
@@ -200,7 +200,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(383, 137);
+            this.label7.Location = new System.Drawing.Point(409, 138);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 16);
             this.label7.TabIndex = 16;
@@ -209,11 +209,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(384, 199);
+            this.label8.Location = new System.Drawing.Point(410, 200);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 16);
+            this.label8.Size = new System.Drawing.Size(48, 16);
             this.label8.TabIndex = 18;
-            this.label8.Text = "Ime kupca:";
+            this.label8.Text = "Kupac:";
             // 
             // txtKupac
             // 

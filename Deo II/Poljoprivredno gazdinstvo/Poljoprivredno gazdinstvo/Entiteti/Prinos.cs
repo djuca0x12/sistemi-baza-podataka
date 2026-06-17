@@ -20,8 +20,5 @@ namespace Poljoprivredno_gazdinstvo.Entiteti
 
         //Veza N:M:
         public virtual IList<KoristiZa> KorisceneMasine { get; set; } = new List<KoristiZa>();
-
-        // Visevrednosni atribut:
-        public virtual IList<Kupac> Kupci { get; set; } = new List<Kupac>();
     }
 }

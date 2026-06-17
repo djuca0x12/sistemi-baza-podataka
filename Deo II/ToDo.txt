@@ -1,4 +1,4 @@
-1. Mogucnost kreiranja prodaje (poslovna logika)!
-2. KoristiZa forma?
-3. Subvencije forma.
-4. Da li koristim DTO na pravi nacin (ne znam ahahhaha, koristim ih da mi bude jednostavno prosledjivanje parametara).
+1. Brisanje u KoristiZa.
+2. Povezati kreiranje prinosa/subvencija (ove forme su vec kreirane, treba sam da im se jos doda id kategorije mozda!?) sa svim usevima i zivotinjama.
+3. Proizvesti forma.
+4. Testiranje.

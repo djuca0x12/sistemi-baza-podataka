@@ -113,7 +113,6 @@
     <Compile Include="DTOs.cs" />
     <Compile Include="Entiteti\KoristiZa.cs" />
     <Compile Include="Entiteti\KrmnoBilje.cs" />
-    <Compile Include="Entiteti\Kupac.cs" />
     <Compile Include="Entiteti\Mehanizacija.cs" />
     <Compile Include="Entiteti\Povrce.cs" />
     <Compile Include="Entiteti\Prinos.cs" />
@@ -130,6 +129,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_KoristiZa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_KoristiZa.Designer.cs">
+      <DependentUpon>Form_Dodaj_KoristiZa.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\Form_Dodaj_Masinu.cs">
       <SubType>Form</SubType>
@@ -148,6 +153,12 @@
     </Compile>
     <Compile Include="Forme\Form_Dodaj_Prodaju.Designer.cs">
       <DependentUpon>Form_Dodaj_Prodaju.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Subevnciju.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Subevnciju.Designer.cs">
+      <DependentUpon>Form_Dodaj_Subevnciju.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\Form_Dodaj_Vocnjak.cs">
       <SubType>Form</SubType>
@@ -173,6 +184,12 @@
     <Compile Include="Forme\Form_Dodaj_Traktor.Designer.cs">
       <DependentUpon>Form_Dodaj_Traktor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Form_Edit_KoristiZa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_KoristiZa.Designer.cs">
+      <DependentUpon>Form_Edit_KoristiZa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\Form_Edit_Masina.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +207,12 @@
     </Compile>
     <Compile Include="Forme\Form_Edit_Prodaju.Designer.cs">
       <DependentUpon>Form_Edit_Prodaju.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Subvencija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Subvencija.Designer.cs">
+      <DependentUpon>Form_Edit_Subvencija.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\Form_Edit_Traktor.cs">
       <SubType>Form</SubType>
@@ -314,7 +337,6 @@
     <Compile Include="Implicit.cs" />
     <Compile Include="Mapiranja\KoristiZaMapiranja.cs" />
     <Compile Include="Mapiranja\KrmnoBiljeMapiranja.cs" />
-    <Compile Include="Mapiranja\KupacMapiranja.cs" />
     <Compile Include="Mapiranja\MehanizacijaMapiranja.cs" />
     <Compile Include="Mapiranja\PovrceMapiranja.cs" />
     <Compile Include="Mapiranja\PrinosMapiranja.cs" />
@@ -335,6 +357,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Dodaj_KoristiZa.resx">
+      <DependentUpon>Form_Dodaj_KoristiZa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Dodaj_Masinu.resx">
       <DependentUpon>Form_Dodaj_Masinu.cs</DependentUpon>
     </EmbeddedResource>
@@ -343,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Dodaj_Prodaju.resx">
       <DependentUpon>Form_Dodaj_Prodaju.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Dodaj_Subevnciju.resx">
+      <DependentUpon>Form_Dodaj_Subevnciju.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Dodaj_Traktor.resx">
       <DependentUpon>Form_Dodaj_Traktor.cs</DependentUpon>
@@ -356,6 +384,9 @@
     <EmbeddedResource Include="Forme\Form_Dodaj_Zivotinju.resx">
       <DependentUpon>Form_Dodaj_Zivotinju.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Edit_KoristiZa.resx">
+      <DependentUpon>Form_Edit_KoristiZa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Edit_Masina.resx">
       <DependentUpon>Form_Edit_Masina.cs</DependentUpon>
     </EmbeddedResource>
@@ -364,6 +395,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Edit_Prodaju.resx">
       <DependentUpon>Form_Edit_Prodaju.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Edit_Subvencija.resx">
+      <DependentUpon>Form_Edit_Subvencija.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Edit_Traktor.resx">
       <DependentUpon>Form_Edit_Traktor.cs</DependentUpon>
@@ -376,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Edit_Zivotinja.resx">
       <DependentUpon>Form_Edit_Zivotinja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_KoristiZa.resx">
+      <DependentUpon>Form_KoristiZa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Masine.resx">
       <DependentUpon>Form_Masine.cs</DependentUpon>
@@ -391,6 +428,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Start.resx">
       <DependentUpon>Form_Start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Subvencije.resx">
+      <DependentUpon>Form_Subvencije.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Traktor.resx">
       <DependentUpon>Form_Traktor.cs</DependentUpon>
@@ -451,7 +491,10 @@
     <None Include="Resources\Traktor2.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Subvencija1-ig-thumbnail-161-161.png" />
+    <None Include="Resources\KoristiZa1-ig-thumbnail-161-161.png" />
     <Content Include="Resources\Masina2.png" />
+    <None Include="Resources\Pocetna1-ig-profile-photo-320-320.png" />
     <None Include="Resources\Prinos2-ig-thumbnail-161-161.png" />
     <None Include="Resources\Prodaja-ig-thumbnail-161-161.png" />
     <None Include="Resources\Prinos1-ig-thumbnail-161-161.png" />

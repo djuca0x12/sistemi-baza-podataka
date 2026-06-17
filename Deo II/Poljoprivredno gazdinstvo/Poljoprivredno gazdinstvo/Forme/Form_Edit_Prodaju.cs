@@ -37,6 +37,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
                 numKolicina.Value = p.Kolicina;
 
                 txtKupac.Text = p.Kupac ?? "Nepoznato";
+
+                cBoxJedinicaMere.Enabled = false;
             }
         }
 
@@ -65,9 +67,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
             izmenjenaProdaja.JedinicaMere = cBoxJedinicaMere.Text;
             izmenjenaProdaja.Datum = dateDatum.Value;
             izmenjenaProdaja.Kolicina = numKolicina.Value;
+            izmenjenaProdaja.Kupac = txtKupac.Text;
 
             DTOManager.IzmeniProdaju(izmenjenaProdaja);
-            DTOManager.IzmeniKupcaZaProdaju(selektovaniIdProdaje, txtKupac.Text);
 
             MessageBox.Show("Podaci o prodaji su uspešno izmenjeni!");
             this.Close();
