@@ -61,5 +61,35 @@ namespace Poljoprivredno_gazdinstvo.Forme
         {
 
         }
+
+        private void btn_Zivotinje_Click(object sender, EventArgs e)
+        {
+            Form zivotinje = new Form_Zivotinje();
+            zivotinje.ShowDialog();
+        }
+
+        private void btn_Zitarice_Click(object sender, EventArgs e)
+        {
+            Form zitarice = new Form_Zitarice();
+            zitarice.ShowDialog();
+        }
+
+        private void btn_Voćnjaci_Click(object sender, EventArgs e)
+        {
+            Form vocnjaci = new Form_Vocnjaci();
+            vocnjaci.ShowDialog();
+        }
+
+        private void btn_Povrce_Click(object sender, EventArgs e)
+        {
+            Form povrce = new Form_Povrce();
+            povrce.ShowDialog();
+        }
+
+        private void btn_KrmnoBilje_Click(object sender, EventArgs e)
+        {
+            Form krma = new Form_Krmno_Bilje();
+            krma.ShowDialog();
+        }
     }
 }

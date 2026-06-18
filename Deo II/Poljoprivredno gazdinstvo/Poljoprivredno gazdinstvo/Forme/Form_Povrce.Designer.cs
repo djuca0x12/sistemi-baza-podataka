@@ -28,12 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dgvPovrce = new System.Windows.Forms.DataGridView();
+            this.btnProdajPovrce = new System.Windows.Forms.Button();
+            this.btnObrisiPovrce = new System.Windows.Forms.Button();
+            this.btnIzmeniPovrce = new System.Windows.Forms.Button();
+            this.btnDodajPovrce = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPovrce)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dgvPovrce
+            // 
+            this.dgvPovrce.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPovrce.Location = new System.Drawing.Point(45, 80);
+            this.dgvPovrce.Name = "dgvPovrce";
+            this.dgvPovrce.ReadOnly = true;
+            this.dgvPovrce.RowHeadersWidth = 51;
+            this.dgvPovrce.RowTemplate.Height = 24;
+            this.dgvPovrce.Size = new System.Drawing.Size(1178, 308);
+            this.dgvPovrce.TabIndex = 15;
+            // 
+            // btnProdajPovrce
+            // 
+            this.btnProdajPovrce.Location = new System.Drawing.Point(1272, 347);
+            this.btnProdajPovrce.Name = "btnProdajPovrce";
+            this.btnProdajPovrce.Size = new System.Drawing.Size(154, 41);
+            this.btnProdajPovrce.TabIndex = 14;
+            this.btnProdajPovrce.Text = "Prodaj povrće";
+            this.btnProdajPovrce.UseVisualStyleBackColor = true;
+            this.btnProdajPovrce.Click += new System.EventHandler(this.btnProdajPovrce_Click);
+            // 
+            // btnObrisiPovrce
+            // 
+            this.btnObrisiPovrce.Location = new System.Drawing.Point(1272, 258);
+            this.btnObrisiPovrce.Name = "btnObrisiPovrce";
+            this.btnObrisiPovrce.Size = new System.Drawing.Size(154, 41);
+            this.btnObrisiPovrce.TabIndex = 13;
+            this.btnObrisiPovrce.Text = "Obriši povrće";
+            this.btnObrisiPovrce.UseVisualStyleBackColor = true;
+            this.btnObrisiPovrce.Click += new System.EventHandler(this.btnObrisiPovrce_Click);
+            // 
+            // btnIzmeniPovrce
+            // 
+            this.btnIzmeniPovrce.Location = new System.Drawing.Point(1272, 169);
+            this.btnIzmeniPovrce.Name = "btnIzmeniPovrce";
+            this.btnIzmeniPovrce.Size = new System.Drawing.Size(154, 41);
+            this.btnIzmeniPovrce.TabIndex = 12;
+            this.btnIzmeniPovrce.Text = "Izmeni povrće";
+            this.btnIzmeniPovrce.UseVisualStyleBackColor = true;
+            this.btnIzmeniPovrce.Click += new System.EventHandler(this.btnIzmeniPovrce_Click);
+            // 
+            // btnDodajPovrce
+            // 
+            this.btnDodajPovrce.Location = new System.Drawing.Point(1272, 80);
+            this.btnDodajPovrce.Name = "btnDodajPovrce";
+            this.btnDodajPovrce.Size = new System.Drawing.Size(154, 41);
+            this.btnDodajPovrce.TabIndex = 11;
+            this.btnDodajPovrce.Text = "Dodaj povrće";
+            this.btnDodajPovrce.UseVisualStyleBackColor = true;
+            this.btnDodajPovrce.Click += new System.EventHandler(this.btnDodajPovrce_Click);
+            // 
+            // Form_Povrce
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form_Povrce";
+            this.ClientSize = new System.Drawing.Size(1452, 450);
+            this.Controls.Add(this.dgvPovrce);
+            this.Controls.Add(this.btnProdajPovrce);
+            this.Controls.Add(this.btnObrisiPovrce);
+            this.Controls.Add(this.btnIzmeniPovrce);
+            this.Controls.Add(this.btnDodajPovrce);
+            this.Name = "Form_Povrce";
+            this.Text = "Povrće";
+            this.Load += new System.EventHandler(this.Form_Povrce_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPovrce)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dgvPovrce;
+        private System.Windows.Forms.Button btnProdajPovrce;
+        private System.Windows.Forms.Button btnObrisiPovrce;
+        private System.Windows.Forms.Button btnIzmeniPovrce;
+        private System.Windows.Forms.Button btnDodajPovrce;
     }
 }

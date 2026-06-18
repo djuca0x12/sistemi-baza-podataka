@@ -15,9 +15,7 @@ namespace Poljoprivredno_gazdinstvo
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
-            //Application.Run(new Form_Usevi_Zivotinje());
+            Application.SetCompatibleTextRenderingDefault(false);          
             Application.Run(new Forme.Form_Start());
             //Application.Run(new Forme.Form_Traktor());
             //Application.Run(new Forme.Form_Vocnjaci());

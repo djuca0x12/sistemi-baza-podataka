@@ -524,9 +524,9 @@ namespace Poljoprivredno_gazdinstvo
                             Kolicina = (double)prodaja.Kolicina,
                             Kupac = prodaja.Kupac
                         };
-                   
+
                         session.Save(novaProdaja);
-                        session.Update(prinos); 
+                        session.Update(prinos);
 
                         transaction.Commit();
                         return true;
@@ -568,7 +568,7 @@ namespace Poljoprivredno_gazdinstvo
                     var sveProdaje = session.Query<Prodaja>().ToList();
 
                     foreach (var p in sveProdaje)
-                    {                   
+                    {
                         prodajeDTO.Add(new ProdajaBasic(
                             p.IdProdaja,
                             p.BrojFakture,
@@ -601,7 +601,7 @@ namespace Poljoprivredno_gazdinstvo
                 {
                     Prodaja p = session.Get<Prodaja>(id);
                     if (p != null)
-                    { 
+                    {
                         prodajaDTO = new ProdajaBasic(
                             p.IdProdaja,
                             p.BrojFakture,
@@ -679,7 +679,7 @@ namespace Poljoprivredno_gazdinstvo
 
                 if (prinos == null) return false;
 
-                
+
                 if (!prinos.JedinicaMere.Equals(jedinicaSaForme, StringComparison.OrdinalIgnoreCase))
                 {
                     MessageBox.Show($"Greška: Jedinica mere na prinosu je '{prinos.JedinicaMere}', a na prodaji pokušavate da koristite '{jedinicaSaForme}'.");
@@ -720,7 +720,7 @@ namespace Poljoprivredno_gazdinstvo
         public static void PoveziMehanizacijuIPrinos(int idMehanizacija, int idPrinos, DateTime datumOd)
         {
             using (var session = DataLayer.GetSession())
-            {               
+            {
                 var meh = session.Load<Mehanizacija>(idMehanizacija);
                 var pr = session.Load<Prinos>(idPrinos);
 
@@ -742,9 +742,9 @@ namespace Poljoprivredno_gazdinstvo
             {
                 // Ucitavamo traktor/masina
                 var meh = session.Get<Mehanizacija>(idMehanizacija);
-                
+
                 if (meh is Traktor) return "Traktor";
-                if (meh is Masina) return "Masina";             
+                if (meh is Masina) return "Masina";
 
                 return "Nepoznato";
             }
@@ -1288,9 +1288,279 @@ namespace Poljoprivredno_gazdinstvo
         #endregion
 
         #region Povrce
+        public static List<PovrceBasic> VratiSvoPovrce()
+        {
+            List<PovrceBasic> povrce = new();
+            try
+            {
+
+                ISession s = DataLayer.GetSession();
+
+                List<Povrce> svoPovrce = s.Query<Povrce>().ToList();
+
+                foreach (Povrce p in svoPovrce)
+                    povrce.Add(new PovrceBasic(p.Id, p.Naziv, p.Lokacija, p.Vrsta, p.Povrsina, p.KvalitetZemljista,
+                        p.DatumSetve, p.DatumZetvePlanirani, p.DatumZetveStvarni, p.Status, p.Komentar,
+                        p.BrojSetviGodisnje, p.ZastitneMere, p.NacinGajenja, p.Tip));
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri čitanju podataka o povrću: {ec.FormatExceptionMessage()}");
+            }
+            return povrce;
+        }
+        public static PovrceBasic VratiPovrce(int id)
+        {
+            PovrceBasic pb = new();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Povrce p = s.Load<Povrce>(id);
+                pb = new PovrceBasic(p.Id, p.Naziv, p.Lokacija, p.Vrsta, p.Povrsina, p.KvalitetZemljista,
+                     p.DatumSetve, p.DatumZetvePlanirani, p.DatumZetveStvarni, p.Status, p.Komentar,
+                     p.BrojSetviGodisnje, p.ZastitneMere, p.NacinGajenja, p.Tip
+                  );
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri pribavljanju povrća: {ec.FormatExceptionMessage()}");
+            }
+            return pb;
+        }
+
+        public static void DodajPovrce(PovrceBasic p)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Povrce povrce = new()
+                {
+                    // baza popunjava id preko sekvence
+                    Naziv = p.Naziv,
+                    Lokacija = p.Lokacija,
+                    Vrsta = p.Vrsta,
+                    Povrsina = p.Povrsina,
+                    KvalitetZemljista = p.KvalitetZemljista,
+                    DatumSetve = p.DatumSetve,
+                    DatumZetvePlanirani = p.DatumZetvePlanirani,
+                    DatumZetveStvarni = p.DatumZetveStvarni,
+                    Status = p.Status,
+                    Komentar = p.Komentar,
+                    // properties izvedene klase
+                    BrojSetviGodisnje = p.BrojSetviGodisnje,
+                    ZastitneMere = p.ZastitneMere,
+                    NacinGajenja = p.NacinGajenja,
+                    Tip = p.Tip
+                };
+
+                // todo: dodati kategoriju
+
+                s.SaveOrUpdate(povrce);
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri dodavanju povrća: {ec.FormatExceptionMessage()}");
+            }
+        }
+        public static void IzmeniPovrce(PovrceBasic p)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Povrce povrce = s.Get<Povrce>(p.Id);
+
+                povrce.Naziv = p.Naziv;
+                povrce.Lokacija = p.Lokacija;
+                povrce.Povrsina = p.Povrsina;
+                povrce.KvalitetZemljista = p.KvalitetZemljista;
+                povrce.DatumSetve = p.DatumSetve;
+                povrce.DatumZetvePlanirani = p.DatumZetvePlanirani;
+                povrce.DatumZetveStvarni = p.DatumZetveStvarni;
+                povrce.Status = p.Status;
+                povrce.Komentar = p.Komentar;
+                povrce.BrojSetviGodisnje = p.BrojSetviGodisnje;
+                povrce.ZastitneMere = p.ZastitneMere;
+                povrce.NacinGajenja = p.NacinGajenja;
+                povrce.Tip = p.Tip;
+
+                s.SaveOrUpdate(povrce);
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri izmeni povrća: {ec.FormatExceptionMessage()}");
+            }
+        }
+
+        public static void ObrisiPovrce(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                Povrce p = s.Load<Povrce>(id);
+                // todo: brisanje kategorije!
+                s.Delete(p);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri brisanju povrća: {ec.FormatExceptionMessage()}");
+            }
+        }
         #endregion
 
         #region KrmnoBilje
+        public static List<KrmnoBiljeBasic> VratiSvoKrmnoBilje()
+        {
+            List<KrmnoBiljeBasic> krma = new();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                List<KrmnoBilje> svaKrma = s.Query<KrmnoBilje>().ToList();
+
+                foreach (KrmnoBilje k in svaKrma)
+                    krma.Add(new KrmnoBiljeBasic(k.Id, k.Naziv, k.Lokacija, k.Vrsta, k.Povrsina, k.KvalitetZemljista,
+                        k.DatumSetve, k.DatumZetvePlanirani, k.DatumZetveStvarni, k.Status, k.Komentar,
+                        k.VrstaKrme, k.BrojKosnjiGodisnje, k.ProcenatProteina, k.IshranaStokeFlag, k.ZaProdajuFlag));
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri čitanju podataka o krmnom bilju: {ec.FormatExceptionMessage()}");
+            }
+            return krma;
+        }
+        public static KrmnoBiljeBasic VratiKrmnoBilje(int id)
+        {
+            KrmnoBiljeBasic kb = new();
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                KrmnoBilje k = s.Load<KrmnoBilje>(id);
+                kb = new KrmnoBiljeBasic(k.Id, k.Naziv, k.Lokacija, k.Vrsta, k.Povrsina, k.KvalitetZemljista,
+                        k.DatumSetve, k.DatumZetvePlanirani, k.DatumZetveStvarni, k.Status, k.Komentar,
+                        k.VrstaKrme, k.BrojKosnjiGodisnje, k.ProcenatProteina, k.IshranaStokeFlag, k.ZaProdajuFlag);
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri pribavljanju krmnog bilja: {ec.FormatExceptionMessage()}");
+            }
+            return kb;
+        }
+
+        public static void DodajKrmnoBilje(KrmnoBiljeBasic k)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                KrmnoBilje krma = new()
+                {
+                    // baza popunjava id preko sekvence
+                    Naziv = k.Naziv,
+                    Lokacija = k.Lokacija,
+                    Vrsta = k.Vrsta,
+                    Povrsina = k.Povrsina,
+                    KvalitetZemljista = k.KvalitetZemljista,
+                    DatumSetve = k.DatumSetve,
+                    DatumZetvePlanirani = k.DatumZetvePlanirani,
+                    DatumZetveStvarni = k.DatumZetveStvarni,
+                    Status = k.Status,
+                    Komentar = k.Komentar,
+                    // properties izvedene klase
+                    VrstaKrme = k.VrstaKrme,
+                    BrojKosnjiGodisnje = k.BrojKosnjiGodisnje,
+                    ProcenatProteina = k.ProcenatProteina,
+                    ZaProdajuFlag = k.ZaProdajuFlag,
+                    IshranaStokeFlag = k.IshranaStokeFlag
+                };
+
+                // todo: dodati kategoriju
+
+                s.SaveOrUpdate(krma);
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri dodavanju krmnog bilja: {ec.FormatExceptionMessage()}");
+            }
+        }
+        public static void IzmeniKrmnoBilje(KrmnoBiljeBasic z)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                KrmnoBilje krma = s.Get<KrmnoBilje>(z.Id);
+
+                krma.Naziv = z.Naziv;
+                krma.Lokacija = z.Lokacija;
+                krma.Povrsina = z.Povrsina;
+                krma.KvalitetZemljista = z.KvalitetZemljista;
+                krma.DatumSetve = z.DatumSetve;
+                krma.DatumZetvePlanirani = z.DatumZetvePlanirani;
+                krma.DatumZetveStvarni = z.DatumZetveStvarni;
+                krma.Status = z.Status;
+                krma.Komentar = z.Komentar;
+                krma.VrstaKrme = z.VrstaKrme;
+                krma.BrojKosnjiGodisnje = z.BrojKosnjiGodisnje;
+                krma.ProcenatProteina = z.ProcenatProteina;
+                krma.IshranaStokeFlag = z.IshranaStokeFlag;
+                krma.ZaProdajuFlag = z.ZaProdajuFlag;
+
+                s.SaveOrUpdate(krma);
+
+                s.Flush();
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri izmeni krmnog bilja: {ec.FormatExceptionMessage()}");
+            }
+        }
+
+        public static void ObrisiKrmnoBilje(int id)
+        {
+            try
+            {
+                ISession s = DataLayer.GetSession();
+
+                KrmnoBilje k = s.Load<KrmnoBilje>(id);
+                // todo: brisanje kategorije!
+                s.Delete(k);
+                s.Flush();
+
+                s.Close();
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show($"Greška pri brisanju krmnog bilja: {ec.FormatExceptionMessage()}");
+            }
+        }
         #endregion
+
     }
 }

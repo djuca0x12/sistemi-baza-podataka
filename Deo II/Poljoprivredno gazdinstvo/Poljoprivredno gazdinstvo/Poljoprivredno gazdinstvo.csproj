@@ -136,11 +136,23 @@
     <Compile Include="Forme\Form_Dodaj_KoristiZa.Designer.cs">
       <DependentUpon>Form_Dodaj_KoristiZa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Form_Dodaj_Krmu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Krmu.Designer.cs">
+      <DependentUpon>Form_Dodaj_Krmu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\Form_Dodaj_Masinu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forme\Form_Dodaj_Masinu.Designer.cs">
       <DependentUpon>Form_Dodaj_Masinu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Povrce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Dodaj_Povrce.Designer.cs">
+      <DependentUpon>Form_Dodaj_Povrce.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\Form_Dodaj_Prinos.cs">
       <SubType>Form</SubType>
@@ -190,11 +202,23 @@
     <Compile Include="Forme\Form_Edit_KoristiZa.Designer.cs">
       <DependentUpon>Form_Edit_KoristiZa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\Form_Edit_Krma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Krma.Designer.cs">
+      <DependentUpon>Form_Edit_Krma.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\Form_Edit_Masina.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forme\Form_Edit_Masina.Designer.cs">
       <DependentUpon>Form_Edit_Masina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Povrce.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\Form_Edit_Povrce.Designer.cs">
+      <DependentUpon>Form_Edit_Povrce.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\Form_Edit_Prinos.cs">
       <SubType>Form</SubType>
@@ -360,8 +384,14 @@
     <EmbeddedResource Include="Forme\Form_Dodaj_KoristiZa.resx">
       <DependentUpon>Form_Dodaj_KoristiZa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Dodaj_Krmu.resx">
+      <DependentUpon>Form_Dodaj_Krmu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Dodaj_Masinu.resx">
       <DependentUpon>Form_Dodaj_Masinu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Dodaj_Povrce.resx">
+      <DependentUpon>Form_Dodaj_Povrce.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Dodaj_Prinos.resx">
       <DependentUpon>Form_Dodaj_Prinos.cs</DependentUpon>
@@ -387,8 +417,14 @@
     <EmbeddedResource Include="Forme\Form_Edit_KoristiZa.resx">
       <DependentUpon>Form_Edit_KoristiZa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Edit_Krma.resx">
+      <DependentUpon>Form_Edit_Krma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Edit_Masina.resx">
       <DependentUpon>Form_Edit_Masina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Edit_Povrce.resx">
+      <DependentUpon>Form_Edit_Povrce.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Edit_Prinos.resx">
       <DependentUpon>Form_Edit_Prinos.cs</DependentUpon>
@@ -414,11 +450,17 @@
     <EmbeddedResource Include="Forme\Form_KoristiZa.resx">
       <DependentUpon>Form_KoristiZa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Krmno_Bilje.resx">
+      <DependentUpon>Form_Krmno_Bilje.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Masine.resx">
       <DependentUpon>Form_Masine.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Mehanizacija.resx">
       <DependentUpon>Form_Mehanizacija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Povrce.resx">
+      <DependentUpon>Form_Povrce.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Prinos.resx">
       <DependentUpon>Form_Prinos.cs</DependentUpon>

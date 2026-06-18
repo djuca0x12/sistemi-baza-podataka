@@ -176,16 +176,18 @@
             // 
             // dtpDatumUlaska
             // 
+            this.dtpDatumUlaska.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDatumUlaska.Location = new System.Drawing.Point(426, 184);
             this.dtpDatumUlaska.Name = "dtpDatumUlaska";
-            this.dtpDatumUlaska.Size = new System.Drawing.Size(200, 22);
+            this.dtpDatumUlaska.Size = new System.Drawing.Size(120, 22);
             this.dtpDatumUlaska.TabIndex = 31;
             // 
             // dtpDatumRodjenja
             // 
+            this.dtpDatumRodjenja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDatumRodjenja.Location = new System.Drawing.Point(426, 112);
             this.dtpDatumRodjenja.Name = "dtpDatumRodjenja";
-            this.dtpDatumRodjenja.Size = new System.Drawing.Size(200, 22);
+            this.dtpDatumRodjenja.Size = new System.Drawing.Size(120, 22);
             this.dtpDatumRodjenja.TabIndex = 30;
             // 
             // numBrojJedinki
@@ -247,7 +249,7 @@
             // 
             // btnIzmeniZivotinju
             // 
-            this.btnIzmeniZivotinju.Location = new System.Drawing.Point(347, 382);
+            this.btnIzmeniZivotinju.Location = new System.Drawing.Point(227, 383);
             this.btnIzmeniZivotinju.Name = "btnIzmeniZivotinju";
             this.btnIzmeniZivotinju.Size = new System.Drawing.Size(154, 41);
             this.btnIzmeniZivotinju.TabIndex = 23;
@@ -259,7 +261,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(596, 450);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);

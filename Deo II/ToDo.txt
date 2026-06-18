@@ -2,3 +2,8 @@
 2. Povezati kreiranje prinosa/subvencija (ove forme su vec kreirane, treba sam da im se jos doda id kategorije mozda!?) sa svim usevima i zivotinjama.
 3. Proizvesti forma.
 4. Testiranje.
+
+- povezati sve sa kategorijom: transakcije!
+- override onpaint metode i generalno stilizovanje
+
+- srediti eer i relacione dijagrame, insert into naredbe
