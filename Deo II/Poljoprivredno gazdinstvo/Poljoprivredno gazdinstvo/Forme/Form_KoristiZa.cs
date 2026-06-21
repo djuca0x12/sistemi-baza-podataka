@@ -16,6 +16,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
         {
             InitializeComponent();
 
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
+
             UcitajPodatke();
 
         }
@@ -76,7 +79,39 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
         private void btnObrisi_Click(object sender, EventArgs e)
         {
+            // Provera da li je red izabran
+            if (dataGridViewPrikaz.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Molimo vas da selektujete zapis koji želite da obrišete.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // Preuzimanje podataka iz selektovanog reda
+            DataGridViewRow row = dataGridViewPrikaz.SelectedRows[0];
+            int idMehanizacija = (int)row.Cells["IdMehanizacija"].Value;
+            int idPrinos = (int)row.Cells["IdPrinos"].Value;
+            DateTime datumOd = (DateTime)row.Cells["DatumOd"].Value;
+
+            // Potvrda brisanja
+            DialogResult dr = MessageBox.Show("Da li ste sigurni da želite da obrišete ovaj zapis?", "Potvrda brisanja", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
+            {
+                try
+                {
+                    // Poziv metode
+                    DTOManager.ObrisiKoriscenje(idMehanizacija, idPrinos, datumOd);
+
+                    // Osvezavanje prikaza
+                    UcitajPodatke();
+
+                    MessageBox.Show("Zapis uspešno obrisan.", "Uspeh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Došlo je do greške prilikom brisanja: " + ex.Message, "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

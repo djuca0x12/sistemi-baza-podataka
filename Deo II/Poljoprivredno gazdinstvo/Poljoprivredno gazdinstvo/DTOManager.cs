@@ -775,6 +775,27 @@ namespace Poljoprivredno_gazdinstvo
             }
         }
 
+        public static void ObrisiKoriscenje(int idMehanizacija, int idPrinos, DateTime datumOd)
+        {
+            using (var session = DataLayer.GetSession())
+            {
+                var zapis = session.Query<KoristiZa>()
+                    .FirstOrDefault(k => k.Mehanizacija.IdMehanizacija == idMehanizacija
+                                      && k.Prinos.IdPrinosa == idPrinos
+                                      && k.DatumOd == datumOd);
+
+                if (zapis != null)
+                {
+                    session.Delete(zapis);
+                    session.Flush();
+                }
+                else
+                {
+                    throw new Exception("Zapis o korišćenju nije pronađen.");
+                }
+            }
+        }
+
         #endregion
 
         #region Subvencija

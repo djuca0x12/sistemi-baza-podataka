@@ -39,7 +39,7 @@
             // 
             // btnTraktori
             // 
-            this.btnTraktori.Location = new System.Drawing.Point(156, 114);
+            this.btnTraktori.Location = new System.Drawing.Point(176, 115);
             this.btnTraktori.Name = "btnTraktori";
             this.btnTraktori.Size = new System.Drawing.Size(113, 45);
             this.btnTraktori.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             // btnMasine
             // 
-            this.btnMasine.Location = new System.Drawing.Point(152, 295);
+            this.btnMasine.Location = new System.Drawing.Point(176, 305);
             this.btnMasine.Name = "btnMasine";
             this.btnMasine.Size = new System.Drawing.Size(117, 39);
             this.btnMasine.TabIndex = 1;
@@ -60,7 +60,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 63);
+            this.label1.Location = new System.Drawing.Point(23, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(322, 16);
             this.label1.TabIndex = 2;
@@ -69,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(64, 244);
+            this.label2.Location = new System.Drawing.Point(23, 247);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(326, 16);
             this.label2.TabIndex = 3;
@@ -77,7 +77,7 @@
             // 
             // imageTraktor
             // 
-            this.imageTraktor.Location = new System.Drawing.Point(514, 36);
+            this.imageTraktor.Location = new System.Drawing.Point(691, 41);
             this.imageTraktor.Name = "imageTraktor";
             this.imageTraktor.Size = new System.Drawing.Size(202, 142);
             this.imageTraktor.TabIndex = 6;
@@ -85,7 +85,7 @@
             // 
             // imageMasina
             // 
-            this.imageMasina.Location = new System.Drawing.Point(450, 222);
+            this.imageMasina.Location = new System.Drawing.Point(646, 225);
             this.imageMasina.Name = "imageMasina";
             this.imageMasina.Size = new System.Drawing.Size(319, 134);
             this.imageMasina.TabIndex = 5;
@@ -93,7 +93,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(350, 386);
+            this.button1.Location = new System.Drawing.Point(447, 387);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 39);
             this.button1.TabIndex = 7;
@@ -105,7 +105,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1103, 450);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.imageTraktor);
             this.Controls.Add(this.imageMasina);

@@ -49,9 +49,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(919, 315);
+            this.button1.Location = new System.Drawing.Point(850, 311);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 52);
+            this.button1.Size = new System.Drawing.Size(220, 52);
             this.button1.TabIndex = 1;
             this.button1.Text = "Dodaj podatak o koriscenju";
             this.button1.UseVisualStyleBackColor = true;
@@ -59,9 +59,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(905, 243);
+            this.button2.Location = new System.Drawing.Point(850, 242);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 52);
+            this.button2.Size = new System.Drawing.Size(220, 52);
             this.button2.TabIndex = 2;
             this.button2.Text = "Promeni podatke o koriscenju";
             this.button2.UseVisualStyleBackColor = true;
@@ -69,9 +69,9 @@
             // 
             // btnZatvori
             // 
-            this.btnZatvori.Location = new System.Drawing.Point(949, 446);
+            this.btnZatvori.Location = new System.Drawing.Point(906, 446);
             this.btnZatvori.Name = "btnZatvori";
-            this.btnZatvori.Size = new System.Drawing.Size(86, 44);
+            this.btnZatvori.Size = new System.Drawing.Size(118, 44);
             this.btnZatvori.TabIndex = 3;
             this.btnZatvori.Text = "Zatvori";
             this.btnZatvori.UseVisualStyleBackColor = true;
@@ -88,9 +88,9 @@
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(919, 382);
+            this.btnObrisi.Location = new System.Drawing.Point(881, 382);
             this.btnObrisi.Name = "btnObrisi";
-            this.btnObrisi.Size = new System.Drawing.Size(116, 44);
+            this.btnObrisi.Size = new System.Drawing.Size(160, 44);
             this.btnObrisi.TabIndex = 5;
             this.btnObrisi.Text = "Obrisi podatak";
             this.btnObrisi.UseVisualStyleBackColor = true;
