@@ -33,6 +33,7 @@
             this.btnObrisiPovrce = new System.Windows.Forms.Button();
             this.btnIzmeniPovrce = new System.Windows.Forms.Button();
             this.btnDodajPovrce = new System.Windows.Forms.Button();
+            this.btnSubvencije = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPovrce)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,17 +50,17 @@
             // 
             // btnProdajPovrce
             // 
-            this.btnProdajPovrce.Location = new System.Drawing.Point(1272, 347);
+            this.btnProdajPovrce.Location = new System.Drawing.Point(1266, 292);
             this.btnProdajPovrce.Name = "btnProdajPovrce";
             this.btnProdajPovrce.Size = new System.Drawing.Size(154, 41);
             this.btnProdajPovrce.TabIndex = 14;
-            this.btnProdajPovrce.Text = "Prodaj povrće";
+            this.btnProdajPovrce.Text = "Proizvedi prinos";
             this.btnProdajPovrce.UseVisualStyleBackColor = true;
             this.btnProdajPovrce.Click += new System.EventHandler(this.btnProdajPovrce_Click);
             // 
             // btnObrisiPovrce
             // 
-            this.btnObrisiPovrce.Location = new System.Drawing.Point(1272, 258);
+            this.btnObrisiPovrce.Location = new System.Drawing.Point(1266, 203);
             this.btnObrisiPovrce.Name = "btnObrisiPovrce";
             this.btnObrisiPovrce.Size = new System.Drawing.Size(154, 41);
             this.btnObrisiPovrce.TabIndex = 13;
@@ -69,7 +70,7 @@
             // 
             // btnIzmeniPovrce
             // 
-            this.btnIzmeniPovrce.Location = new System.Drawing.Point(1272, 169);
+            this.btnIzmeniPovrce.Location = new System.Drawing.Point(1266, 114);
             this.btnIzmeniPovrce.Name = "btnIzmeniPovrce";
             this.btnIzmeniPovrce.Size = new System.Drawing.Size(154, 41);
             this.btnIzmeniPovrce.TabIndex = 12;
@@ -79,7 +80,7 @@
             // 
             // btnDodajPovrce
             // 
-            this.btnDodajPovrce.Location = new System.Drawing.Point(1272, 80);
+            this.btnDodajPovrce.Location = new System.Drawing.Point(1266, 25);
             this.btnDodajPovrce.Name = "btnDodajPovrce";
             this.btnDodajPovrce.Size = new System.Drawing.Size(154, 41);
             this.btnDodajPovrce.TabIndex = 11;
@@ -87,11 +88,22 @@
             this.btnDodajPovrce.UseVisualStyleBackColor = true;
             this.btnDodajPovrce.Click += new System.EventHandler(this.btnDodajPovrce_Click);
             // 
+            // btnSubvencije
+            // 
+            this.btnSubvencije.Location = new System.Drawing.Point(1266, 374);
+            this.btnSubvencije.Name = "btnSubvencije";
+            this.btnSubvencije.Size = new System.Drawing.Size(154, 40);
+            this.btnSubvencije.TabIndex = 16;
+            this.btnSubvencije.Text = "Podnesi zahtev za dobijanje subvencije";
+            this.btnSubvencije.UseVisualStyleBackColor = true;
+            this.btnSubvencije.Click += new System.EventHandler(this.btnSubvencije_Click);
+            // 
             // Form_Povrce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1452, 450);
+            this.Controls.Add(this.btnSubvencije);
             this.Controls.Add(this.dgvPovrce);
             this.Controls.Add(this.btnProdajPovrce);
             this.Controls.Add(this.btnObrisiPovrce);
@@ -112,5 +124,6 @@
         private System.Windows.Forms.Button btnObrisiPovrce;
         private System.Windows.Forms.Button btnIzmeniPovrce;
         private System.Windows.Forms.Button btnDodajPovrce;
+        private System.Windows.Forms.Button btnSubvencije;
     }
 }

@@ -33,6 +33,7 @@
             this.btnObrisiZitaricu = new System.Windows.Forms.Button();
             this.btnIzmeniZitaricu = new System.Windows.Forms.Button();
             this.btnDodajZitaricu = new System.Windows.Forms.Button();
+            this.btnSubvencije = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvZitarice)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,17 +50,17 @@
             // 
             // btnProdajZitaricu
             // 
-            this.btnProdajZitaricu.Location = new System.Drawing.Point(1254, 337);
+            this.btnProdajZitaricu.Location = new System.Drawing.Point(1265, 301);
             this.btnProdajZitaricu.Name = "btnProdajZitaricu";
             this.btnProdajZitaricu.Size = new System.Drawing.Size(154, 41);
             this.btnProdajZitaricu.TabIndex = 9;
-            this.btnProdajZitaricu.Text = "Prodaj žitaricu";
+            this.btnProdajZitaricu.Text = "Proizvedi prinos";
             this.btnProdajZitaricu.UseVisualStyleBackColor = true;
             this.btnProdajZitaricu.Click += new System.EventHandler(this.btnProdajZitaricu_Click);
             // 
             // btnObrisiZitaricu
             // 
-            this.btnObrisiZitaricu.Location = new System.Drawing.Point(1254, 248);
+            this.btnObrisiZitaricu.Location = new System.Drawing.Point(1265, 212);
             this.btnObrisiZitaricu.Name = "btnObrisiZitaricu";
             this.btnObrisiZitaricu.Size = new System.Drawing.Size(154, 41);
             this.btnObrisiZitaricu.TabIndex = 8;
@@ -69,7 +70,7 @@
             // 
             // btnIzmeniZitaricu
             // 
-            this.btnIzmeniZitaricu.Location = new System.Drawing.Point(1254, 159);
+            this.btnIzmeniZitaricu.Location = new System.Drawing.Point(1265, 123);
             this.btnIzmeniZitaricu.Name = "btnIzmeniZitaricu";
             this.btnIzmeniZitaricu.Size = new System.Drawing.Size(154, 41);
             this.btnIzmeniZitaricu.TabIndex = 7;
@@ -79,7 +80,7 @@
             // 
             // btnDodajZitaricu
             // 
-            this.btnDodajZitaricu.Location = new System.Drawing.Point(1254, 70);
+            this.btnDodajZitaricu.Location = new System.Drawing.Point(1265, 34);
             this.btnDodajZitaricu.Name = "btnDodajZitaricu";
             this.btnDodajZitaricu.Size = new System.Drawing.Size(154, 41);
             this.btnDodajZitaricu.TabIndex = 6;
@@ -87,11 +88,22 @@
             this.btnDodajZitaricu.UseVisualStyleBackColor = true;
             this.btnDodajZitaricu.Click += new System.EventHandler(this.btnDodajZitaricu_Click);
             // 
+            // btnSubvencije
+            // 
+            this.btnSubvencije.Location = new System.Drawing.Point(1265, 381);
+            this.btnSubvencije.Name = "btnSubvencije";
+            this.btnSubvencije.Size = new System.Drawing.Size(154, 57);
+            this.btnSubvencije.TabIndex = 11;
+            this.btnSubvencije.Text = "Podnesi zahtev za dobijanje subvencije";
+            this.btnSubvencije.UseVisualStyleBackColor = true;
+            this.btnSubvencije.Click += new System.EventHandler(this.btnSubvencije_Click);
+            // 
             // Form_Zitarice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1456, 450);
+            this.Controls.Add(this.btnSubvencije);
             this.Controls.Add(this.dgvZitarice);
             this.Controls.Add(this.btnProdajZitaricu);
             this.Controls.Add(this.btnObrisiZitaricu);
@@ -112,5 +124,6 @@
         private System.Windows.Forms.Button btnObrisiZitaricu;
         private System.Windows.Forms.Button btnIzmeniZitaricu;
         private System.Windows.Forms.Button btnDodajZitaricu;
+        private System.Windows.Forms.Button btnSubvencije;
     }
 }

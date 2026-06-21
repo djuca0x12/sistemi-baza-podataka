@@ -112,7 +112,7 @@ END;
 
 *Kategorija:
 
-=>Ne treba ?????????????
+=> Kreirali smo, ali nisam sacuvao
 
 *Subvencija:
 
@@ -132,4 +132,16 @@ END;
 
 *Proizvode:
 
-=>Ne treba
+CREATE SEQUENCE PROIZVODE_SEQ
+  START WITH 10
+  INCREMENT BY 1
+  NOCACHE;
+
+CREATE OR REPLACE TRIGGER TRG_PROIZVODE_ID
+BEFORE INSERT ON PROIZVODE
+FOR EACH ROW
+BEGIN
+  IF :NEW.ProizvodeId IS NULL THEN
+    SELECT PROIZVODE_SEQ.NEXTVAL INTO :NEW.ProizvodeId FROM DUAL;
+  END IF;
+END;

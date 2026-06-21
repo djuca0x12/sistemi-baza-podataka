@@ -86,10 +86,46 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
         private void btnProdajPovrce_Click(object sender, EventArgs e)
         {
-            // todo: povezati sa formom za prodaju/prinos
-            Form_Prinos form = new Form_Prinos();
-            form.ShowDialog();
+            if(dgvPovrce.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Morate prvo selektovati povrće iz tabele!",
+                                "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            object idVrednost = dgvPovrce.SelectedRows[0].Cells["Id"].Value;
+
+            if (idVrednost != null && int.TryParse(idVrednost.ToString(), out int idEntiteta))
+            {
+                // 3. Poziv forme sa ispravnim tipom "POVRCE"
+                Form_Dodaj_Prinos forma = new Form_Dodaj_Prinos(idEntiteta, "POVRCE");
+                forma.ShowDialog();
+                this.PopuniPodacima();
+            }
+            else
+            {
+                MessageBox.Show("Greška pri čitanju ID-a iz tabele.");
+            }
+
             this.PopuniPodacima();
+        }
+
+        private void btnSubvencije_Click(object sender, EventArgs e)
+        {
+            if (dgvPovrce.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Morate prvo selektovati krmno bilje iz tabele!",
+                                "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int idEntiteta = (int)dgvPovrce.SelectedRows[0].Cells["id"].Value;
+
+            int idKategorije = DTOManager.DohvatiIdKategorije(idEntiteta, "POVRCE");
+
+            Form subvencije = new Form_Dodaj_Subevnciju(idKategorije);
+
+            subvencije.ShowDialog();
         }
     }
 }

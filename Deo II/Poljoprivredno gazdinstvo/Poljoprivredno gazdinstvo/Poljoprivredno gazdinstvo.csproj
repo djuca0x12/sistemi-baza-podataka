@@ -117,6 +117,7 @@
     <Compile Include="Entiteti\Povrce.cs" />
     <Compile Include="Entiteti\Prinos.cs" />
     <Compile Include="Entiteti\Prodaja.cs" />
+    <Compile Include="Entiteti\Proizvode.cs" />
     <Compile Include="Entiteti\Subvencija.cs" />
     <Compile Include="Entiteti\Usevi.cs" />
     <Compile Include="Entiteti\UseviZivotinje.cs" />
@@ -365,6 +366,7 @@
     <Compile Include="Mapiranja\PovrceMapiranja.cs" />
     <Compile Include="Mapiranja\PrinosMapiranja.cs" />
     <Compile Include="Mapiranja\ProdajaMapiranja.cs" />
+    <Compile Include="Mapiranja\ProizvodeMapiranja.cs" />
     <Compile Include="Mapiranja\SubvencijaMapiranja.cs" />
     <Compile Include="Mapiranja\UseviMapiranja.cs" />
     <Compile Include="Mapiranja\UseviZivotinjeMapiranja.cs" />
@@ -467,6 +469,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Prodaja.resx">
       <DependentUpon>Form_Prodaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\Form_Proizvode.resx">
+      <DependentUpon>Form_Proizvode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Start.resx">
       <DependentUpon>Form_Start.cs</DependentUpon>

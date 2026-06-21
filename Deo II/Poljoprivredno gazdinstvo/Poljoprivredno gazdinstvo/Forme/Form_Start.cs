@@ -64,7 +64,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
         private void button4_Click(object sender, EventArgs e)
         {
+            Form proizvode = new Form_Proizvode();
 
+            proizvode.ShowDialog();
         }
 
         private void btn_Zivotinje_Click(object sender, EventArgs e)

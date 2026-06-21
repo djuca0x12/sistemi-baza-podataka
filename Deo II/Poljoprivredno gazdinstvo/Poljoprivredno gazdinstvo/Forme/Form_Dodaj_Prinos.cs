@@ -12,12 +12,18 @@ namespace Poljoprivredno_gazdinstvo.Forme
 {
     public partial class Form_Dodaj_Prinos : Form
     {
-        public Form_Dodaj_Prinos()
+        private string tipEntiteta;
+        private int idKategorije;
+        public Form_Dodaj_Prinos(int idEntiteta, string tipEntiteta)
         {
             InitializeComponent();
             // stilizovanje forme
             Form_Start.ApplyStardewStyle(this);
             this.BackColor = Color.FromArgb(243, 208, 144);
+
+            // Ucitati id kategorije:
+            this.tipEntiteta = tipEntiteta;
+            this.idKategorije = DTOManager.DohvatiIdKategorije(idEntiteta, tipEntiteta);
         }
 
         private void btnZatvori_Click(object sender, EventArgs e)
@@ -42,6 +48,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
                 return;
             }
 
+            // Poziv metode za cuvanje u Proizvode!
+
             PrinosBasic noviPrinos = new PrinosBasic();
 
             noviPrinos.Tip = unetiTip;
@@ -50,7 +58,7 @@ namespace Poljoprivredno_gazdinstvo.Forme
             noviPrinos.KvalitetProizvoda = cBoxKvalitet.Text;
             noviPrinos.JedinicaMere = cBoxJedinica.Text;
 
-            DTOManager.DodajPrinos(noviPrinos);
+            DTOManager.DodajPrinosIKategoriju(noviPrinos, idKategorije);
 
             MessageBox.Show("Prinos je uspešno dodat!");
 

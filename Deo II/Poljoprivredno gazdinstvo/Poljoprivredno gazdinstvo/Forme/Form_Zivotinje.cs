@@ -90,10 +90,45 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
         private void btnProdajZivotinju_Click(object sender, EventArgs e)
         {
-            // todo: povezati sa formom za prodaju/prinos
-            Form_Prinos form = new Form_Prinos();
-            form.ShowDialog();
+            if (dgvZivotinje.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Morate prvo selektovati životinju iz tabele!",
+                                "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; 
+            }
+           
+            int idEntiteta = (int)dgvZivotinje.SelectedRows[0].Cells[0].Value;
+
+            //MessageBox.Show(idEntiteta.ToString()); // Koristio sam radi testiranja
+
+            Form_Dodaj_Prinos forma = new Form_Dodaj_Prinos(idEntiteta, "ZIVOTINJE");
+
+            forma.ShowDialog();
+
             this.PopuniPodacima();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSubvencije_Click(object sender, EventArgs e)
+        {
+            if (dgvZivotinje.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Morate prvo selektovati krmno bilje iz tabele!",
+                                "Greška", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int idEntiteta = (int)dgvZivotinje.SelectedRows[0].Cells[0].Value;
+
+            int idKategorije = DTOManager.DohvatiIdKategorije(idEntiteta, "ZIVOTINJE");
+
+            Form subvencije = new Form_Dodaj_Subevnciju(idKategorije);
+
+            subvencije.ShowDialog();
         }
     }
 }

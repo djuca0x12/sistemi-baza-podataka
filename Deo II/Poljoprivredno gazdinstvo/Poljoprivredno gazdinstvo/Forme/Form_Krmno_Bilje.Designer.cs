@@ -33,6 +33,7 @@
             this.btnObrisiKrmnoBilje = new System.Windows.Forms.Button();
             this.btnIzmeniKrmnoBilje = new System.Windows.Forms.Button();
             this.btnDodajKrmnoBilje = new System.Windows.Forms.Button();
+            this.btnSubvencija = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKrmnoBilje)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,17 +50,17 @@
             // 
             // btnProdajKrmnoBilje
             // 
-            this.btnProdajKrmnoBilje.Location = new System.Drawing.Point(1268, 342);
+            this.btnProdajKrmnoBilje.Location = new System.Drawing.Point(1268, 296);
             this.btnProdajKrmnoBilje.Name = "btnProdajKrmnoBilje";
             this.btnProdajKrmnoBilje.Size = new System.Drawing.Size(154, 41);
             this.btnProdajKrmnoBilje.TabIndex = 14;
-            this.btnProdajKrmnoBilje.Text = "Prodaj krmno bilje";
+            this.btnProdajKrmnoBilje.Text = "Proizvedi prinos";
             this.btnProdajKrmnoBilje.UseVisualStyleBackColor = true;
             this.btnProdajKrmnoBilje.Click += new System.EventHandler(this.btnProdajKrmnoBilje_Click);
             // 
             // btnObrisiKrmnoBilje
             // 
-            this.btnObrisiKrmnoBilje.Location = new System.Drawing.Point(1268, 253);
+            this.btnObrisiKrmnoBilje.Location = new System.Drawing.Point(1268, 207);
             this.btnObrisiKrmnoBilje.Name = "btnObrisiKrmnoBilje";
             this.btnObrisiKrmnoBilje.Size = new System.Drawing.Size(154, 41);
             this.btnObrisiKrmnoBilje.TabIndex = 13;
@@ -69,7 +70,7 @@
             // 
             // btnIzmeniKrmnoBilje
             // 
-            this.btnIzmeniKrmnoBilje.Location = new System.Drawing.Point(1268, 164);
+            this.btnIzmeniKrmnoBilje.Location = new System.Drawing.Point(1268, 118);
             this.btnIzmeniKrmnoBilje.Name = "btnIzmeniKrmnoBilje";
             this.btnIzmeniKrmnoBilje.Size = new System.Drawing.Size(154, 41);
             this.btnIzmeniKrmnoBilje.TabIndex = 12;
@@ -79,7 +80,7 @@
             // 
             // btnDodajKrmnoBilje
             // 
-            this.btnDodajKrmnoBilje.Location = new System.Drawing.Point(1268, 75);
+            this.btnDodajKrmnoBilje.Location = new System.Drawing.Point(1268, 29);
             this.btnDodajKrmnoBilje.Name = "btnDodajKrmnoBilje";
             this.btnDodajKrmnoBilje.Size = new System.Drawing.Size(154, 41);
             this.btnDodajKrmnoBilje.TabIndex = 11;
@@ -87,11 +88,22 @@
             this.btnDodajKrmnoBilje.UseVisualStyleBackColor = true;
             this.btnDodajKrmnoBilje.Click += new System.EventHandler(this.btnDodajKrmnoBilje_Click);
             // 
+            // btnSubvencija
+            // 
+            this.btnSubvencija.Location = new System.Drawing.Point(1268, 372);
+            this.btnSubvencija.Name = "btnSubvencija";
+            this.btnSubvencija.Size = new System.Drawing.Size(154, 54);
+            this.btnSubvencija.TabIndex = 16;
+            this.btnSubvencija.Text = "Podnesi zahtev za dobijanje subvencije";
+            this.btnSubvencija.UseVisualStyleBackColor = true;
+            this.btnSubvencija.Click += new System.EventHandler(this.btnSubvencija_Click);
+            // 
             // Form_Krmno_Bilje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1460, 450);
+            this.Controls.Add(this.btnSubvencija);
             this.Controls.Add(this.dgvKrmnoBilje);
             this.Controls.Add(this.btnProdajKrmnoBilje);
             this.Controls.Add(this.btnObrisiKrmnoBilje);
@@ -112,5 +124,6 @@
         private System.Windows.Forms.Button btnObrisiKrmnoBilje;
         private System.Windows.Forms.Button btnIzmeniKrmnoBilje;
         private System.Windows.Forms.Button btnDodajKrmnoBilje;
+        private System.Windows.Forms.Button btnSubvencija;
     }
 }

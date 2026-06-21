@@ -1,8 +1,4 @@
-1. Brisanje u KoristiZa.
-2. Povezati kreiranje prinosa/subvencija (ove forme su vec kreirane, treba sam da im se jos doda id kategorije mozda!?) sa svim usevima i zivotinjama.
-3. Proizvesti forma.
-4. Testiranje.
-
-- override onpaint metode i generalno stilizovanje
+1. Promena naslova.
+2. Izbaciti dodatne atribute.
 
 - srediti eer i relacione dijagrame, insert into naredbe

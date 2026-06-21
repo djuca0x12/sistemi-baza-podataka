@@ -587,7 +587,7 @@ namespace Poljoprivredno_gazdinstvo
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Greška prilikom učitavanja prodaja: {ex.FormatExceptionMessage}");
+                MessageBox.Show($"Greška prilikom učitavanja prodaja: {ex.FormatExceptionMessage()}");
             }
 
             return prodajeDTO;
@@ -1727,5 +1727,169 @@ namespace Poljoprivredno_gazdinstvo
         }
         #endregion
 
+        #region Proizvode
+
+        public static void DodajPrinosIKategoriju(PrinosBasic prinosDTO, int idKategorije)
+        {
+            using (var session = DataLayer.GetSession())
+            {
+                // Transakcija - da ne bi puklo na pola
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        // Obican prinos
+                        Prinos noviPrinos = new Prinos
+                        {
+                            Tip = prinosDTO.Tip,
+                            Kolicina = (double)prinosDTO.Kolicina,
+                            Komentar = prinosDTO.Komentar,
+                            KvalitetProizvoda = prinosDTO.KvalitetProizvoda,
+                            JedinicaMere = prinosDTO.JedinicaMere
+                        };
+
+                        session.Save(noviPrinos);
+
+                        // Da bi smo bili sigurni da je prinos upisan u bazi
+                        session.Flush();
+
+                        // Podatak da je prinos proizveden i od koga
+                        var kat = session.Get<UseviZivotinje>(idKategorije);
+
+                        Proizvode novaVeza = new Proizvode();
+                        novaVeza.Prinos = noviPrinos;
+                        novaVeza.Kategorija = kat;
+                        novaVeza.DatumProizvodnje = DateTime.Now;
+
+                        session.Save(novaVeza);
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw new Exception("Greška prilikom čuvanja prinosa u bazu: " + ex.Message);
+                    }
+                }
+            }
+        }
+
+        public static int DohvatiIdKategorije(int idEntiteta, string tipEntiteta)
+        {
+            using (var s = DataLayer.GetSession())
+            {
+                switch (tipEntiteta)
+                {
+                    // Da bi smo bili sigurni da se izvlaci id kategorije
+                    // pre zatvaranja sesije koristimo Get
+                    case "POVRCE":
+                        return s.Get<Povrce>(idEntiteta).Kategorija.UseviZivotinjeId;
+                    case "ZITARICE":
+                        return s.Get<Zitarice>(idEntiteta).Kategorija.UseviZivotinjeId; ;
+                    case "VOCNJACI":
+                        return s.Get<Vocnjaci>(idEntiteta).Kategorija.UseviZivotinjeId; ;
+                    case "KRMNO_BILJE":
+                        return s.Get<KrmnoBilje>(idEntiteta).Kategorija.UseviZivotinjeId;
+                    case "ZIVOTINJE":
+                        return s.Get<Zivotinje>(idEntiteta).Kategorija.UseviZivotinjeId; ;
+                    default:
+                        return -1;
+                }
+            }
+        }
+
+        public static void ObrisiProizvodnuVezu(int proizvodeId)
+        {
+            using (ISession s = DataLayer.GetSession())
+            {
+                using (ITransaction t = s.BeginTransaction())
+                {
+                    Proizvode veza = s.Load<Proizvode>(proizvodeId);
+
+                    if (veza != null)
+                    {
+                        s.Delete(veza);
+                        s.Flush();
+                    }                    
+                }
+            }
+        }
+
+        public static List<ProizvodniIzvestajDTO> VratiSveProizvodneIzvestaje()
+        {
+            using (ISession s = DataLayer.GetSession())
+            {
+                var sviZapisi = s.Query<Proizvode>()
+                                 .Fetch(x => x.Prinos)
+                                 .Fetch(x => x.Kategorija)
+                                 .ToList();               
+
+                // Ono sto se prikazuje u DataGridView
+                List<ProizvodniIzvestajDTO> izvestaj = new List<ProizvodniIzvestajDTO>();
+
+                foreach (var z in sviZapisi)
+                {
+
+                    /*if (z.Kategorija == null || z.Kategorija.KategorijaTip == null)
+                    {
+                        continue;  
+                    }*/
+
+                    var dto = new ProizvodniIzvestajDTO
+                    {
+                        Id = z.Id,
+                        DatumProizvodnje = z.DatumProizvodnje,
+                        TipPrinosa = z.Prinos.Tip,
+                        Kolicina = (decimal)z.Prinos.Kolicina,
+                        JedinicaMere = z.Prinos.JedinicaMere,
+                        Kvalitet = z.Prinos.KvalitetProizvoda,
+                        KategorijaTip = z.Kategorija.KategorijaTip
+                    };
+
+                    int idKat = z.Kategorija.UseviZivotinjeId;
+
+                    
+                    //string tip = z.Kategorija.KategorijaTip.ToString().Trim().ToLower();
+                    char tipChar = z.Kategorija.KategorijaTip.ToString().Trim()[0];
+
+                    if (tipChar == 'u')
+                    {
+                        dto.NazivIzvora = "Usev";
+                    }
+                    else
+                    {
+                        dto.NazivIzvora = "Zivotinja";
+                    }
+
+                    //System.Diagnostics.Debug.WriteLine($"DB Vrednost: '{tip}', Dužina: {tip?.Length}");
+
+                    /*switch (tipChar)
+                    {
+                        case 'u':
+                            var usev = s.Query<Usevi>().FirstOrDefault(x => x.Kategorija != null && x.Kategorija.UseviZivotinjeId == idKat);
+                            dto.NazivIzvora = usev != null ? usev.Naziv : "Nepoznat usev";
+                            //dto.NazivIzvora = "Usev";
+                            break;
+
+                        case 'z':
+                            var ziv = s.Query<Zivotinje>().FirstOrDefault(x => x.Kategorija != null && x.Kategorija.UseviZivotinjeId == idKat);
+                            dto.NazivIzvora = ziv != null ? ziv.Vrsta : "Nepoznata životinja";                            
+                            break;                     
+
+                        default:
+                            dto.NazivIzvora = "Nepoznat izvor";
+                           break;
+                    }*/
+
+                  
+
+                    izvestaj.Add(dto);
+                }
+
+                return izvestaj;
+            }
+        }
+
+        #endregion
     }
 }

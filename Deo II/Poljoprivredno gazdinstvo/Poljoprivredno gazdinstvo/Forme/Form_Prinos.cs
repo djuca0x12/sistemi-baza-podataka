@@ -45,11 +45,11 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
-            Form_Dodaj_Prinos dodajPrinos = new Form_Dodaj_Prinos();
+           /* Form_Dodaj_Prinos dodajPrinos = new Form_Dodaj_Prinos();
 
             dodajPrinos.ShowDialog();
 
-            UcitajPrinoseUGrid();
+            UcitajPrinoseUGrid();*/
         }
 
         private void btnPromeniPodatke_Click(object sender, EventArgs e)

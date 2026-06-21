@@ -20,6 +20,9 @@ namespace Poljoprivredno_gazdinstvo.Mapiranja
 
             // Veza 1:N (slabi tip entiteta)
             HasMany(x => x.Subvencije).KeyColumn("USEVIZIVOTINJEID").Cascade.All().Inverse();
+
+            // Veza prema Proizvode
+            HasMany(x => x.Proizvodi).KeyColumn("USEVIZIVOTINJEID").Inverse().Cascade.All();
         }
     }
 }

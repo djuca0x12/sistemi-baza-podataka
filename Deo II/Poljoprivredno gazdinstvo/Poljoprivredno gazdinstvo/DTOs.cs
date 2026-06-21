@@ -172,7 +172,7 @@ namespace Poljoprivredno_gazdinstvo
 
         public KoristiZaDto(int idM, int idP, DateTime datumOd, DateTime datumDo)
         {
-            IdMehanizacija = idM; 
+            IdMehanizacija = idM;
             IdPrinos = idP;
             DatumOd = datumOd;
             DatumDo = datumDo;
@@ -406,5 +406,42 @@ namespace Poljoprivredno_gazdinstvo
             ZaProdajuFlag = zaProdajuFlag;
         }
     }
+    #endregion
+
+    #region Proizvode
+
+    public class ProizvodeBasic
+    {
+        public int Id { get; set; }
+        public DateTime DatumProizvodnje { get; set; }
+        public int UseviZivotinjeId { get; set; }
+        public int IdPrinosa { get; set; }
+
+        public ProizvodeBasic() { }
+
+        public ProizvodeBasic(int id, DateTime datumProizvodnje, int useviZivotinjeId, int idPrinosa)
+        {
+            Id = id;
+            DatumProizvodnje = datumProizvodnje;
+            UseviZivotinjeId = useviZivotinjeId;
+            IdPrinosa = idPrinosa;
+        }
+    }
+
+    public class ProizvodniIzvestajDTO
+    {
+        public int Id { get; set; }
+
+        public string TipPrinosa { get; set; }
+        public decimal Kolicina { get; set; }
+        public string JedinicaMere { get; set; }
+        public string Kvalitet { get; set; }
+
+        public DateTime DatumProizvodnje { get; set; }
+
+        public char KategorijaTip { get; set; } // Npr. "u/z"
+        public string NazivIzvora { get; set; }   // Tip/Vrsta iz nekog useva
+    }
+
     #endregion
 }

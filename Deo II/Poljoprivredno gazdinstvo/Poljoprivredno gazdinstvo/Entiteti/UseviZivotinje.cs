@@ -9,5 +9,8 @@ namespace Poljoprivredno_gazdinstvo.Entiteti
         
         // Veza 1:N (slabi tip entiteta)
         public virtual IList<Subvencija> Subvencije { get; set; }
+
+        // Veza prema Proizvode:
+        public virtual IList<Proizvode> Proizvodi { get; set; } = new List<Proizvode>();
     }
 }

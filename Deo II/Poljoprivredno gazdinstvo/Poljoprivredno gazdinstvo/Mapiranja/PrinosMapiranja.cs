@@ -32,6 +32,9 @@ namespace Poljoprivredno_gazdinstvo.Mapiranja
                 .KeyColumns.Add("IDPRINOSA") // kolona u tabeli spoja
                 .Cascade.All()
                 .Inverse();
+
+            // Veza prema Proizvode
+            HasMany(x => x.Proizvodi).KeyColumn("IdPrinosa").Inverse().Cascade.All();
         }
     }
 }
