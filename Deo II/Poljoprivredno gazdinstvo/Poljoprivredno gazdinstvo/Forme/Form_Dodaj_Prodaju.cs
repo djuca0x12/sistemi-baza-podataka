@@ -16,6 +16,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
         public Form_Dodaj_Prodaju(int idPrinosa, string naziv, string jedinica)
         {
             InitializeComponent();
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
 
             _idPrinosa = idPrinosa;
 

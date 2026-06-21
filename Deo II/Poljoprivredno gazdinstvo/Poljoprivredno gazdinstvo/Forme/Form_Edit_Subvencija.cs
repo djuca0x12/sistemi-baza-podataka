@@ -17,6 +17,10 @@ namespace Poljoprivredno_gazdinstvo.Forme
         public Form_Edit_Subvencija(SubvencijaBasic izmena)
         {
             InitializeComponent();
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
+
             _izmena = izmena;
             PopuniFormu();
         }

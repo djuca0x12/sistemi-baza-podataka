@@ -15,6 +15,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
         public Form_Masine()
         {
             InitializeComponent();
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
         }
 
         private void button4_Click(object sender, EventArgs e)

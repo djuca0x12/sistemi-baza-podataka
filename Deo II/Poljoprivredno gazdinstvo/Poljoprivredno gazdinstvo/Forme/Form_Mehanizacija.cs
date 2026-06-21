@@ -16,6 +16,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
         public Form_Mehanizacija()
         {
             InitializeComponent();
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
 
             imageTraktor.Image = Resources.Traktor2;
             imageMasina.Image = Resources.Masina2;

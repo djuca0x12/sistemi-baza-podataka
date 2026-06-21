@@ -15,6 +15,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
         public Form_Dodaj_Traktor()
         {
             InitializeComponent();
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -39,7 +42,7 @@ namespace Poljoprivredno_gazdinstvo.Forme
             {
                 MessageBox.Show("Uneseni broj šasije već postoji u bazi! Molimo vas da promenite broj šasije.", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtBrojSasije.Focus();
-                return; 
+                return;
             }
 
             TraktorBasic noviTraktor = new TraktorBasic();
@@ -58,7 +61,7 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
             MessageBox.Show("Traktor je uspešno dodat!");
 
-            this.Close(); 
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -12,11 +12,15 @@ namespace Poljoprivredno_gazdinstvo.Forme
 {
     public partial class Form_Dodaj_Subevnciju : Form
     {
-        private int idKeteogije;
-        public Form_Dodaj_Subevnciju(int idKeteogije)
+        private int idKategorije;
+        public Form_Dodaj_Subevnciju(int idKategorije)
         {
             InitializeComponent();
-            this.idKeteogije = idKeteogije;
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
+
+            this.idKategorije = idKategorije;
         }
 
         private void btnZatvori_Click(object sender, EventArgs e)
@@ -44,7 +48,7 @@ namespace Poljoprivredno_gazdinstvo.Forme
                 DatumOdobrenja = null, 
                 Status = "podneseno",
                 Komentar = txtKomentar.Text,
-                UseviZivotinjeId = idKeteogije
+                UseviZivotinjeId = idKategorije
             };
 
             DTOManager.DodajSubvenciju(novaSubvencija);

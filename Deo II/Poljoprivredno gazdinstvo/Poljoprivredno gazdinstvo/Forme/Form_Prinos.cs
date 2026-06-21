@@ -15,6 +15,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
         public Form_Prinos()
         {
             InitializeComponent();
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
         }
 
         private void UcitajPrinoseUGrid()
