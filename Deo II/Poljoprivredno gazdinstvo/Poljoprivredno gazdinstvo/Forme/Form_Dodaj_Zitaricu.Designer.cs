@@ -211,6 +211,11 @@
             // numPovrsina
             // 
             this.numPovrsina.Location = new System.Drawing.Point(179, 125);
+            this.numPovrsina.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numPovrsina.Name = "numPovrsina";
             this.numPovrsina.Size = new System.Drawing.Size(150, 22);
             this.numPovrsina.TabIndex = 23;
@@ -254,6 +259,11 @@
             // numGustinaSetve
             // 
             this.numGustinaSetve.Location = new System.Drawing.Point(575, 36);
+            this.numGustinaSetve.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numGustinaSetve.Name = "numGustinaSetve";
             this.numGustinaSetve.Size = new System.Drawing.Size(150, 22);
             this.numGustinaSetve.TabIndex = 28;
@@ -261,6 +271,11 @@
             // numKolicinaSemenaPoHektaru
             // 
             this.numKolicinaSemenaPoHektaru.Location = new System.Drawing.Point(575, 79);
+            this.numKolicinaSemenaPoHektaru.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numKolicinaSemenaPoHektaru.Name = "numKolicinaSemenaPoHektaru";
             this.numKolicinaSemenaPoHektaru.Size = new System.Drawing.Size(150, 22);
             this.numKolicinaSemenaPoHektaru.TabIndex = 29;
@@ -268,6 +283,11 @@
             // numPrinosPoHektaru
             // 
             this.numPrinosPoHektaru.Location = new System.Drawing.Point(575, 123);
+            this.numPrinosPoHektaru.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numPrinosPoHektaru.Name = "numPrinosPoHektaru";
             this.numPrinosPoHektaru.Size = new System.Drawing.Size(150, 22);
             this.numPrinosPoHektaru.TabIndex = 30;

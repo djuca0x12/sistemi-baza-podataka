@@ -106,6 +106,11 @@
             // numBrojJedinki
             // 
             this.numBrojJedinki.Location = new System.Drawing.Point(385, 61);
+            this.numBrojJedinki.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.numBrojJedinki.Minimum = new decimal(new int[] {
             1,
             0,
@@ -140,6 +145,11 @@
             // 
             this.numTezina.DecimalPlaces = 2;
             this.numTezina.Location = new System.Drawing.Point(385, 284);
+            this.numTezina.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numTezina.Minimum = new decimal(new int[] {
             1,
             0,

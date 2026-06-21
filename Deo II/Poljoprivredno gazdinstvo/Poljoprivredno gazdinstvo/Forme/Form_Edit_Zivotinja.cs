@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Poljoprivredno_gazdinstvo.Forme
 {
@@ -16,6 +17,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
         public Form_Edit_Zivotinja()
         {
             InitializeComponent();
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
         }
         public Form_Edit_Zivotinja(ZivotinjeBasic zivotinja)
         {

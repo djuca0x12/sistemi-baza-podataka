@@ -16,6 +16,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
         public Form_Povrce()
         {
             InitializeComponent();
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
         }
         public Form_Povrce(PovrceBasic p)
         {

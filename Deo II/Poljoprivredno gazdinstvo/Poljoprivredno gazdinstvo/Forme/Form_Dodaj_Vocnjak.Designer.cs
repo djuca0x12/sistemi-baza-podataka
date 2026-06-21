@@ -149,6 +149,11 @@
             // numPovrsina
             // 
             this.numPovrsina.Location = new System.Drawing.Point(200, 129);
+            this.numPovrsina.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
             this.numPovrsina.Name = "numPovrsina";
             this.numPovrsina.Size = new System.Drawing.Size(150, 22);
             this.numPovrsina.TabIndex = 79;

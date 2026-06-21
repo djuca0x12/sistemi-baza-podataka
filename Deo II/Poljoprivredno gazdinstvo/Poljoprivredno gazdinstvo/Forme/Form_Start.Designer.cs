@@ -193,7 +193,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Start";
-            this.Text = "Form_Start";
+            this.Text = "Dobrodošli na Poljoprivredno gazdinstvo!";
             this.ResumeLayout(false);
 
         }

@@ -106,6 +106,11 @@
             // numBrojStabala
             // 
             this.numBrojStabala.Location = new System.Drawing.Point(596, 83);
+            this.numBrojStabala.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numBrojStabala.Name = "numBrojStabala";
             this.numBrojStabala.Size = new System.Drawing.Size(150, 22);
             this.numBrojStabala.TabIndex = 116;
@@ -171,9 +176,24 @@
             // numPovrsina
             // 
             this.numPovrsina.Location = new System.Drawing.Point(200, 129);
+            this.numPovrsina.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.numPovrsina.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numPovrsina.Name = "numPovrsina";
             this.numPovrsina.Size = new System.Drawing.Size(150, 22);
             this.numPovrsina.TabIndex = 110;
+            this.numPovrsina.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // txtKomentar
             // 

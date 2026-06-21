@@ -16,6 +16,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
         public Form_Vocnjaci()
         {
             InitializeComponent();
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
         }
         public Form_Vocnjaci(VocnjaciBasic v)
         {
