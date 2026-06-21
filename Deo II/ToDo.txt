@@ -3,7 +3,6 @@
 3. Proizvesti forma.
 4. Testiranje.
 
-- povezati sve sa kategorijom: transakcije!
 - override onpaint metode i generalno stilizovanje
 
 - srediti eer i relacione dijagrame, insert into naredbe

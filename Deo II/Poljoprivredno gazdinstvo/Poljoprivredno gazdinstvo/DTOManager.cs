@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 
 namespace Poljoprivredno_gazdinstvo
@@ -883,7 +884,6 @@ namespace Poljoprivredno_gazdinstvo
             List<ZivotinjeBasic> zivotinje = new();
             try
             {
-
                 ISession s = DataLayer.GetSession();
 
                 List<Zivotinje> sveZivotinje = s.Query<Zivotinje>().ToList();
@@ -901,35 +901,49 @@ namespace Poljoprivredno_gazdinstvo
         }
         public static void DodajZivotinju(ZivotinjeBasic z)
         {
-            try
+            using (ISession s = DataLayer.GetSession())
             {
-                ISession s = DataLayer.GetSession();
-
-                Zivotinje zivotinja = new()
+                using (ITransaction transaction = s.BeginTransaction())
                 {
-                    // baza popunjava id preko sekvence
-                    BrojUha = z.BrojUha,
-                    Vrsta = z.Vrsta,
-                    Pol = z.Pol,
-                    Rasa = z.Rasa,
-                    BrojJedinki = z.BrojJedinki,
-                    DatumRodjenja = z.DatumRodjenja,
-                    DatumUlaska = z.DatumUlaska,
-                    Tezina = z.Tezina,
-                    Status = z.Status,
-                    Komentar = z.Komentar
-                };
+                    try
+                    {
+                        UseviZivotinje uz = new()
+                        {
+                            // baza popunjava id preko sekvence
+                            KategorijaTip = 'z'
+                        };
 
-                // todo: dodati kategoriju
+                        s.Save(uz);
 
-                s.SaveOrUpdate(zivotinja);
+                        Zivotinje zivotinja = new()
+                        {
+                            BrojUha = z.BrojUha,
+                            Vrsta = z.Vrsta,
+                            Pol = z.Pol,
+                            Rasa = z.Rasa,
+                            BrojJedinki = z.BrojJedinki,
+                            DatumRodjenja = z.DatumRodjenja,
+                            DatumUlaska = z.DatumUlaska,
+                            Tezina = z.Tezina,
+                            Status = z.Status,
+                            Komentar = z.Komentar,
+                            Kategorija = uz
+                        };
 
-                s.Flush();
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show($"Greška pri dodavanju životinje: {ec.FormatExceptionMessage()}");
+                        s.Save(zivotinja);
+
+                        transaction.Commit();
+                    }
+                    catch (Exception ec)
+                    {
+                        if (transaction != null && transaction.IsActive)
+                        {
+                            transaction.Rollback();
+                        }
+
+                        MessageBox.Show($"Greška pri dodavanju životinje: {ec.FormatExceptionMessage()}");
+                    }
+                }
             }
         }
 
@@ -985,26 +999,40 @@ namespace Poljoprivredno_gazdinstvo
 
         public static void ObrisiZivotinju(int id)
         {
-            try
+            using (ISession s = DataLayer.GetSession())
             {
-                ISession s = DataLayer.GetSession();
+                using (ITransaction transaction = s.BeginTransaction())
+                {
+                    try
+                    {
+                        Zivotinje z = s.Load<Zivotinje>(id);
 
-                Zivotinje z = s.Load<Zivotinje>(id);
-                // todo: brisanje kategorije!
-                s.Delete(z);
-                s.Flush();
+                        if (z != null)
+                        {
+                            UseviZivotinje kategorija = z.Kategorija;
 
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show($"Greška pri brisanju životinje: {ec.FormatExceptionMessage()}");
+                            s.Delete(z);
 
+                            if (kategorija != null)
+                            {
+                                s.Delete(kategorija);
+                            }
+
+                            transaction.Commit();
+                        }
+                    }
+                    catch (Exception ec)
+                    {
+                        if (transaction != null && transaction.IsActive)
+                        {
+                            transaction.Rollback();
+                        }
+
+                        MessageBox.Show($"Greška pri brisanju životinje: {ec.FormatExceptionMessage()}");
+                    }
+                }
             }
         }
-        #endregion
-
-        #region Usevi
         #endregion
 
         #region Zitarice
@@ -1055,41 +1083,54 @@ namespace Poljoprivredno_gazdinstvo
 
         public static void DodajZitaricu(ZitariceBasic z)
         {
-            try
+            using (ISession s = DataLayer.GetSession())
             {
-                ISession s = DataLayer.GetSession();
-
-                Zitarice zitarica = new()
+                using (ITransaction transaction = s.BeginTransaction())
                 {
-                    // baza popunjava id preko sekvence
-                    Naziv = z.Naziv,
-                    Lokacija = z.Lokacija,
-                    Vrsta = z.Vrsta,
-                    Povrsina = z.Povrsina,
-                    KvalitetZemljista = z.KvalitetZemljista,
-                    DatumSetve = z.DatumSetve,
-                    DatumZetvePlanirani = z.DatumZetvePlanirani,
-                    DatumZetveStvarni = z.DatumZetveStvarni,
-                    Status = z.Status,
-                    Komentar = z.Komentar,
-                    // properties izvedene klase
-                    GustinaSetve = z.GustinaSetve,
-                    KolicinaSemenaPoHektaru = z.KolicinaSemenaPoHektaru,
-                    PrinosPoHektaru = z.PrinosPoHektaru,
-                    Tip = z.Tip,
-                    TipDjubrenja = z.TipDjubrenja
-                };
+                    try
+                    {
+                        UseviZivotinje uz = new()
+                        {
+                            // baza popunjava id preko sekvence
+                            KategorijaTip = 'u'
+                        };
 
-                // todo: dodati kategoriju
+                        s.Save(uz);
 
-                s.SaveOrUpdate(zitarica);
+                        Zitarice zitarica = new()
+                        {
+                            // baza popunjava id preko sekvence
+                            Naziv = z.Naziv,
+                            Lokacija = z.Lokacija,
+                            Vrsta = z.Vrsta,
+                            Povrsina = z.Povrsina,
+                            KvalitetZemljista = z.KvalitetZemljista,
+                            DatumSetve = z.DatumSetve,
+                            DatumZetvePlanirani = z.DatumZetvePlanirani,
+                            DatumZetveStvarni = z.DatumZetveStvarni,
+                            Status = z.Status,
+                            Komentar = z.Komentar,
+                            // properties izvedene klase
+                            GustinaSetve = z.GustinaSetve,
+                            KolicinaSemenaPoHektaru = z.KolicinaSemenaPoHektaru,
+                            PrinosPoHektaru = z.PrinosPoHektaru,
+                            Tip = z.Tip,
+                            TipDjubrenja = z.TipDjubrenja,
+                            Kategorija = uz
+                        };
 
-                s.Flush();
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show($"Greška pri dodavanju žitarice: {ec.FormatExceptionMessage()}");
+                        s.SaveOrUpdate(zitarica);
+                        transaction.Commit();
+                    }
+                    catch (Exception ec)
+                    {
+                        if (transaction != null && transaction.IsActive)
+                        {
+                            transaction.Rollback();
+                        }
+                        MessageBox.Show($"Greška pri dodavanju žitarice: {ec.FormatExceptionMessage()}");
+                    }
+                }
             }
         }
         public static void IzmeniZitaricu(ZitariceBasic z)
@@ -1128,23 +1169,38 @@ namespace Poljoprivredno_gazdinstvo
 
         public static void ObrisiZitaricu(int id)
         {
-            try
+            using (ISession s = DataLayer.GetSession())
             {
-                ISession s = DataLayer.GetSession();
+                using (ITransaction transaction = s.BeginTransaction())
+                {
+                    try
+                    {
+                        Zitarice z = s.Load<Zitarice>(id);
+                        if (z != null)
+                        {
+                            UseviZivotinje kategorija = z.Kategorija;
 
-                Zitarice z = s.Load<Zitarice>(id);
-                // todo: brisanje kategorije!
-                s.Delete(z);
-                s.Flush();
+                            s.Delete(z);
 
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show($"Greška pri brisanju žitarice: {ec.FormatExceptionMessage()}");
+                            if (kategorija != null)
+                            {
+                                s.Delete(kategorija);
+                            }
+
+                            transaction.Commit();
+                        }
+                    }
+                    catch (Exception ec)
+                    {
+                        if (transaction != null && transaction.IsActive)
+                        {
+                            transaction.Rollback();
+                        }
+                        MessageBox.Show($"Greška pri brisanju žitarice: {ec.FormatExceptionMessage()}");
+                    }
+                }
             }
         }
-
         #endregion
 
         #region Vocnjaci
@@ -1194,41 +1250,55 @@ namespace Poljoprivredno_gazdinstvo
 
         public static void DodajVocnjak(VocnjaciBasic v)
         {
-            try
+            using (ISession s = DataLayer.GetSession())
             {
-                ISession s = DataLayer.GetSession();
-
-                Vocnjaci vocnjak = new()
+                using (ITransaction transaction = s.BeginTransaction())
                 {
-                    // baza popunjava id preko sekvence
-                    Naziv = v.Naziv,
-                    Lokacija = v.Lokacija,
-                    Vrsta = v.Vrsta,
-                    Povrsina = v.Povrsina,
-                    KvalitetZemljista = v.KvalitetZemljista,
-                    DatumSetve = v.DatumSetve,
-                    DatumZetvePlanirani = v.DatumZetvePlanirani,
-                    DatumZetveStvarni = v.DatumZetveStvarni,
-                    Status = v.Status,
-                    Komentar = v.Komentar,
-                    // properties izvedene klase
-                    GodinaSadnje = v.GodinaSadnje,
-                    BrojStabala = v.BrojStabala,
-                    Sorta = v.Sorta,
-                    DatumRezidbe = v.DatumRezidbe,
-                    RodniCiklus = v.RodniCiklus
-                };
+                    try
+                    {
+                        UseviZivotinje uz = new()
+                        {
+                            // baza popunjava id preko sekvence
+                            KategorijaTip = 'u'
+                        };
 
-                // todo: dodati kategoriju
+                        s.Save(uz);
 
-                s.SaveOrUpdate(vocnjak);
+                        Vocnjaci vocnjak = new()
+                        {
+                            // baza popunjava id preko sekvence
+                            Naziv = v.Naziv,
+                            Lokacija = v.Lokacija,
+                            Vrsta = v.Vrsta,
+                            Povrsina = v.Povrsina,
+                            KvalitetZemljista = v.KvalitetZemljista,
+                            DatumSetve = v.DatumSetve,
+                            DatumZetvePlanirani = v.DatumZetvePlanirani,
+                            DatumZetveStvarni = v.DatumZetveStvarni,
+                            Status = v.Status,
+                            Komentar = v.Komentar,
+                            // properties izvedene klase
+                            GodinaSadnje = v.GodinaSadnje,
+                            BrojStabala = v.BrojStabala,
+                            Sorta = v.Sorta,
+                            DatumRezidbe = v.DatumRezidbe,
+                            RodniCiklus = v.RodniCiklus,
+                            Kategorija = uz
+                        };
 
-                s.Flush();
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show($"Greška pri dodavanju voćnjaka: {ec.FormatExceptionMessage()}");
+                        s.SaveOrUpdate(vocnjak);
+                        transaction.Commit();
+
+                    }
+                    catch (Exception ec)
+                    {
+                        if (transaction != null && transaction.IsActive)
+                        {
+                            transaction.Rollback();
+                        }
+                        MessageBox.Show($"Greška pri dodavanju voćnjaka: {ec.FormatExceptionMessage()}");
+                    }
+                }
             }
         }
         public static void IzmeniVocnjak(VocnjaciBasic v)
@@ -1268,20 +1338,31 @@ namespace Poljoprivredno_gazdinstvo
 
         public static void ObrisiVocnjak(int id)
         {
-            try
+            using (ISession s = DataLayer.GetSession())
             {
-                ISession s = DataLayer.GetSession();
+                using (ITransaction transaction = s.BeginTransaction())
+                {
+                    try
+                    {
+                        Vocnjaci v = s.Load<Vocnjaci>(id);
+                        if (v != null)
+                        {
+                            UseviZivotinje kategorija = v.Kategorija;
 
-                Vocnjaci v = s.Load<Vocnjaci>(id);
-                // todo: brisanje kategorije!
-                s.Delete(v);
-                s.Flush();
+                            s.Delete(v);
 
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show($"Greška pri brisanju voćnjaka: {ec.FormatExceptionMessage()}");
+                            if (kategorija != null)
+                            {
+                                s.Delete(kategorija);
+                            }
+                            transaction.Commit();
+                        }
+                    }
+                    catch (Exception ec)
+                    {
+                        MessageBox.Show($"Greška pri brisanju voćnjaka: {ec.FormatExceptionMessage()}");
+                    }
+                }
             }
         }
 
@@ -1335,40 +1416,53 @@ namespace Poljoprivredno_gazdinstvo
 
         public static void DodajPovrce(PovrceBasic p)
         {
-            try
+            using (ISession s = DataLayer.GetSession())
             {
-                ISession s = DataLayer.GetSession();
-
-                Povrce povrce = new()
+                using (ITransaction transaction = s.BeginTransaction())
                 {
-                    // baza popunjava id preko sekvence
-                    Naziv = p.Naziv,
-                    Lokacija = p.Lokacija,
-                    Vrsta = p.Vrsta,
-                    Povrsina = p.Povrsina,
-                    KvalitetZemljista = p.KvalitetZemljista,
-                    DatumSetve = p.DatumSetve,
-                    DatumZetvePlanirani = p.DatumZetvePlanirani,
-                    DatumZetveStvarni = p.DatumZetveStvarni,
-                    Status = p.Status,
-                    Komentar = p.Komentar,
-                    // properties izvedene klase
-                    BrojSetviGodisnje = p.BrojSetviGodisnje,
-                    ZastitneMere = p.ZastitneMere,
-                    NacinGajenja = p.NacinGajenja,
-                    Tip = p.Tip
-                };
+                    try
+                    {
+                        UseviZivotinje uz = new()
+                        {
+                            // baza popunjava id preko sekvence
+                            KategorijaTip = 'u'
+                        };
 
-                // todo: dodati kategoriju
+                        s.Save(uz);
+                        Povrce povrce = new()
+                        {
+                            // baza popunjava id preko sekvence
+                            Naziv = p.Naziv,
+                            Lokacija = p.Lokacija,
+                            Vrsta = p.Vrsta,
+                            Povrsina = p.Povrsina,
+                            KvalitetZemljista = p.KvalitetZemljista,
+                            DatumSetve = p.DatumSetve,
+                            DatumZetvePlanirani = p.DatumZetvePlanirani,
+                            DatumZetveStvarni = p.DatumZetveStvarni,
+                            Status = p.Status,
+                            Komentar = p.Komentar,
+                            // properties izvedene klase
+                            BrojSetviGodisnje = p.BrojSetviGodisnje,
+                            ZastitneMere = p.ZastitneMere,
+                            NacinGajenja = p.NacinGajenja,
+                            Tip = p.Tip,
+                            Kategorija = uz
+                        };
 
-                s.SaveOrUpdate(povrce);
+                        s.SaveOrUpdate(povrce);
+                        transaction.Commit();
 
-                s.Flush();
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show($"Greška pri dodavanju povrća: {ec.FormatExceptionMessage()}");
+                    }
+                    catch (Exception ec)
+                    {
+                        if (transaction != null && transaction.IsActive)
+                        {
+                            transaction.Rollback();
+                        }
+                        MessageBox.Show($"Greška pri dodavanju povrća: {ec.FormatExceptionMessage()}");
+                    }
+                }
             }
         }
         public static void IzmeniPovrce(PovrceBasic p)
@@ -1406,20 +1500,32 @@ namespace Poljoprivredno_gazdinstvo
 
         public static void ObrisiPovrce(int id)
         {
-            try
+            using (ISession s = DataLayer.GetSession())
             {
-                ISession s = DataLayer.GetSession();
+                using (ITransaction transaction = s.BeginTransaction())
+                {
+                    try
+                    {
+                        Povrce p = s.Load<Povrce>(id);
+                        if (p != null)
+                        {
+                            UseviZivotinje kategorija = p.Kategorija;
 
-                Povrce p = s.Load<Povrce>(id);
-                // todo: brisanje kategorije!
-                s.Delete(p);
-                s.Flush();
+                            s.Delete(p);
 
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show($"Greška pri brisanju povrća: {ec.FormatExceptionMessage()}");
+                            if (kategorija != null)
+                            {
+                                s.Delete(kategorija);
+                            }
+
+                            transaction.Commit();
+                        }
+                    }
+                    catch (Exception ec)
+                    {
+                        MessageBox.Show($"Greška pri brisanju povrća: {ec.FormatExceptionMessage()}");
+                    }
+                }
             }
         }
         #endregion
@@ -1471,43 +1577,61 @@ namespace Poljoprivredno_gazdinstvo
 
         public static void DodajKrmnoBilje(KrmnoBiljeBasic k)
         {
-            try
+            using (ISession s = DataLayer.GetSession())
             {
-                ISession s = DataLayer.GetSession();
-
-                KrmnoBilje krma = new()
+                using (ITransaction transaction = s.BeginTransaction())
                 {
-                    // baza popunjava id preko sekvence
-                    Naziv = k.Naziv,
-                    Lokacija = k.Lokacija,
-                    Vrsta = k.Vrsta,
-                    Povrsina = k.Povrsina,
-                    KvalitetZemljista = k.KvalitetZemljista,
-                    DatumSetve = k.DatumSetve,
-                    DatumZetvePlanirani = k.DatumZetvePlanirani,
-                    DatumZetveStvarni = k.DatumZetveStvarni,
-                    Status = k.Status,
-                    Komentar = k.Komentar,
-                    // properties izvedene klase
-                    VrstaKrme = k.VrstaKrme,
-                    BrojKosnjiGodisnje = k.BrojKosnjiGodisnje,
-                    ProcenatProteina = k.ProcenatProteina,
-                    ZaProdajuFlag = k.ZaProdajuFlag,
-                    IshranaStokeFlag = k.IshranaStokeFlag
-                };
+                    try
+                    {
+                        UseviZivotinje uz = new()
+                        {
+                            // baza popunjava id preko sekvence
+                            KategorijaTip = 'u'
+                        };
 
-                // todo: dodati kategoriju
+                        // Čuvamo nadređeni entitet
+                        s.Save(uz);
 
-                s.SaveOrUpdate(krma);
+                        KrmnoBilje krma = new()
+                        {
+                            // baza popunjava id preko sekvence
+                            Naziv = k.Naziv,
+                            Lokacija = k.Lokacija,
+                            Vrsta = k.Vrsta,
+                            Povrsina = k.Povrsina,
+                            KvalitetZemljista = k.KvalitetZemljista,
+                            DatumSetve = k.DatumSetve,
+                            DatumZetvePlanirani = k.DatumZetvePlanirani,
+                            DatumZetveStvarni = k.DatumZetveStvarni,
+                            Status = k.Status,
+                            Komentar = k.Komentar,
+                            // properties izvedene klase
+                            VrstaKrme = k.VrstaKrme,
+                            BrojKosnjiGodisnje = k.BrojKosnjiGodisnje,
+                            ProcenatProteina = k.ProcenatProteina,
+                            ZaProdajuFlag = k.ZaProdajuFlag,
+                            IshranaStokeFlag = k.IshranaStokeFlag,
+                            Kategorija = uz
+                        };
 
-                s.Flush();
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show($"Greška pri dodavanju krmnog bilja: {ec.FormatExceptionMessage()}");
+
+                        s.SaveOrUpdate(krma);
+                        transaction.Commit();
+
+
+                    }
+                    catch (Exception ec)
+                    {
+                        if (transaction != null && transaction.IsActive)
+                        {
+                            transaction.Rollback();
+                        }
+                        MessageBox.Show($"Greška pri dodavanju krmnog bilja: {ec.FormatExceptionMessage()}");
+                    }
+                }
             }
         }
+
         public static void IzmeniKrmnoBilje(KrmnoBiljeBasic z)
         {
             try
@@ -1544,20 +1668,40 @@ namespace Poljoprivredno_gazdinstvo
 
         public static void ObrisiKrmnoBilje(int id)
         {
-            try
+            using (ISession s = DataLayer.GetSession())
             {
-                ISession s = DataLayer.GetSession();
+                using (ITransaction transaction = s.BeginTransaction())
+                {
+                    try
+                    {
+                        KrmnoBilje k = s.Load<KrmnoBilje>(id);
+                        if (k != null)
+                        {
+                            // Uzimamo referencu na kategoriju pre nego što obrišemo životinju
+                            UseviZivotinje kategorija = k.Kategorija;
 
-                KrmnoBilje k = s.Load<KrmnoBilje>(id);
-                // todo: brisanje kategorije!
-                s.Delete(k);
-                s.Flush();
+                            // 1. Brišemo životinju (dete)
+                            s.Delete(k);
 
-                s.Close();
-            }
-            catch (Exception ec)
-            {
-                MessageBox.Show($"Greška pri brisanju krmnog bilja: {ec.FormatExceptionMessage()}");
+                            // 2. Brišemo kategoriju (roditelj) - Rešen TODO!
+                            if (kategorija != null)
+                            {
+                                s.Delete(kategorija);
+                            }
+
+                            // Potvrđujemo transakciju
+                            transaction.Commit();
+                        }
+                    }
+                    catch (Exception ec)
+                    {
+                        if (transaction != null && transaction.IsActive)
+                        {
+                            transaction.Rollback();
+                        }
+                        MessageBox.Show($"Greška pri brisanju krmnog bilja: {ec.FormatExceptionMessage()}");
+                    }
+                }
             }
         }
         #endregion
