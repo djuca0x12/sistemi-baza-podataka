@@ -94,6 +94,7 @@
             this.btnObrisi.TabIndex = 5;
             this.btnObrisi.Text = "Obrisi podatak";
             this.btnObrisi.UseVisualStyleBackColor = true;
+            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
             // Form_KoristiZa
             // 

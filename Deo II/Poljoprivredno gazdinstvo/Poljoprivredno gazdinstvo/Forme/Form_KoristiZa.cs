@@ -73,5 +73,10 @@ namespace Poljoprivredno_gazdinstvo.Forme
                 MessageBox.Show("Molimo vas da selektujete prinos koji želite da izmenite.", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnObrisi_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
