@@ -1852,18 +1852,18 @@ namespace Poljoprivredno_gazdinstvo
                     //string tip = z.Kategorija.KategorijaTip.ToString().Trim().ToLower();
                     char tipChar = z.Kategorija.KategorijaTip.ToString().Trim()[0];
 
-                    if (tipChar == 'u')
+                    /*if (tipChar == 'u')
                     {
                         dto.NazivIzvora = "Usev";
                     }
                     else
                     {
                         dto.NazivIzvora = "Zivotinja";
-                    }
+                    }*/
 
                     //System.Diagnostics.Debug.WriteLine($"DB Vrednost: '{tip}', Dužina: {tip?.Length}");
 
-                    /*switch (tipChar)
+                    switch (tipChar)
                     {
                         case 'u':
                             var usev = s.Query<Usevi>().FirstOrDefault(x => x.Kategorija != null && x.Kategorija.UseviZivotinjeId == idKat);
@@ -1879,7 +1879,7 @@ namespace Poljoprivredno_gazdinstvo
                         default:
                             dto.NazivIzvora = "Nepoznat izvor";
                            break;
-                    }*/
+                    }
 
                   
 
