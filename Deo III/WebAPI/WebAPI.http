@@ -1,0 +1,38 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+
+@WebAPI_HostAddress = https://localhost:7234
+@idProdavnice = 286
+
+GET {{WebAPI_HostAddress}}/Prodavnica/PreuzmiProdavnice
+
+###
+
+POST {{WebAPI_HostAddress}}/Prodavnica/DodajProdavnicu
+Content-Type: application/json
+
+{
+    "naziv": "Prodavnica Naziv",
+    "adresa": "Adresa 123",
+    "brojTelefona": "018/222-999"
+}
+
+###
+
+PUT {{WebAPI_HostAddress}}/Prodavnica/PromeniProdavnicu
+Content-Type: application/json
+
+{
+    "id": {{idProdavnice}},
+    "naziv": "Prodavnica Naziv",
+    "adresa": "Adresa 123",
+    "brojTelefona": "018/222-999",
+    "radniDan": "08-16h",
+    "subota": "08-15h",
+    "nedelja": "10-14h"
+}
+
+###
+
+DELETE {{WebAPI_HostAddress}}/Prodavnica/IzbrisiProdavnicu/{{idProdavnice}}
+
+###

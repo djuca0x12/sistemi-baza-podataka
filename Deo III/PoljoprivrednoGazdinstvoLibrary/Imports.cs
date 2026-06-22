@@ -1,0 +1,13 @@
+global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Reflection;
+global using System.Threading.Tasks;
+global using System.Text;
+global using PoljoprivrednoGazdinstvoLibrary.Entiteti;
+global using PoljoprivrednoGazdinstvoLibrary.Mapiranja;
+global using PoljoprivrednoGazdinstvoLibrary.DTOs;
+global using NHibernate;
+global using static PoljoprivrednoGazdinstvoLibrary.Extensions;
+global using System.Diagnostics.CodeAnalysis;
+global using FluentNHibernate.Mapping;
