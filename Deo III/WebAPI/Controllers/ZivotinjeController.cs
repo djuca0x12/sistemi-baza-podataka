@@ -44,5 +44,53 @@ namespace WebAPI.Controllers
             return Ok(odeljenja);
         }
 
+        [HttpPost("DodajZivotinju")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<ActionResult> DodajZivotinju([FromBody] ZivotinjeBasic z)
+        {
+            var (isError, uspesno, error) = await DataProvider.DodajZivotinju(z);
+
+            if (isError)
+            {
+                return StatusCode(error?.StatusCode ?? 400, error?.Message);
+            }
+
+            return Ok(uspesno);
+        }
+
+        [HttpPut("IzmeniZivotinju")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<ActionResult> IzmeniZivotinju([FromBody] ZivotinjeBasic z)
+        {
+            var (isError, uspesno, error) = await DataProvider.IzmeniZivotinju(z);
+
+            if (isError)
+            {
+                return StatusCode(error?.StatusCode ?? 400, error?.Message);
+            }
+
+            return Ok(uspesno);
+        }
+
+        [HttpDelete("ObrisiZivotinju/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> ObrisiZivotinju(int id)
+        {
+            var (isError, uspesno, error) = await DataProvider.ObrisiZivotinju(id);
+
+            if (isError)
+            {
+                return StatusCode(error?.StatusCode ?? 400, error?.Message);
+            }
+
+            return Ok(uspesno);
+        }
     }
 }
