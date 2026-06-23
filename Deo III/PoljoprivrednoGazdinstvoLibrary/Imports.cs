@@ -8,6 +8,7 @@ global using PoljoprivrednoGazdinstvoLibrary.Entiteti;
 global using PoljoprivrednoGazdinstvoLibrary.Mapiranja;
 global using PoljoprivrednoGazdinstvoLibrary.DTOs;
 global using NHibernate;
+global using NHibernate.Linq;
 global using static PoljoprivrednoGazdinstvoLibrary.Extensions;
 global using System.Diagnostics.CodeAnalysis;
 global using FluentNHibernate.Mapping;
