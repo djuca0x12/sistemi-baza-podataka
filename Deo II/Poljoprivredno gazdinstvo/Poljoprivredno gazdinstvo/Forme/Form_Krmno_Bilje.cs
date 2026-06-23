@@ -16,6 +16,12 @@ namespace Poljoprivredno_gazdinstvo.Forme
         public Form_Krmno_Bilje()
         {
             InitializeComponent();
+
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
+
+            dgvKrmnoBilje.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
         public Form_Krmno_Bilje(KrmnoBiljeBasic k)
         {
@@ -26,6 +32,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
         private void Form_Krmno_Bilje_Load(object sender, EventArgs e)
         {
             PopuniPodacima();
+
+            dgvKrmnoBilje.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void PopuniPodacima()

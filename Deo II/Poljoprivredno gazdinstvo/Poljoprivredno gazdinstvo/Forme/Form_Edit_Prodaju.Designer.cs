@@ -52,9 +52,9 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(412, 286);
+            this.btnSacuvaj.Location = new System.Drawing.Point(552, 286);
             this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(85, 38);
+            this.btnSacuvaj.Size = new System.Drawing.Size(109, 38);
             this.btnSacuvaj.TabIndex = 0;
             this.btnSacuvaj.Text = "Sacuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@
             // 
             // txtBrojFakture
             // 
-            this.txtBrojFakture.Location = new System.Drawing.Point(174, 71);
+            this.txtBrojFakture.Location = new System.Drawing.Point(257, 71);
             this.txtBrojFakture.Name = "txtBrojFakture";
             this.txtBrojFakture.Size = new System.Drawing.Size(120, 22);
             this.txtBrojFakture.TabIndex = 1;
@@ -82,16 +82,16 @@
             this.cBoxTipPlacanja.Items.AddRange(new object[] {
             "gotovina",
             "kartica"});
-            this.cBoxTipPlacanja.Location = new System.Drawing.Point(175, 129);
+            this.cBoxTipPlacanja.Location = new System.Drawing.Point(258, 129);
             this.cBoxTipPlacanja.Name = "cBoxTipPlacanja";
             this.cBoxTipPlacanja.Size = new System.Drawing.Size(121, 24);
             this.cBoxTipPlacanja.TabIndex = 3;
             // 
             // btnZatvori
             // 
-            this.btnZatvori.Location = new System.Drawing.Point(553, 286);
+            this.btnZatvori.Location = new System.Drawing.Point(741, 286);
             this.btnZatvori.Name = "btnZatvori";
-            this.btnZatvori.Size = new System.Drawing.Size(85, 38);
+            this.btnZatvori.Size = new System.Drawing.Size(121, 38);
             this.btnZatvori.TabIndex = 4;
             this.btnZatvori.Text = "Zatvori";
             this.btnZatvori.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@
             // 
             // txtKomentar
             // 
-            this.txtKomentar.Location = new System.Drawing.Point(175, 195);
+            this.txtKomentar.Location = new System.Drawing.Point(258, 195);
             this.txtKomentar.Name = "txtKomentar";
             this.txtKomentar.Size = new System.Drawing.Size(120, 22);
             this.txtKomentar.TabIndex = 6;
@@ -134,7 +134,7 @@
             // numCena
             // 
             this.numCena.DecimalPlaces = 2;
-            this.numCena.Location = new System.Drawing.Point(174, 302);
+            this.numCena.Location = new System.Drawing.Point(257, 302);
             this.numCena.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -162,7 +162,7 @@
             "t",
             "l",
             "komad"});
-            this.cBoxJedinicaMere.Location = new System.Drawing.Point(174, 248);
+            this.cBoxJedinicaMere.Location = new System.Drawing.Point(257, 248);
             this.cBoxJedinicaMere.Name = "cBoxJedinicaMere";
             this.cBoxJedinicaMere.Size = new System.Drawing.Size(121, 24);
             this.cBoxJedinicaMere.TabIndex = 11;
@@ -170,7 +170,7 @@
             // numKolicina
             // 
             this.numKolicina.DecimalPlaces = 2;
-            this.numKolicina.Location = new System.Drawing.Point(495, 74);
+            this.numKolicina.Location = new System.Drawing.Point(654, 80);
             this.numKolicina.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -183,7 +183,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(409, 78);
+            this.label6.Location = new System.Drawing.Point(509, 82);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 16);
             this.label6.TabIndex = 13;
@@ -192,7 +192,7 @@
             // dateDatum
             // 
             this.dateDatum.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDatum.Location = new System.Drawing.Point(495, 132);
+            this.dateDatum.Location = new System.Drawing.Point(654, 138);
             this.dateDatum.Name = "dateDatum";
             this.dateDatum.Size = new System.Drawing.Size(143, 22);
             this.dateDatum.TabIndex = 15;
@@ -200,7 +200,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(409, 138);
+            this.label7.Location = new System.Drawing.Point(509, 142);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 16);
             this.label7.TabIndex = 16;
@@ -209,7 +209,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(410, 200);
+            this.label8.Location = new System.Drawing.Point(510, 204);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 16);
             this.label8.TabIndex = 18;
@@ -217,7 +217,7 @@
             // 
             // txtKupac
             // 
-            this.txtKupac.Location = new System.Drawing.Point(495, 195);
+            this.txtKupac.Location = new System.Drawing.Point(654, 201);
             this.txtKupac.Name = "txtKupac";
             this.txtKupac.Size = new System.Drawing.Size(143, 22);
             this.txtKupac.TabIndex = 17;
@@ -226,7 +226,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 400);
+            this.ClientSize = new System.Drawing.Size(937, 400);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtKupac);
             this.Controls.Add(this.label7);

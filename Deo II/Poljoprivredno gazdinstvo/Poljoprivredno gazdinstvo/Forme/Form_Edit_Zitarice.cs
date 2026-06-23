@@ -24,6 +24,10 @@ namespace Poljoprivredno_gazdinstvo.Forme
         {
             InitializeComponent();
             zitarice = z;
+
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
         }
         private void Form_Edit_Zitarice_Load(object sender, EventArgs e)
         {
@@ -77,6 +81,11 @@ namespace Poljoprivredno_gazdinstvo.Forme
                 MessageBox.Show("Ažuriranje žitarice je uspešno izvršeno!");
                 this.Close();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

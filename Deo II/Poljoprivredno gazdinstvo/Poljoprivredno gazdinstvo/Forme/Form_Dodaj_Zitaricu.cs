@@ -56,5 +56,10 @@ namespace Poljoprivredno_gazdinstvo.Forme
                 this.Close();
             }
         }
+
+        private void btnZatvori_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

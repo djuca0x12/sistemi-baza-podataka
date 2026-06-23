@@ -20,6 +20,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
             this.BackColor = Color.FromArgb(243, 208, 144);
 
             UcitajPodatke();
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
         private void UcitajPodatke()
         {

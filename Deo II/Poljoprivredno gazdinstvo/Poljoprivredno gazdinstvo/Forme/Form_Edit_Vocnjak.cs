@@ -25,6 +25,10 @@ namespace Poljoprivredno_gazdinstvo.Forme
         {
             InitializeComponent();
             vocnjak = v;
+
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
         }
 
         private void btnIzmeniVocnjak_Click(object sender, EventArgs e)
@@ -80,6 +84,11 @@ namespace Poljoprivredno_gazdinstvo.Forme
             txtSorta.Text = vocnjak.Sorta;
             dtpDatumRezidbe.Value = vocnjak.DatumRezidbe > dtpDatumRezidbe.MinDate ? vocnjak.DatumRezidbe : DateTime.Now;
             txtRodniCiklus.Text = vocnjak.RodniCiklus;
+        }
+
+        private void btnZatvori_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

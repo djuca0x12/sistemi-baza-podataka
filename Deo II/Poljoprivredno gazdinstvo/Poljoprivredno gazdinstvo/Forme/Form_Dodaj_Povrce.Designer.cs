@@ -55,6 +55,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numBrojSetviGodisnje)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPovrsina)).BeginInit();
             this.SuspendLayout();
@@ -65,21 +66,21 @@
             this.cbxNacinGajenja.Items.AddRange(new object[] {
             "na otvorenom",
             "plastenik"});
-            this.cbxNacinGajenja.Location = new System.Drawing.Point(596, 128);
+            this.cbxNacinGajenja.Location = new System.Drawing.Point(778, 132);
             this.cbxNacinGajenja.Name = "cbxNacinGajenja";
             this.cbxNacinGajenja.Size = new System.Drawing.Size(150, 24);
             this.cbxNacinGajenja.TabIndex = 119;
             // 
             // txtZastitneMere
             // 
-            this.txtZastitneMere.Location = new System.Drawing.Point(596, 82);
+            this.txtZastitneMere.Location = new System.Drawing.Point(778, 86);
             this.txtZastitneMere.Name = "txtZastitneMere";
             this.txtZastitneMere.Size = new System.Drawing.Size(150, 22);
             this.txtZastitneMere.TabIndex = 118;
             // 
             // btnDodajPovrce
             // 
-            this.btnDodajPovrce.Location = new System.Drawing.Point(592, 281);
+            this.btnDodajPovrce.Location = new System.Drawing.Point(619, 262);
             this.btnDodajPovrce.Name = "btnDodajPovrce";
             this.btnDodajPovrce.Size = new System.Drawing.Size(154, 41);
             this.btnDodajPovrce.TabIndex = 117;
@@ -94,14 +95,14 @@
             "korenasto",
             "lisnato",
             "plodovito"});
-            this.cbxTipPovrca.Location = new System.Drawing.Point(596, 171);
+            this.cbxTipPovrca.Location = new System.Drawing.Point(778, 175);
             this.cbxTipPovrca.Name = "cbxTipPovrca";
             this.cbxTipPovrca.Size = new System.Drawing.Size(150, 24);
             this.cbxTipPovrca.TabIndex = 116;
             // 
             // numBrojSetviGodisnje
             // 
-            this.numBrojSetviGodisnje.Location = new System.Drawing.Point(596, 40);
+            this.numBrojSetviGodisnje.Location = new System.Drawing.Point(778, 44);
             this.numBrojSetviGodisnje.Name = "numBrojSetviGodisnje";
             this.numBrojSetviGodisnje.Size = new System.Drawing.Size(150, 22);
             this.numBrojSetviGodisnje.TabIndex = 115;
@@ -113,7 +114,7 @@
             "u toku",
             "zavrseno",
             "otkazano"});
-            this.cbxStatus.Location = new System.Drawing.Point(200, 344);
+            this.cbxStatus.Location = new System.Drawing.Point(300, 347);
             this.cbxStatus.Name = "cbxStatus";
             this.cbxStatus.Size = new System.Drawing.Size(150, 24);
             this.cbxStatus.TabIndex = 114;
@@ -121,7 +122,7 @@
             // dtpDatumZetveStvarni
             // 
             this.dtpDatumZetveStvarni.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumZetveStvarni.Location = new System.Drawing.Point(200, 301);
+            this.dtpDatumZetveStvarni.Location = new System.Drawing.Point(300, 304);
             this.dtpDatumZetveStvarni.Name = "dtpDatumZetveStvarni";
             this.dtpDatumZetveStvarni.Size = new System.Drawing.Size(150, 22);
             this.dtpDatumZetveStvarni.TabIndex = 113;
@@ -129,7 +130,7 @@
             // dtpDatumZetvePlanirani
             // 
             this.dtpDatumZetvePlanirani.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumZetvePlanirani.Location = new System.Drawing.Point(200, 258);
+            this.dtpDatumZetvePlanirani.Location = new System.Drawing.Point(300, 261);
             this.dtpDatumZetvePlanirani.Name = "dtpDatumZetvePlanirani";
             this.dtpDatumZetvePlanirani.Size = new System.Drawing.Size(150, 22);
             this.dtpDatumZetvePlanirani.TabIndex = 112;
@@ -137,14 +138,14 @@
             // dtpDatumSetve
             // 
             this.dtpDatumSetve.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumSetve.Location = new System.Drawing.Point(200, 215);
+            this.dtpDatumSetve.Location = new System.Drawing.Point(300, 218);
             this.dtpDatumSetve.Name = "dtpDatumSetve";
             this.dtpDatumSetve.Size = new System.Drawing.Size(150, 22);
             this.dtpDatumSetve.TabIndex = 111;
             // 
             // numPovrsina
             // 
-            this.numPovrsina.Location = new System.Drawing.Point(200, 129);
+            this.numPovrsina.Location = new System.Drawing.Point(300, 132);
             this.numPovrsina.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -156,28 +157,28 @@
             // 
             // txtKomentar
             // 
-            this.txtKomentar.Location = new System.Drawing.Point(200, 389);
+            this.txtKomentar.Location = new System.Drawing.Point(300, 392);
             this.txtKomentar.Name = "txtKomentar";
             this.txtKomentar.Size = new System.Drawing.Size(150, 22);
             this.txtKomentar.TabIndex = 109;
             // 
             // txtKvalitetZemljista
             // 
-            this.txtKvalitetZemljista.Location = new System.Drawing.Point(200, 172);
+            this.txtKvalitetZemljista.Location = new System.Drawing.Point(300, 175);
             this.txtKvalitetZemljista.Name = "txtKvalitetZemljista";
             this.txtKvalitetZemljista.Size = new System.Drawing.Size(150, 22);
             this.txtKvalitetZemljista.TabIndex = 108;
             // 
             // txtLokacija
             // 
-            this.txtLokacija.Location = new System.Drawing.Point(200, 82);
+            this.txtLokacija.Location = new System.Drawing.Point(300, 85);
             this.txtLokacija.Name = "txtLokacija";
             this.txtLokacija.Size = new System.Drawing.Size(150, 22);
             this.txtLokacija.TabIndex = 107;
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(200, 39);
+            this.txtNaziv.Location = new System.Drawing.Point(300, 42);
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(150, 22);
             this.txtNaziv.TabIndex = 106;
@@ -194,7 +195,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(394, 175);
+            this.label13.Location = new System.Drawing.Point(503, 178);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(30, 16);
             this.label13.TabIndex = 104;
@@ -230,7 +231,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(394, 85);
+            this.label9.Location = new System.Drawing.Point(503, 88);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 16);
             this.label9.TabIndex = 100;
@@ -239,7 +240,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(394, 132);
+            this.label8.Location = new System.Drawing.Point(503, 135);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 16);
             this.label8.TabIndex = 99;
@@ -248,7 +249,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(394, 42);
+            this.label7.Location = new System.Drawing.Point(503, 45);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 16);
             this.label7.TabIndex = 98;
@@ -299,11 +300,22 @@
             this.label1.TabIndex = 93;
             this.label1.Text = "Naziv:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(619, 350);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(154, 41);
+            this.button1.TabIndex = 120;
+            this.button1.Text = "Zatvori";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form_Dodaj_Povrce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(989, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cbxNacinGajenja);
             this.Controls.Add(this.txtZastitneMere);
             this.Controls.Add(this.btnDodajPovrce);
@@ -369,5 +381,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -33,16 +33,15 @@
             this.btnObrisiZivotinju = new System.Windows.Forms.Button();
             this.btnProdajZivotinju = new System.Windows.Forms.Button();
             this.dgvZivotinje = new System.Windows.Forms.DataGridView();
-            this.btnZatvori = new System.Windows.Forms.Button();
             this.btnSubvencije = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvZivotinje)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDodajZivotinju
             // 
-            this.btnDodajZivotinju.Location = new System.Drawing.Point(1457, 33);
+            this.btnDodajZivotinju.Location = new System.Drawing.Point(1464, 95);
             this.btnDodajZivotinju.Name = "btnDodajZivotinju";
-            this.btnDodajZivotinju.Size = new System.Drawing.Size(154, 41);
+            this.btnDodajZivotinju.Size = new System.Drawing.Size(200, 41);
             this.btnDodajZivotinju.TabIndex = 1;
             this.btnDodajZivotinju.Text = "Dodaj životinju";
             this.btnDodajZivotinju.UseVisualStyleBackColor = true;
@@ -50,9 +49,9 @@
             // 
             // btnIzmeniZivotinju
             // 
-            this.btnIzmeniZivotinju.Location = new System.Drawing.Point(1457, 122);
+            this.btnIzmeniZivotinju.Location = new System.Drawing.Point(1464, 184);
             this.btnIzmeniZivotinju.Name = "btnIzmeniZivotinju";
-            this.btnIzmeniZivotinju.Size = new System.Drawing.Size(154, 41);
+            this.btnIzmeniZivotinju.Size = new System.Drawing.Size(200, 41);
             this.btnIzmeniZivotinju.TabIndex = 2;
             this.btnIzmeniZivotinju.Text = "Izmeni životinju";
             this.btnIzmeniZivotinju.UseVisualStyleBackColor = true;
@@ -60,9 +59,9 @@
             // 
             // btnObrisiZivotinju
             // 
-            this.btnObrisiZivotinju.Location = new System.Drawing.Point(1457, 208);
+            this.btnObrisiZivotinju.Location = new System.Drawing.Point(1464, 270);
             this.btnObrisiZivotinju.Name = "btnObrisiZivotinju";
-            this.btnObrisiZivotinju.Size = new System.Drawing.Size(154, 41);
+            this.btnObrisiZivotinju.Size = new System.Drawing.Size(200, 41);
             this.btnObrisiZivotinju.TabIndex = 3;
             this.btnObrisiZivotinju.Text = "Obriši životinju";
             this.btnObrisiZivotinju.UseVisualStyleBackColor = true;
@@ -70,9 +69,9 @@
             // 
             // btnProdajZivotinju
             // 
-            this.btnProdajZivotinju.Location = new System.Drawing.Point(1457, 291);
+            this.btnProdajZivotinju.Location = new System.Drawing.Point(1464, 343);
             this.btnProdajZivotinju.Name = "btnProdajZivotinju";
-            this.btnProdajZivotinju.Size = new System.Drawing.Size(154, 41);
+            this.btnProdajZivotinju.Size = new System.Drawing.Size(200, 41);
             this.btnProdajZivotinju.TabIndex = 4;
             this.btnProdajZivotinju.Text = "Proizvedi prinos";
             this.btnProdajZivotinju.UseVisualStyleBackColor = true;
@@ -86,24 +85,14 @@
             this.dgvZivotinje.ReadOnly = true;
             this.dgvZivotinje.RowHeadersWidth = 51;
             this.dgvZivotinje.RowTemplate.Height = 24;
-            this.dgvZivotinje.Size = new System.Drawing.Size(1342, 308);
+            this.dgvZivotinje.Size = new System.Drawing.Size(1342, 429);
             this.dgvZivotinje.TabIndex = 5;
-            // 
-            // btnZatvori
-            // 
-            this.btnZatvori.Location = new System.Drawing.Point(1457, 456);
-            this.btnZatvori.Name = "btnZatvori";
-            this.btnZatvori.Size = new System.Drawing.Size(154, 41);
-            this.btnZatvori.TabIndex = 6;
-            this.btnZatvori.Text = "Zatvori";
-            this.btnZatvori.UseVisualStyleBackColor = true;
-            this.btnZatvori.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnSubvencije
             // 
-            this.btnSubvencije.Location = new System.Drawing.Point(1457, 372);
+            this.btnSubvencije.Location = new System.Drawing.Point(1464, 416);
             this.btnSubvencije.Name = "btnSubvencije";
-            this.btnSubvencije.Size = new System.Drawing.Size(154, 41);
+            this.btnSubvencije.Size = new System.Drawing.Size(200, 78);
             this.btnSubvencije.TabIndex = 7;
             this.btnSubvencije.Text = "Podnesi zahtev za dobijanje subvencije";
             this.btnSubvencije.UseVisualStyleBackColor = true;
@@ -113,14 +102,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1651, 533);
+            this.ClientSize = new System.Drawing.Size(1706, 533);
             this.Controls.Add(this.btnSubvencije);
-            this.Controls.Add(this.btnZatvori);
             this.Controls.Add(this.dgvZivotinje);
             this.Controls.Add(this.btnProdajZivotinju);
             this.Controls.Add(this.btnObrisiZivotinju);
             this.Controls.Add(this.btnIzmeniZivotinju);
             this.Controls.Add(this.btnDodajZivotinju);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form_Zivotinje";
             this.Text = "Sve životinje";
             this.Load += new System.EventHandler(this.Form_Zivotinje_Load);
@@ -136,7 +126,6 @@
         private System.Windows.Forms.Button btnObrisiZivotinju;
         private System.Windows.Forms.Button btnProdajZivotinju;
         private System.Windows.Forms.DataGridView dgvZivotinje;
-        private System.Windows.Forms.Button btnZatvori;
         private System.Windows.Forms.Button btnSubvencije;
     }
 }

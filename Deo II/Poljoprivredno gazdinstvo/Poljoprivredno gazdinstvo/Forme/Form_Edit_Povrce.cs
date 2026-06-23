@@ -25,6 +25,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
         {
             InitializeComponent();
             povrce = p;
+
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
         }
 
         private void Form_Edit_Povrce_Load(object sender, EventArgs e)
@@ -77,6 +80,11 @@ namespace Poljoprivredno_gazdinstvo.Forme
                 MessageBox.Show("Ažuriranje povrća je uspešno izvršeno!");
                 this.Close();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

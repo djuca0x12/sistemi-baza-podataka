@@ -45,14 +45,14 @@
             this.dgvKrmnoBilje.ReadOnly = true;
             this.dgvKrmnoBilje.RowHeadersWidth = 51;
             this.dgvKrmnoBilje.RowTemplate.Height = 24;
-            this.dgvKrmnoBilje.Size = new System.Drawing.Size(1178, 308);
+            this.dgvKrmnoBilje.Size = new System.Drawing.Size(1178, 351);
             this.dgvKrmnoBilje.TabIndex = 15;
             // 
             // btnProdajKrmnoBilje
             // 
             this.btnProdajKrmnoBilje.Location = new System.Drawing.Point(1268, 296);
             this.btnProdajKrmnoBilje.Name = "btnProdajKrmnoBilje";
-            this.btnProdajKrmnoBilje.Size = new System.Drawing.Size(154, 41);
+            this.btnProdajKrmnoBilje.Size = new System.Drawing.Size(254, 41);
             this.btnProdajKrmnoBilje.TabIndex = 14;
             this.btnProdajKrmnoBilje.Text = "Proizvedi prinos";
             this.btnProdajKrmnoBilje.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@
             // 
             this.btnObrisiKrmnoBilje.Location = new System.Drawing.Point(1268, 207);
             this.btnObrisiKrmnoBilje.Name = "btnObrisiKrmnoBilje";
-            this.btnObrisiKrmnoBilje.Size = new System.Drawing.Size(154, 41);
+            this.btnObrisiKrmnoBilje.Size = new System.Drawing.Size(254, 41);
             this.btnObrisiKrmnoBilje.TabIndex = 13;
             this.btnObrisiKrmnoBilje.Text = "Obriši krmno bilje";
             this.btnObrisiKrmnoBilje.UseVisualStyleBackColor = true;
@@ -72,7 +72,7 @@
             // 
             this.btnIzmeniKrmnoBilje.Location = new System.Drawing.Point(1268, 118);
             this.btnIzmeniKrmnoBilje.Name = "btnIzmeniKrmnoBilje";
-            this.btnIzmeniKrmnoBilje.Size = new System.Drawing.Size(154, 41);
+            this.btnIzmeniKrmnoBilje.Size = new System.Drawing.Size(254, 41);
             this.btnIzmeniKrmnoBilje.TabIndex = 12;
             this.btnIzmeniKrmnoBilje.Text = "Izmeni krmno bilje";
             this.btnIzmeniKrmnoBilje.UseVisualStyleBackColor = true;
@@ -82,7 +82,7 @@
             // 
             this.btnDodajKrmnoBilje.Location = new System.Drawing.Point(1268, 29);
             this.btnDodajKrmnoBilje.Name = "btnDodajKrmnoBilje";
-            this.btnDodajKrmnoBilje.Size = new System.Drawing.Size(154, 41);
+            this.btnDodajKrmnoBilje.Size = new System.Drawing.Size(254, 41);
             this.btnDodajKrmnoBilje.TabIndex = 11;
             this.btnDodajKrmnoBilje.Text = "Dodaj krmno bilje";
             this.btnDodajKrmnoBilje.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@
             // 
             this.btnSubvencija.Location = new System.Drawing.Point(1268, 372);
             this.btnSubvencija.Name = "btnSubvencija";
-            this.btnSubvencija.Size = new System.Drawing.Size(154, 54);
+            this.btnSubvencija.Size = new System.Drawing.Size(254, 81);
             this.btnSubvencija.TabIndex = 16;
             this.btnSubvencija.Text = "Podnesi zahtev za dobijanje subvencije";
             this.btnSubvencija.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1460, 450);
+            this.ClientSize = new System.Drawing.Size(1574, 488);
             this.Controls.Add(this.btnSubvencija);
             this.Controls.Add(this.dgvKrmnoBilje);
             this.Controls.Add(this.btnProdajKrmnoBilje);

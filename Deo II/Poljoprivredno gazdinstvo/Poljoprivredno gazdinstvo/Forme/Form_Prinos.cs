@@ -17,7 +17,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
             InitializeComponent();
             // stilizovanje forme
             Form_Start.ApplyStardewStyle(this);
-            this.BackColor = Color.FromArgb(243, 208, 144);
+            this.BackColor = Color.FromArgb(243, 208, 144);          
+
+            dataGridViewPrinos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void UcitajPrinoseUGrid()

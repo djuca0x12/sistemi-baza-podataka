@@ -57,6 +57,7 @@
             this.btnDodajZitaricu = new System.Windows.Forms.Button();
             this.cbxTipDjubrenja = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnZatvori = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numPovrsina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGustinaSetve)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKolicinaSemenaPoHektaru)).BeginInit();
@@ -111,7 +112,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(373, 38);
+            this.label7.Location = new System.Drawing.Point(544, 54);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(91, 16);
             this.label7.TabIndex = 6;
@@ -120,7 +121,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(373, 125);
+            this.label8.Location = new System.Drawing.Point(544, 141);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(114, 16);
             this.label8.TabIndex = 7;
@@ -129,7 +130,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(373, 81);
+            this.label9.Location = new System.Drawing.Point(544, 97);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(175, 16);
             this.label9.TabIndex = 8;
@@ -165,7 +166,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(373, 169);
+            this.label13.Location = new System.Drawing.Point(544, 189);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(30, 16);
             this.label13.TabIndex = 12;
@@ -182,35 +183,35 @@
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(179, 35);
+            this.txtNaziv.Location = new System.Drawing.Point(317, 41);
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(150, 22);
             this.txtNaziv.TabIndex = 18;
             // 
             // txtLokacija
             // 
-            this.txtLokacija.Location = new System.Drawing.Point(179, 78);
+            this.txtLokacija.Location = new System.Drawing.Point(317, 84);
             this.txtLokacija.Name = "txtLokacija";
             this.txtLokacija.Size = new System.Drawing.Size(150, 22);
             this.txtLokacija.TabIndex = 19;
             // 
             // txtKvalitetZemljista
             // 
-            this.txtKvalitetZemljista.Location = new System.Drawing.Point(179, 168);
+            this.txtKvalitetZemljista.Location = new System.Drawing.Point(317, 174);
             this.txtKvalitetZemljista.Name = "txtKvalitetZemljista";
             this.txtKvalitetZemljista.Size = new System.Drawing.Size(150, 22);
             this.txtKvalitetZemljista.TabIndex = 20;
             // 
             // txtKomentar
             // 
-            this.txtKomentar.Location = new System.Drawing.Point(179, 385);
+            this.txtKomentar.Location = new System.Drawing.Point(317, 391);
             this.txtKomentar.Name = "txtKomentar";
             this.txtKomentar.Size = new System.Drawing.Size(150, 22);
             this.txtKomentar.TabIndex = 21;
             // 
             // numPovrsina
             // 
-            this.numPovrsina.Location = new System.Drawing.Point(179, 125);
+            this.numPovrsina.Location = new System.Drawing.Point(317, 131);
             this.numPovrsina.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -223,7 +224,7 @@
             // dtpDatumSetve
             // 
             this.dtpDatumSetve.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumSetve.Location = new System.Drawing.Point(179, 211);
+            this.dtpDatumSetve.Location = new System.Drawing.Point(317, 217);
             this.dtpDatumSetve.Name = "dtpDatumSetve";
             this.dtpDatumSetve.Size = new System.Drawing.Size(150, 22);
             this.dtpDatumSetve.TabIndex = 24;
@@ -231,7 +232,7 @@
             // dtpDatumZetvePlanirani
             // 
             this.dtpDatumZetvePlanirani.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumZetvePlanirani.Location = new System.Drawing.Point(179, 254);
+            this.dtpDatumZetvePlanirani.Location = new System.Drawing.Point(317, 260);
             this.dtpDatumZetvePlanirani.Name = "dtpDatumZetvePlanirani";
             this.dtpDatumZetvePlanirani.Size = new System.Drawing.Size(150, 22);
             this.dtpDatumZetvePlanirani.TabIndex = 25;
@@ -239,7 +240,7 @@
             // dtpDatumZetveStvarni
             // 
             this.dtpDatumZetveStvarni.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumZetveStvarni.Location = new System.Drawing.Point(179, 297);
+            this.dtpDatumZetveStvarni.Location = new System.Drawing.Point(317, 303);
             this.dtpDatumZetveStvarni.Name = "dtpDatumZetveStvarni";
             this.dtpDatumZetveStvarni.Size = new System.Drawing.Size(150, 22);
             this.dtpDatumZetveStvarni.TabIndex = 26;
@@ -251,14 +252,14 @@
             "u toku",
             "zavrseno",
             "otkazano"});
-            this.cbxStatus.Location = new System.Drawing.Point(179, 340);
+            this.cbxStatus.Location = new System.Drawing.Point(317, 346);
             this.cbxStatus.Name = "cbxStatus";
             this.cbxStatus.Size = new System.Drawing.Size(150, 24);
             this.cbxStatus.TabIndex = 27;
             // 
             // numGustinaSetve
             // 
-            this.numGustinaSetve.Location = new System.Drawing.Point(575, 36);
+            this.numGustinaSetve.Location = new System.Drawing.Point(818, 51);
             this.numGustinaSetve.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -270,7 +271,7 @@
             // 
             // numKolicinaSemenaPoHektaru
             // 
-            this.numKolicinaSemenaPoHektaru.Location = new System.Drawing.Point(575, 79);
+            this.numKolicinaSemenaPoHektaru.Location = new System.Drawing.Point(818, 94);
             this.numKolicinaSemenaPoHektaru.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -282,7 +283,7 @@
             // 
             // numPrinosPoHektaru
             // 
-            this.numPrinosPoHektaru.Location = new System.Drawing.Point(575, 123);
+            this.numPrinosPoHektaru.Location = new System.Drawing.Point(818, 138);
             this.numPrinosPoHektaru.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -299,16 +300,16 @@
             "psenica",
             "kukuruz",
             "jecam"});
-            this.cbxTipZitarice.Location = new System.Drawing.Point(575, 166);
+            this.cbxTipZitarice.Location = new System.Drawing.Point(818, 181);
             this.cbxTipZitarice.Name = "cbxTipZitarice";
             this.cbxTipZitarice.Size = new System.Drawing.Size(150, 24);
             this.cbxTipZitarice.TabIndex = 31;
             // 
             // btnDodajZitaricu
             // 
-            this.btnDodajZitaricu.Location = new System.Drawing.Point(571, 277);
+            this.btnDodajZitaricu.Location = new System.Drawing.Point(585, 334);
             this.btnDodajZitaricu.Name = "btnDodajZitaricu";
-            this.btnDodajZitaricu.Size = new System.Drawing.Size(154, 41);
+            this.btnDodajZitaricu.Size = new System.Drawing.Size(181, 41);
             this.btnDodajZitaricu.TabIndex = 59;
             this.btnDodajZitaricu.Text = "Dodaj žitaricu";
             this.btnDodajZitaricu.UseVisualStyleBackColor = true;
@@ -321,7 +322,7 @@
             "mineralno",
             "organsko",
             "kombinovano"});
-            this.cbxTipDjubrenja.Location = new System.Drawing.Point(575, 210);
+            this.cbxTipDjubrenja.Location = new System.Drawing.Point(818, 225);
             this.cbxTipDjubrenja.Name = "cbxTipDjubrenja";
             this.cbxTipDjubrenja.Size = new System.Drawing.Size(150, 24);
             this.cbxTipDjubrenja.TabIndex = 61;
@@ -329,17 +330,28 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(373, 214);
+            this.label3.Location = new System.Drawing.Point(544, 230);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 16);
             this.label3.TabIndex = 60;
             this.label3.Text = "Tip đubrenja:";
             // 
+            // btnZatvori
+            // 
+            this.btnZatvori.Location = new System.Drawing.Point(838, 334);
+            this.btnZatvori.Name = "btnZatvori";
+            this.btnZatvori.Size = new System.Drawing.Size(154, 41);
+            this.btnZatvori.TabIndex = 62;
+            this.btnZatvori.Text = "Zatvori";
+            this.btnZatvori.UseVisualStyleBackColor = true;
+            this.btnZatvori.Click += new System.EventHandler(this.btnZatvori_Click);
+            // 
             // Form_Dodaj_Zitaricu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 447);
+            this.ClientSize = new System.Drawing.Size(1061, 447);
+            this.Controls.Add(this.btnZatvori);
             this.Controls.Add(this.cbxTipDjubrenja);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnDodajZitaricu);
@@ -369,6 +381,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form_Dodaj_Zitaricu";
             this.Text = "Dodaj žitaricu";
             ((System.ComponentModel.ISupportInitialize)(this.numPovrsina)).EndInit();
@@ -411,5 +425,6 @@
         private System.Windows.Forms.Button btnDodajZitaricu;
         private System.Windows.Forms.ComboBox cbxTipDjubrenja;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnZatvori;
     }
 }

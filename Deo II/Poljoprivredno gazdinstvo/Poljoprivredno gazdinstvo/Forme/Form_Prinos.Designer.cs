@@ -30,7 +30,6 @@
         {
             this.dataGridViewPrinos = new System.Windows.Forms.DataGridView();
             this.btnPromeniPodatke = new System.Windows.Forms.Button();
-            this.btnDodaj = new System.Windows.Forms.Button();
             this.btnObrisi = new System.Windows.Forms.Button();
             this.btnProdaja = new System.Windows.Forms.Button();
             this.btnZatvori = new System.Windows.Forms.Button();
@@ -45,34 +44,24 @@
             this.dataGridViewPrinos.Name = "dataGridViewPrinos";
             this.dataGridViewPrinos.RowHeadersWidth = 51;
             this.dataGridViewPrinos.RowTemplate.Height = 24;
-            this.dataGridViewPrinos.Size = new System.Drawing.Size(739, 515);
+            this.dataGridViewPrinos.Size = new System.Drawing.Size(802, 515);
             this.dataGridViewPrinos.TabIndex = 0;
             // 
             // btnPromeniPodatke
             // 
-            this.btnPromeniPodatke.Location = new System.Drawing.Point(1000, 377);
+            this.btnPromeniPodatke.Location = new System.Drawing.Point(1018, 367);
             this.btnPromeniPodatke.Name = "btnPromeniPodatke";
-            this.btnPromeniPodatke.Size = new System.Drawing.Size(126, 45);
+            this.btnPromeniPodatke.Size = new System.Drawing.Size(220, 42);
             this.btnPromeniPodatke.TabIndex = 1;
             this.btnPromeniPodatke.Text = "Promeni podatke";
             this.btnPromeniPodatke.UseVisualStyleBackColor = true;
             this.btnPromeniPodatke.Click += new System.EventHandler(this.btnPromeniPodatke_Click);
             // 
-            // btnDodaj
-            // 
-            this.btnDodaj.Location = new System.Drawing.Point(1000, 289);
-            this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(126, 41);
-            this.btnDodaj.TabIndex = 2;
-            this.btnDodaj.Text = "Dodaj prinos";
-            this.btnDodaj.UseVisualStyleBackColor = true;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
-            // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(811, 289);
+            this.btnObrisi.Location = new System.Drawing.Point(857, 367);
             this.btnObrisi.Name = "btnObrisi";
-            this.btnObrisi.Size = new System.Drawing.Size(126, 39);
+            this.btnObrisi.Size = new System.Drawing.Size(126, 42);
             this.btnObrisi.TabIndex = 3;
             this.btnObrisi.Text = "Obrisi prinos";
             this.btnObrisi.UseVisualStyleBackColor = true;
@@ -80,9 +69,9 @@
             // 
             // btnProdaja
             // 
-            this.btnProdaja.Location = new System.Drawing.Point(811, 383);
+            this.btnProdaja.Location = new System.Drawing.Point(947, 281);
             this.btnProdaja.Name = "btnProdaja";
-            this.btnProdaja.Size = new System.Drawing.Size(126, 39);
+            this.btnProdaja.Size = new System.Drawing.Size(171, 39);
             this.btnProdaja.TabIndex = 4;
             this.btnProdaja.Text = "Prodaj prinos";
             this.btnProdaja.UseVisualStyleBackColor = true;
@@ -90,7 +79,7 @@
             // 
             // btnZatvori
             // 
-            this.btnZatvori.Location = new System.Drawing.Point(886, 457);
+            this.btnZatvori.Location = new System.Drawing.Point(975, 445);
             this.btnZatvori.Name = "btnZatvori";
             this.btnZatvori.Size = new System.Drawing.Size(126, 41);
             this.btnZatvori.TabIndex = 5;
@@ -101,7 +90,7 @@
             // btnImage
             // 
             this.btnImage.Image = global::Poljoprivredno_gazdinstvo.Properties.Resources.Prinos2_ig_thumbnail_161_161;
-            this.btnImage.Location = new System.Drawing.Point(837, 36);
+            this.btnImage.Location = new System.Drawing.Point(908, 31);
             this.btnImage.Name = "btnImage";
             this.btnImage.Size = new System.Drawing.Size(227, 212);
             this.btnImage.TabIndex = 6;
@@ -111,18 +100,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1162, 539);
+            this.ClientSize = new System.Drawing.Size(1264, 539);
             this.Controls.Add(this.btnImage);
             this.Controls.Add(this.btnZatvori);
             this.Controls.Add(this.btnProdaja);
             this.Controls.Add(this.btnObrisi);
-            this.Controls.Add(this.btnDodaj);
             this.Controls.Add(this.btnPromeniPodatke);
             this.Controls.Add(this.dataGridViewPrinos);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Prinos";
-            this.Text = "Form_Prinos";
+            this.Text = "Pregled svih proizvedenih prinosa na poljoprivrednom gazdinstvu";
             this.Load += new System.EventHandler(this.Form_Prinos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrinos)).EndInit();
             this.ResumeLayout(false);
@@ -133,7 +121,6 @@
 
         private System.Windows.Forms.DataGridView dataGridViewPrinos;
         private System.Windows.Forms.Button btnPromeniPodatke;
-        private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.Button btnObrisi;
         private System.Windows.Forms.Button btnProdaja;
         private System.Windows.Forms.Button btnZatvori;

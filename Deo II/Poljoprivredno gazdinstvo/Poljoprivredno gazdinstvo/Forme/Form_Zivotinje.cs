@@ -20,6 +20,10 @@ namespace Poljoprivredno_gazdinstvo.Forme
             // stilizovanje forme
             Form_Start.ApplyStardewStyle(this);
             this.BackColor = Color.FromArgb(243, 208, 144);
+
+            this.MinimumSize = new Size(1300, 500);
+            this.MaximumSize = new Size(1300, 500);
+            this.Size = new Size(1300, 500);
         }
 
         public Form_Zivotinje(ZivotinjeBasic z)
@@ -31,6 +35,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
         private void Form_Zivotinje_Load(object sender, EventArgs e)
         {
             PopuniPodacima();
+
+            dgvZivotinje.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void PopuniPodacima()

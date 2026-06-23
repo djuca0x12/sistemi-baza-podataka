@@ -61,7 +61,7 @@
             // 
             // numIznos
             // 
-            this.numIznos.Location = new System.Drawing.Point(167, 159);
+            this.numIznos.Location = new System.Drawing.Point(219, 159);
             this.numIznos.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -74,14 +74,14 @@
             // dateTimePickerPodnosenja
             // 
             this.dateTimePickerPodnosenja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerPodnosenja.Location = new System.Drawing.Point(554, 62);
+            this.dateTimePickerPodnosenja.Location = new System.Drawing.Point(634, 62);
             this.dateTimePickerPodnosenja.Name = "dateTimePickerPodnosenja";
             this.dateTimePickerPodnosenja.Size = new System.Drawing.Size(155, 22);
             this.dateTimePickerPodnosenja.TabIndex = 2;
             // 
             // txtBrojResenja
             // 
-            this.txtBrojResenja.Location = new System.Drawing.Point(167, 61);
+            this.txtBrojResenja.Location = new System.Drawing.Point(219, 61);
             this.txtBrojResenja.Name = "txtBrojResenja";
             this.txtBrojResenja.Size = new System.Drawing.Size(105, 22);
             this.txtBrojResenja.TabIndex = 3;
@@ -89,7 +89,7 @@
             // checkBoxDatum
             // 
             this.checkBoxDatum.AutoSize = true;
-            this.checkBoxDatum.Location = new System.Drawing.Point(586, 183);
+            this.checkBoxDatum.Location = new System.Drawing.Point(653, 188);
             this.checkBoxDatum.Name = "checkBoxDatum";
             this.checkBoxDatum.Size = new System.Drawing.Size(123, 20);
             this.checkBoxDatum.TabIndex = 4;
@@ -99,19 +99,19 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(446, 267);
+            this.btnSacuvaj.Location = new System.Drawing.Point(490, 285);
             this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(86, 34);
+            this.btnSacuvaj.Size = new System.Drawing.Size(107, 34);
             this.btnSacuvaj.TabIndex = 5;
-            this.btnSacuvaj.Text = "Sacuvaj";
+            this.btnSacuvaj.Text = "Sačuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
             this.btnSacuvaj.Click += new System.EventHandler(this.btnSacuvaj_Click);
             // 
             // btnZatvori
             // 
-            this.btnZatvori.Location = new System.Drawing.Point(603, 267);
+            this.btnZatvori.Location = new System.Drawing.Point(668, 285);
             this.btnZatvori.Name = "btnZatvori";
-            this.btnZatvori.Size = new System.Drawing.Size(86, 34);
+            this.btnZatvori.Size = new System.Drawing.Size(121, 34);
             this.btnZatvori.TabIndex = 6;
             this.btnZatvori.Text = "Zatvori";
             this.btnZatvori.UseVisualStyleBackColor = true;
@@ -187,7 +187,7 @@
             "podsticaj za setvu",
             "subvencija za stocarstvo",
             "ekoloska mera"});
-            this.cmbVrsta.Location = new System.Drawing.Point(167, 111);
+            this.cmbVrsta.Location = new System.Drawing.Point(219, 111);
             this.cmbVrsta.Name = "cmbVrsta";
             this.cmbVrsta.Size = new System.Drawing.Size(105, 24);
             this.cmbVrsta.TabIndex = 14;
@@ -198,14 +198,14 @@
             this.cmbValuta.Items.AddRange(new object[] {
             "RSD",
             "EUR"});
-            this.cmbValuta.Location = new System.Drawing.Point(167, 213);
+            this.cmbValuta.Location = new System.Drawing.Point(219, 213);
             this.cmbValuta.Name = "cmbValuta";
             this.cmbValuta.Size = new System.Drawing.Size(105, 24);
             this.cmbValuta.TabIndex = 15;
             // 
             // txtKomentar
             // 
-            this.txtKomentar.Location = new System.Drawing.Point(167, 267);
+            this.txtKomentar.Location = new System.Drawing.Point(219, 267);
             this.txtKomentar.Name = "txtKomentar";
             this.txtKomentar.Size = new System.Drawing.Size(105, 22);
             this.txtKomentar.TabIndex = 16;
@@ -218,7 +218,7 @@
             "odobreno",
             "odbijeno",
             "isplaceno"});
-            this.cmbStatus.Location = new System.Drawing.Point(167, 326);
+            this.cmbStatus.Location = new System.Drawing.Point(219, 326);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(105, 24);
             this.cmbStatus.TabIndex = 17;
@@ -226,7 +226,7 @@
             // dateTimePickerOdobrenja
             // 
             this.dateTimePickerOdobrenja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerOdobrenja.Location = new System.Drawing.Point(554, 132);
+            this.dateTimePickerOdobrenja.Location = new System.Drawing.Point(634, 132);
             this.dateTimePickerOdobrenja.Name = "dateTimePickerOdobrenja";
             this.dateTimePickerOdobrenja.Size = new System.Drawing.Size(155, 22);
             this.dateTimePickerOdobrenja.TabIndex = 18;
@@ -235,7 +235,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 403);
+            this.ClientSize = new System.Drawing.Size(948, 403);
             this.Controls.Add(this.dateTimePickerOdobrenja);
             this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.txtKomentar);
@@ -258,7 +258,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Edit_Subvencija";
-            this.Text = "Form_Edit_Subvencija";
+            this.Text = "Promeni podatke o zahtevu za subvencijom";
             ((System.ComponentModel.ISupportInitialize)(this.numIznos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

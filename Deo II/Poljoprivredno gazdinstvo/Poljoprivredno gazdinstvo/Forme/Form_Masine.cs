@@ -18,6 +18,12 @@ namespace Poljoprivredno_gazdinstvo.Forme
             // stilizovanje forme
             Form_Start.ApplyStardewStyle(this);
             this.BackColor = Color.FromArgb(243, 208, 144);
+
+            this.MinimumSize = new Size(1095, 520);
+            this.MaximumSize = new Size(1095, 520);
+            this.Size = new Size(1095, 520);
+
+            dataGridViewMasin.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void button4_Click(object sender, EventArgs e)

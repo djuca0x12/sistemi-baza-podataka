@@ -50,9 +50,9 @@
             // 
             // btnProdajZitaricu
             // 
-            this.btnProdajZitaricu.Location = new System.Drawing.Point(1265, 301);
+            this.btnProdajZitaricu.Location = new System.Drawing.Point(1291, 289);
             this.btnProdajZitaricu.Name = "btnProdajZitaricu";
-            this.btnProdajZitaricu.Size = new System.Drawing.Size(154, 41);
+            this.btnProdajZitaricu.Size = new System.Drawing.Size(226, 41);
             this.btnProdajZitaricu.TabIndex = 9;
             this.btnProdajZitaricu.Text = "Proizvedi prinos";
             this.btnProdajZitaricu.UseVisualStyleBackColor = true;
@@ -60,9 +60,9 @@
             // 
             // btnObrisiZitaricu
             // 
-            this.btnObrisiZitaricu.Location = new System.Drawing.Point(1265, 212);
+            this.btnObrisiZitaricu.Location = new System.Drawing.Point(1307, 200);
             this.btnObrisiZitaricu.Name = "btnObrisiZitaricu";
-            this.btnObrisiZitaricu.Size = new System.Drawing.Size(154, 41);
+            this.btnObrisiZitaricu.Size = new System.Drawing.Size(195, 41);
             this.btnObrisiZitaricu.TabIndex = 8;
             this.btnObrisiZitaricu.Text = "Obriši žitaricu";
             this.btnObrisiZitaricu.UseVisualStyleBackColor = true;
@@ -70,9 +70,9 @@
             // 
             // btnIzmeniZitaricu
             // 
-            this.btnIzmeniZitaricu.Location = new System.Drawing.Point(1265, 123);
+            this.btnIzmeniZitaricu.Location = new System.Drawing.Point(1307, 118);
             this.btnIzmeniZitaricu.Name = "btnIzmeniZitaricu";
-            this.btnIzmeniZitaricu.Size = new System.Drawing.Size(154, 41);
+            this.btnIzmeniZitaricu.Size = new System.Drawing.Size(195, 41);
             this.btnIzmeniZitaricu.TabIndex = 7;
             this.btnIzmeniZitaricu.Text = "Izmeni žitaricu";
             this.btnIzmeniZitaricu.UseVisualStyleBackColor = true;
@@ -80,9 +80,9 @@
             // 
             // btnDodajZitaricu
             // 
-            this.btnDodajZitaricu.Location = new System.Drawing.Point(1265, 34);
+            this.btnDodajZitaricu.Location = new System.Drawing.Point(1307, 37);
             this.btnDodajZitaricu.Name = "btnDodajZitaricu";
-            this.btnDodajZitaricu.Size = new System.Drawing.Size(154, 41);
+            this.btnDodajZitaricu.Size = new System.Drawing.Size(195, 41);
             this.btnDodajZitaricu.TabIndex = 6;
             this.btnDodajZitaricu.Text = "Dodaj žitaricu";
             this.btnDodajZitaricu.UseVisualStyleBackColor = true;
@@ -90,9 +90,9 @@
             // 
             // btnSubvencije
             // 
-            this.btnSubvencije.Location = new System.Drawing.Point(1265, 381);
+            this.btnSubvencije.Location = new System.Drawing.Point(1307, 359);
             this.btnSubvencije.Name = "btnSubvencije";
-            this.btnSubvencije.Size = new System.Drawing.Size(154, 57);
+            this.btnSubvencije.Size = new System.Drawing.Size(195, 79);
             this.btnSubvencije.TabIndex = 11;
             this.btnSubvencije.Text = "Podnesi zahtev za dobijanje subvencije";
             this.btnSubvencije.UseVisualStyleBackColor = true;
@@ -102,13 +102,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1456, 450);
+            this.ClientSize = new System.Drawing.Size(1568, 450);
             this.Controls.Add(this.btnSubvencije);
             this.Controls.Add(this.dgvZitarice);
             this.Controls.Add(this.btnProdajZitaricu);
             this.Controls.Add(this.btnObrisiZitaricu);
             this.Controls.Add(this.btnIzmeniZitaricu);
             this.Controls.Add(this.btnDodajZitaricu);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form_Zitarice";
             this.Text = "Žitarice";
             this.Load += new System.EventHandler(this.Form_Zitarice_Load);

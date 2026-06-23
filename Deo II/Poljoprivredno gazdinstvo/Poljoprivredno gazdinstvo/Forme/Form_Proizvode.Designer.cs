@@ -60,7 +60,7 @@
             this.btnObrisi.Name = "btnObrisi";
             this.btnObrisi.Size = new System.Drawing.Size(114, 52);
             this.btnObrisi.TabIndex = 3;
-            this.btnObrisi.Text = "Obrisi";
+            this.btnObrisi.Text = "Obriši";
             this.btnObrisi.UseVisualStyleBackColor = true;
             this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
@@ -75,7 +75,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Proizvode";
-            this.Text = "Form_Proizvode";
+            this.Text = "Pregled informacija o proizvodnji prinosa na gazdinstvu";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProizvode)).EndInit();
             this.ResumeLayout(false);
 

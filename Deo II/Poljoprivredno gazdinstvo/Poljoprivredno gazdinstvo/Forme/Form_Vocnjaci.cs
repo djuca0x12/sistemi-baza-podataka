@@ -24,6 +24,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
         {
             InitializeComponent();
             vocnjak = v;
+
+            dgvVocnjaci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
         private void Form_Vocnjaci_Load(object sender, EventArgs e)
         {

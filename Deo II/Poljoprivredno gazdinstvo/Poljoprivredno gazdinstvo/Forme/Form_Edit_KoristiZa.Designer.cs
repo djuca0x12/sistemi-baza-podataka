@@ -46,7 +46,7 @@
             // 
             // PonistiIzbor
             // 
-            this.PonistiIzbor.Location = new System.Drawing.Point(362, 264);
+            this.PonistiIzbor.Location = new System.Drawing.Point(502, 308);
             this.PonistiIzbor.Name = "PonistiIzbor";
             this.PonistiIzbor.Size = new System.Drawing.Size(106, 41);
             this.PonistiIzbor.TabIndex = 21;
@@ -57,7 +57,7 @@
             // cBoxPrinos
             // 
             this.cBoxPrinos.FormattingEnabled = true;
-            this.cBoxPrinos.Location = new System.Drawing.Point(555, 115);
+            this.cBoxPrinos.Location = new System.Drawing.Point(708, 115);
             this.cBoxPrinos.Name = "cBoxPrinos";
             this.cBoxPrinos.Size = new System.Drawing.Size(178, 24);
             this.cBoxPrinos.TabIndex = 20;
@@ -65,7 +65,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(552, 49);
+            this.label4.Location = new System.Drawing.Point(705, 49);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(140, 16);
             this.label4.TabIndex = 19;
@@ -73,7 +73,7 @@
             // 
             // btnZatvori
             // 
-            this.btnZatvori.Location = new System.Drawing.Point(641, 264);
+            this.btnZatvori.Location = new System.Drawing.Point(854, 308);
             this.btnZatvori.Name = "btnZatvori";
             this.btnZatvori.Size = new System.Drawing.Size(106, 41);
             this.btnZatvori.TabIndex = 18;
@@ -93,7 +93,7 @@
             // cBoxMasina
             // 
             this.cBoxMasina.FormattingEnabled = true;
-            this.cBoxMasina.Location = new System.Drawing.Point(299, 115);
+            this.cBoxMasina.Location = new System.Drawing.Point(389, 115);
             this.cBoxMasina.Name = "cBoxMasina";
             this.cBoxMasina.Size = new System.Drawing.Size(178, 24);
             this.cBoxMasina.TabIndex = 16;
@@ -102,7 +102,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(296, 49);
+            this.label2.Location = new System.Drawing.Point(386, 49);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(146, 16);
             this.label2.TabIndex = 15;
@@ -111,7 +111,7 @@
             // dateTimePickerDatumOd
             // 
             this.dateTimePickerDatumOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDatumOd.Location = new System.Drawing.Point(49, 238);
+            this.dateTimePickerDatumOd.Location = new System.Drawing.Point(118, 237);
             this.dateTimePickerDatumOd.Name = "dateTimePickerDatumOd";
             this.dateTimePickerDatumOd.Size = new System.Drawing.Size(200, 22);
             this.dateTimePickerDatumOd.TabIndex = 14;
@@ -127,7 +127,7 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(500, 264);
+            this.btnSacuvaj.Location = new System.Drawing.Point(677, 308);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(106, 41);
             this.btnSacuvaj.TabIndex = 12;
@@ -147,7 +147,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(46, 320);
+            this.label5.Location = new System.Drawing.Point(65, 320);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(209, 16);
             this.label5.TabIndex = 23;
@@ -156,7 +156,7 @@
             // dateTimePickerDatumDo
             // 
             this.dateTimePickerDatumDo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDatumDo.Location = new System.Drawing.Point(49, 369);
+            this.dateTimePickerDatumDo.Location = new System.Drawing.Point(118, 367);
             this.dateTimePickerDatumDo.Name = "dateTimePickerDatumDo";
             this.dateTimePickerDatumDo.Size = new System.Drawing.Size(200, 22);
             this.dateTimePickerDatumDo.TabIndex = 22;
@@ -164,7 +164,7 @@
             // checkBoxDatum
             // 
             this.checkBoxDatum.AutoSize = true;
-            this.checkBoxDatum.Location = new System.Drawing.Point(154, 409);
+            this.checkBoxDatum.Location = new System.Drawing.Point(195, 418);
             this.checkBoxDatum.Name = "checkBoxDatum";
             this.checkBoxDatum.Size = new System.Drawing.Size(123, 20);
             this.checkBoxDatum.TabIndex = 24;
@@ -176,7 +176,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1039, 450);
             this.Controls.Add(this.checkBoxDatum);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dateTimePickerDatumDo);
@@ -192,7 +192,7 @@
             this.Controls.Add(this.btnSacuvaj);
             this.Controls.Add(this.label1);
             this.Name = "Form_Edit_KoristiZa";
-            this.Text = "Form_Edit_KoristiZa";
+            this.Text = "Promeni podatak o korišćenju";
             this.Load += new System.EventHandler(this.Form_Edit_KoristiZa_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -49,6 +49,7 @@
             this.txtVrsta = new System.Windows.Forms.TextBox();
             this.txtBrojUha = new System.Windows.Forms.TextBox();
             this.btnIzmeniZivotinju = new System.Windows.Forms.Button();
+            this.btnZatvori = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numTezina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBrojJedinki)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +57,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(357, 318);
+            this.label10.Location = new System.Drawing.Point(441, 318);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(47, 16);
             this.label10.TabIndex = 43;
@@ -65,7 +66,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(357, 262);
+            this.label9.Location = new System.Drawing.Point(437, 262);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(51, 16);
             this.label9.TabIndex = 42;
@@ -74,7 +75,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(322, 184);
+            this.label8.Location = new System.Drawing.Point(396, 184);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(92, 16);
             this.label8.TabIndex = 41;
@@ -83,7 +84,7 @@
             // lblDatumRodjenja
             // 
             this.lblDatumRodjenja.AutoSize = true;
-            this.lblDatumRodjenja.Location = new System.Drawing.Point(322, 114);
+            this.lblDatumRodjenja.Location = new System.Drawing.Point(396, 114);
             this.lblDatumRodjenja.Name = "lblDatumRodjenja";
             this.lblDatumRodjenja.Size = new System.Drawing.Size(98, 16);
             this.lblDatumRodjenja.TabIndex = 40;
@@ -92,7 +93,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(344, 37);
+            this.label6.Location = new System.Drawing.Point(412, 39);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 16);
             this.label6.TabIndex = 39;
@@ -150,7 +151,7 @@
             this.cbxStatus.Items.AddRange(new object[] {
             "aktivna",
             "na lecenju"});
-            this.cbxStatus.Location = new System.Drawing.Point(425, 315);
+            this.cbxStatus.Location = new System.Drawing.Point(566, 315);
             this.cbxStatus.Name = "cbxStatus";
             this.cbxStatus.Size = new System.Drawing.Size(121, 24);
             this.cbxStatus.TabIndex = 33;
@@ -158,7 +159,12 @@
             // numTezina
             // 
             this.numTezina.DecimalPlaces = 2;
-            this.numTezina.Location = new System.Drawing.Point(426, 256);
+            this.numTezina.Location = new System.Drawing.Point(567, 256);
+            this.numTezina.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.numTezina.Minimum = new decimal(new int[] {
             1,
             0,
@@ -177,7 +183,7 @@
             // dtpDatumUlaska
             // 
             this.dtpDatumUlaska.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumUlaska.Location = new System.Drawing.Point(426, 184);
+            this.dtpDatumUlaska.Location = new System.Drawing.Point(567, 184);
             this.dtpDatumUlaska.Name = "dtpDatumUlaska";
             this.dtpDatumUlaska.Size = new System.Drawing.Size(120, 22);
             this.dtpDatumUlaska.TabIndex = 31;
@@ -185,14 +191,19 @@
             // dtpDatumRodjenja
             // 
             this.dtpDatumRodjenja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumRodjenja.Location = new System.Drawing.Point(426, 112);
+            this.dtpDatumRodjenja.Location = new System.Drawing.Point(567, 112);
             this.dtpDatumRodjenja.Name = "dtpDatumRodjenja";
             this.dtpDatumRodjenja.Size = new System.Drawing.Size(120, 22);
             this.dtpDatumRodjenja.TabIndex = 30;
             // 
             // numBrojJedinki
             // 
-            this.numBrojJedinki.Location = new System.Drawing.Point(426, 33);
+            this.numBrojJedinki.Location = new System.Drawing.Point(567, 33);
+            this.numBrojJedinki.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.numBrojJedinki.Minimum = new decimal(new int[] {
             1,
             0,
@@ -214,42 +225,42 @@
             this.cbxPol.Items.AddRange(new object[] {
             "M",
             "Z"});
-            this.cbxPol.Location = new System.Drawing.Point(122, 186);
+            this.cbxPol.Location = new System.Drawing.Point(190, 185);
             this.cbxPol.Name = "cbxPol";
             this.cbxPol.Size = new System.Drawing.Size(121, 24);
             this.cbxPol.TabIndex = 28;
             // 
             // txtKomentar
             // 
-            this.txtKomentar.Location = new System.Drawing.Point(122, 325);
+            this.txtKomentar.Location = new System.Drawing.Point(190, 324);
             this.txtKomentar.Name = "txtKomentar";
             this.txtKomentar.Size = new System.Drawing.Size(100, 22);
             this.txtKomentar.TabIndex = 27;
             // 
             // txtRasa
             // 
-            this.txtRasa.Location = new System.Drawing.Point(122, 256);
+            this.txtRasa.Location = new System.Drawing.Point(190, 255);
             this.txtRasa.Name = "txtRasa";
             this.txtRasa.Size = new System.Drawing.Size(100, 22);
             this.txtRasa.TabIndex = 26;
             // 
             // txtVrsta
             // 
-            this.txtVrsta.Location = new System.Drawing.Point(122, 114);
+            this.txtVrsta.Location = new System.Drawing.Point(190, 113);
             this.txtVrsta.Name = "txtVrsta";
             this.txtVrsta.Size = new System.Drawing.Size(100, 22);
             this.txtVrsta.TabIndex = 25;
             // 
             // txtBrojUha
             // 
-            this.txtBrojUha.Location = new System.Drawing.Point(122, 34);
+            this.txtBrojUha.Location = new System.Drawing.Point(190, 33);
             this.txtBrojUha.Name = "txtBrojUha";
             this.txtBrojUha.Size = new System.Drawing.Size(100, 22);
             this.txtBrojUha.TabIndex = 24;
             // 
             // btnIzmeniZivotinju
             // 
-            this.btnIzmeniZivotinju.Location = new System.Drawing.Point(227, 383);
+            this.btnIzmeniZivotinju.Location = new System.Drawing.Point(194, 386);
             this.btnIzmeniZivotinju.Name = "btnIzmeniZivotinju";
             this.btnIzmeniZivotinju.Size = new System.Drawing.Size(154, 41);
             this.btnIzmeniZivotinju.TabIndex = 23;
@@ -257,11 +268,22 @@
             this.btnIzmeniZivotinju.UseVisualStyleBackColor = true;
             this.btnIzmeniZivotinju.Click += new System.EventHandler(this.btnIzmeniZivotinju_Click);
             // 
+            // btnZatvori
+            // 
+            this.btnZatvori.Location = new System.Drawing.Point(421, 386);
+            this.btnZatvori.Name = "btnZatvori";
+            this.btnZatvori.Size = new System.Drawing.Size(154, 41);
+            this.btnZatvori.TabIndex = 44;
+            this.btnZatvori.Text = "Zatvori";
+            this.btnZatvori.UseVisualStyleBackColor = true;
+            this.btnZatvori.Click += new System.EventHandler(this.btnZatvori_Click);
+            // 
             // Form_Edit_Zivotinja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(596, 450);
+            this.ClientSize = new System.Drawing.Size(766, 450);
+            this.Controls.Add(this.btnZatvori);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -283,8 +305,10 @@
             this.Controls.Add(this.txtVrsta);
             this.Controls.Add(this.txtBrojUha);
             this.Controls.Add(this.btnIzmeniZivotinju);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form_Edit_Zivotinja";
-            this.Text = "Form_Edit_Zivotinja";
+            this.Text = "Promeni podatke o životinji";
             this.Load += new System.EventHandler(this.Form_Edit_Zivotinja_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numTezina)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numBrojJedinki)).EndInit();
@@ -316,5 +340,6 @@
         private System.Windows.Forms.TextBox txtVrsta;
         private System.Windows.Forms.TextBox txtBrojUha;
         private System.Windows.Forms.Button btnIzmeniZivotinju;
+        private System.Windows.Forms.Button btnZatvori;
     }
 }

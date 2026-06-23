@@ -29,6 +29,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
         private void Form_Zitarice_Load(object sender, EventArgs e)
         {
             PopuniPodacima();
+
+            dgvZitarice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void PopuniPodacima()

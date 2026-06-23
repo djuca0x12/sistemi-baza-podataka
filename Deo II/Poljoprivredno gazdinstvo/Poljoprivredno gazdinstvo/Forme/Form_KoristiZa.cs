@@ -21,6 +21,12 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
             UcitajPodatke();
 
+            this.MinimumSize = new Size(1095, 520);
+            this.MaximumSize = new Size(1095, 520);
+            this.Size = new Size(1095, 520);
+
+            dataGridViewPrikaz.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
         }
 
         private void UcitajPodatke()

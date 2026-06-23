@@ -59,7 +59,7 @@
             // 
             // numBrojTockova
             // 
-            this.numBrojTockova.Location = new System.Drawing.Point(584, 205);
+            this.numBrojTockova.Location = new System.Drawing.Point(635, 207);
             this.numBrojTockova.Maximum = new decimal(new int[] {
             6,
             0,
@@ -76,9 +76,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(436, 353);
+            this.button1.Location = new System.Drawing.Point(494, 353);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(99, 35);
+            this.button1.Size = new System.Drawing.Size(112, 35);
             this.button1.TabIndex = 59;
             this.button1.Text = "Otkazi";
             this.button1.UseVisualStyleBackColor = true;
@@ -88,7 +88,7 @@
             // 
             this.btnSacuvaj.Location = new System.Drawing.Point(287, 353);
             this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(99, 35);
+            this.btnSacuvaj.Size = new System.Drawing.Size(112, 35);
             this.btnSacuvaj.TabIndex = 58;
             this.btnSacuvaj.Text = "Sacuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
@@ -114,7 +114,7 @@
             // 
             // numGodinaProizvodnje
             // 
-            this.numGodinaProizvodnje.Location = new System.Drawing.Point(584, 137);
+            this.numGodinaProizvodnje.Location = new System.Drawing.Point(635, 139);
             this.numGodinaProizvodnje.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -132,7 +132,7 @@
             // dateDatumKupovine
             // 
             this.dateDatumKupovine.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDatumKupovine.Location = new System.Drawing.Point(584, 63);
+            this.dateDatumKupovine.Location = new System.Drawing.Point(635, 65);
             this.dateDatumKupovine.Name = "dateDatumKupovine";
             this.dateDatumKupovine.Size = new System.Drawing.Size(159, 22);
             this.dateDatumKupovine.TabIndex = 54;
@@ -145,14 +145,14 @@
             "u kvraru",
             "na servisu",
             "prodat"});
-            this.cBoxStatus.Location = new System.Drawing.Point(157, 131);
+            this.cBoxStatus.Location = new System.Drawing.Point(198, 131);
             this.cBoxStatus.Name = "cBoxStatus";
             this.cBoxStatus.Size = new System.Drawing.Size(121, 24);
             this.cBoxStatus.TabIndex = 53;
             // 
             // txtModel
             // 
-            this.txtModel.Location = new System.Drawing.Point(156, 259);
+            this.txtModel.Location = new System.Drawing.Point(197, 259);
             this.txtModel.Name = "txtModel";
             this.txtModel.Size = new System.Drawing.Size(121, 22);
             this.txtModel.TabIndex = 52;
@@ -168,7 +168,7 @@
             // 
             // txtKomentar
             // 
-            this.txtKomentar.Location = new System.Drawing.Point(157, 189);
+            this.txtKomentar.Location = new System.Drawing.Point(198, 189);
             this.txtKomentar.Name = "txtKomentar";
             this.txtKomentar.Size = new System.Drawing.Size(121, 22);
             this.txtKomentar.TabIndex = 50;
@@ -193,7 +193,7 @@
             // 
             // txtBrojSasije
             // 
-            this.txtBrojSasije.Location = new System.Drawing.Point(157, 63);
+            this.txtBrojSasije.Location = new System.Drawing.Point(198, 63);
             this.txtBrojSasije.Name = "txtBrojSasije";
             this.txtBrojSasije.Size = new System.Drawing.Size(121, 22);
             this.txtBrojSasije.TabIndex = 47;
@@ -211,7 +211,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(894, 450);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.numBrojTockova);
             this.Controls.Add(this.button1);
@@ -231,7 +231,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Edit_Masina";
-            this.Text = "Form_Edit_Masina";
+            this.Text = "Promeni podatke o masini";
             ((System.ComponentModel.ISupportInitialize)(this.numBrojTockova)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGodinaProizvodnje)).EndInit();
             this.ResumeLayout(false);

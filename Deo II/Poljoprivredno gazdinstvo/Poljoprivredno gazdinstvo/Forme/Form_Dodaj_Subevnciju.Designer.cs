@@ -47,7 +47,7 @@
             // 
             // txtKomentar
             // 
-            this.txtKomentar.Location = new System.Drawing.Point(188, 287);
+            this.txtKomentar.Location = new System.Drawing.Point(235, 283);
             this.txtKomentar.Name = "txtKomentar";
             this.txtKomentar.Size = new System.Drawing.Size(105, 22);
             this.txtKomentar.TabIndex = 35;
@@ -58,7 +58,7 @@
             this.cmbValuta.Items.AddRange(new object[] {
             "RSD",
             "EUR"});
-            this.cmbValuta.Location = new System.Drawing.Point(188, 233);
+            this.cmbValuta.Location = new System.Drawing.Point(235, 229);
             this.cmbValuta.Name = "cmbValuta";
             this.cmbValuta.Size = new System.Drawing.Size(105, 24);
             this.cmbValuta.TabIndex = 34;
@@ -70,7 +70,7 @@
             "podsticaj za setvu",
             "subvencija za stocarstvo",
             "ekoloska mera"});
-            this.cmbVrsta.Location = new System.Drawing.Point(188, 131);
+            this.cmbVrsta.Location = new System.Drawing.Point(235, 127);
             this.cmbVrsta.Name = "cmbVrsta";
             this.cmbVrsta.Size = new System.Drawing.Size(105, 24);
             this.cmbVrsta.TabIndex = 33;
@@ -122,7 +122,7 @@
             // 
             // btnZatvori
             // 
-            this.btnZatvori.Location = new System.Drawing.Point(586, 202);
+            this.btnZatvori.Location = new System.Drawing.Point(680, 223);
             this.btnZatvori.Name = "btnZatvori";
             this.btnZatvori.Size = new System.Drawing.Size(86, 34);
             this.btnZatvori.TabIndex = 25;
@@ -132,17 +132,17 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(429, 202);
+            this.btnSacuvaj.Location = new System.Drawing.Point(523, 223);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(86, 34);
             this.btnSacuvaj.TabIndex = 24;
-            this.btnSacuvaj.Text = "Sacuvaj";
+            this.btnSacuvaj.Text = "Sačuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
             this.btnSacuvaj.Click += new System.EventHandler(this.btnSacuvaj_Click);
             // 
             // txtBrojResenja
             // 
-            this.txtBrojResenja.Location = new System.Drawing.Point(188, 81);
+            this.txtBrojResenja.Location = new System.Drawing.Point(235, 77);
             this.txtBrojResenja.Name = "txtBrojResenja";
             this.txtBrojResenja.Size = new System.Drawing.Size(105, 22);
             this.txtBrojResenja.TabIndex = 22;
@@ -150,14 +150,14 @@
             // dateTimePickerPodnosenja
             // 
             this.dateTimePickerPodnosenja.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerPodnosenja.Location = new System.Drawing.Point(573, 82);
+            this.dateTimePickerPodnosenja.Location = new System.Drawing.Point(641, 82);
             this.dateTimePickerPodnosenja.Name = "dateTimePickerPodnosenja";
             this.dateTimePickerPodnosenja.Size = new System.Drawing.Size(155, 22);
             this.dateTimePickerPodnosenja.TabIndex = 21;
             // 
             // numIznos
             // 
-            this.numIznos.Location = new System.Drawing.Point(188, 179);
+            this.numIznos.Location = new System.Drawing.Point(235, 175);
             this.numIznos.Maximum = new decimal(new int[] {
             999999999,
             0,
@@ -180,7 +180,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 339);
+            this.ClientSize = new System.Drawing.Size(863, 339);
             this.Controls.Add(this.txtKomentar);
             this.Controls.Add(this.cmbValuta);
             this.Controls.Add(this.cmbVrsta);
@@ -198,7 +198,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Dodaj_Subevnciju";
-            this.Text = "Form_Dodaj_Subevnciju";
+            this.Text = "Podnesi zahtev za suvencijom";
             ((System.ComponentModel.ISupportInitialize)(this.numIznos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

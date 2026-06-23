@@ -46,14 +46,14 @@
             // 
             // txtTip
             // 
-            this.txtTip.Location = new System.Drawing.Point(201, 64);
+            this.txtTip.Location = new System.Drawing.Point(290, 67);
             this.txtTip.Name = "txtTip";
             this.txtTip.Size = new System.Drawing.Size(130, 22);
             this.txtTip.TabIndex = 0;
             // 
             // numKolicina
             // 
-            this.numKolicina.Location = new System.Drawing.Point(201, 124);
+            this.numKolicina.Location = new System.Drawing.Point(290, 127);
             this.numKolicina.Name = "numKolicina";
             this.numKolicina.Size = new System.Drawing.Size(130, 22);
             this.numKolicina.TabIndex = 1;
@@ -87,7 +87,7 @@
             // 
             // txtKomentar
             // 
-            this.txtKomentar.Location = new System.Drawing.Point(201, 194);
+            this.txtKomentar.Location = new System.Drawing.Point(290, 197);
             this.txtKomentar.Name = "txtKomentar";
             this.txtKomentar.Size = new System.Drawing.Size(130, 22);
             this.txtKomentar.TabIndex = 4;
@@ -112,9 +112,9 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(430, 55);
+            this.btnSacuvaj.Location = new System.Drawing.Point(538, 55);
             this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(87, 35);
+            this.btnSacuvaj.Size = new System.Drawing.Size(138, 35);
             this.btnSacuvaj.TabIndex = 10;
             this.btnSacuvaj.Text = "Sacuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
@@ -122,9 +122,9 @@
             // 
             // btnZatvori
             // 
-            this.btnZatvori.Location = new System.Drawing.Point(430, 124);
+            this.btnZatvori.Location = new System.Drawing.Point(538, 127);
             this.btnZatvori.Name = "btnZatvori";
-            this.btnZatvori.Size = new System.Drawing.Size(87, 36);
+            this.btnZatvori.Size = new System.Drawing.Size(138, 36);
             this.btnZatvori.TabIndex = 11;
             this.btnZatvori.Text = "Zatvori";
             this.btnZatvori.UseVisualStyleBackColor = true;
@@ -133,7 +133,7 @@
             // btnImage
             // 
             this.btnImage.Image = global::Poljoprivredno_gazdinstvo.Properties.Resources.Prinos1_ig_thumbnail_161_161;
-            this.btnImage.Location = new System.Drawing.Point(382, 194);
+            this.btnImage.Location = new System.Drawing.Point(508, 194);
             this.btnImage.MinimumSize = new System.Drawing.Size(170, 180);
             this.btnImage.Name = "btnImage";
             this.btnImage.Size = new System.Drawing.Size(209, 211);
@@ -147,7 +147,7 @@
             "I klasa",
             "II klasa",
             "III klasa"});
-            this.cBoxKvalitet.Location = new System.Drawing.Point(201, 251);
+            this.cBoxKvalitet.Location = new System.Drawing.Point(290, 254);
             this.cBoxKvalitet.Name = "cBoxKvalitet";
             this.cBoxKvalitet.Size = new System.Drawing.Size(130, 24);
             this.cBoxKvalitet.TabIndex = 13;
@@ -161,7 +161,7 @@
             "t",
             "l",
             "komad"});
-            this.cBoxJedinica.Location = new System.Drawing.Point(201, 319);
+            this.cBoxJedinica.Location = new System.Drawing.Point(290, 322);
             this.cBoxJedinica.Name = "cBoxJedinica";
             this.cBoxJedinica.Size = new System.Drawing.Size(130, 24);
             this.cBoxJedinica.TabIndex = 14;
@@ -170,7 +170,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(643, 452);
+            this.ClientSize = new System.Drawing.Size(755, 435);
             this.Controls.Add(this.cBoxJedinica);
             this.Controls.Add(this.cBoxKvalitet);
             this.Controls.Add(this.btnImage);

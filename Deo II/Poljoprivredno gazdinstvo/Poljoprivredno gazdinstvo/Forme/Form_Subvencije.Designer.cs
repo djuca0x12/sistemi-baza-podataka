@@ -47,7 +47,7 @@
             // 
             // btnZatvori
             // 
-            this.btnZatvori.Location = new System.Drawing.Point(1045, 469);
+            this.btnZatvori.Location = new System.Drawing.Point(1045, 435);
             this.btnZatvori.Name = "btnZatvori";
             this.btnZatvori.Size = new System.Drawing.Size(101, 49);
             this.btnZatvori.TabIndex = 2;
@@ -57,9 +57,9 @@
             // 
             // btnPromeni
             // 
-            this.btnPromeni.Location = new System.Drawing.Point(1045, 277);
+            this.btnPromeni.Location = new System.Drawing.Point(987, 282);
             this.btnPromeni.Name = "btnPromeni";
-            this.btnPromeni.Size = new System.Drawing.Size(101, 49);
+            this.btnPromeni.Size = new System.Drawing.Size(207, 49);
             this.btnPromeni.TabIndex = 3;
             this.btnPromeni.Text = "Promeni podatke";
             this.btnPromeni.UseVisualStyleBackColor = true;
@@ -67,11 +67,11 @@
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(1045, 373);
+            this.btnObrisi.Location = new System.Drawing.Point(1045, 359);
             this.btnObrisi.Name = "btnObrisi";
             this.btnObrisi.Size = new System.Drawing.Size(101, 49);
             this.btnObrisi.TabIndex = 4;
-            this.btnObrisi.Text = "Obrisi";
+            this.btnObrisi.Text = "Obriši";
             this.btnObrisi.UseVisualStyleBackColor = true;
             this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
             // 
@@ -97,7 +97,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Subvencije";
-            this.Text = "Form_Subvencije";
+            this.Text = "Pregled svih zahteva za subvencijom na gazdinstvu";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

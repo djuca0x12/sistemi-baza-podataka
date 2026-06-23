@@ -23,7 +23,7 @@ namespace Poljoprivredno_gazdinstvo.Forme
             _idPrinosa = idPrinosa;
 
             cBoxJedinicaMere.SelectedItem = jedinica;
-            cBoxJedinicaMere.Enabled = false;
+            cBoxJedinicaMere.Enabled = false;            
         }
 
         private void btnZatvori_Click(object sender, EventArgs e)

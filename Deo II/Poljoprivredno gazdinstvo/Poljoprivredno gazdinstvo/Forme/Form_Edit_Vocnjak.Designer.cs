@@ -57,6 +57,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnZatvori = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numBrojStabala)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGodinaSadnje)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPovrsina)).BeginInit();
@@ -65,21 +66,21 @@
             // dtpDatumRezidbe
             // 
             this.dtpDatumRezidbe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumRezidbe.Location = new System.Drawing.Point(596, 172);
+            this.dtpDatumRezidbe.Location = new System.Drawing.Point(785, 178);
             this.dtpDatumRezidbe.Name = "dtpDatumRezidbe";
             this.dtpDatumRezidbe.Size = new System.Drawing.Size(150, 22);
             this.dtpDatumRezidbe.TabIndex = 121;
             // 
             // txtRodniCiklus
             // 
-            this.txtRodniCiklus.Location = new System.Drawing.Point(596, 218);
+            this.txtRodniCiklus.Location = new System.Drawing.Point(785, 224);
             this.txtRodniCiklus.Name = "txtRodniCiklus";
             this.txtRodniCiklus.Size = new System.Drawing.Size(150, 22);
             this.txtRodniCiklus.TabIndex = 120;
             // 
             // txtSorta
             // 
-            this.txtSorta.Location = new System.Drawing.Point(596, 130);
+            this.txtSorta.Location = new System.Drawing.Point(785, 136);
             this.txtSorta.Name = "txtSorta";
             this.txtSorta.Size = new System.Drawing.Size(150, 22);
             this.txtSorta.TabIndex = 119;
@@ -87,7 +88,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(394, 218);
+            this.label3.Location = new System.Drawing.Point(583, 224);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 16);
             this.label3.TabIndex = 118;
@@ -95,7 +96,7 @@
             // 
             // btnIzmeniVocnjak
             // 
-            this.btnIzmeniVocnjak.Location = new System.Drawing.Point(592, 281);
+            this.btnIzmeniVocnjak.Location = new System.Drawing.Point(614, 333);
             this.btnIzmeniVocnjak.Name = "btnIzmeniVocnjak";
             this.btnIzmeniVocnjak.Size = new System.Drawing.Size(154, 41);
             this.btnIzmeniVocnjak.TabIndex = 117;
@@ -105,7 +106,7 @@
             // 
             // numBrojStabala
             // 
-            this.numBrojStabala.Location = new System.Drawing.Point(596, 83);
+            this.numBrojStabala.Location = new System.Drawing.Point(785, 89);
             this.numBrojStabala.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -117,7 +118,7 @@
             // 
             // numGodinaSadnje
             // 
-            this.numGodinaSadnje.Location = new System.Drawing.Point(596, 40);
+            this.numGodinaSadnje.Location = new System.Drawing.Point(785, 46);
             this.numGodinaSadnje.Maximum = new decimal(new int[] {
             3000,
             0,
@@ -144,7 +145,7 @@
             "u toku",
             "zavrseno",
             "otkazano"});
-            this.cbxStatus.Location = new System.Drawing.Point(200, 344);
+            this.cbxStatus.Location = new System.Drawing.Point(338, 342);
             this.cbxStatus.Name = "cbxStatus";
             this.cbxStatus.Size = new System.Drawing.Size(150, 24);
             this.cbxStatus.TabIndex = 114;
@@ -152,7 +153,7 @@
             // dtpDatumZetveStvarni
             // 
             this.dtpDatumZetveStvarni.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumZetveStvarni.Location = new System.Drawing.Point(200, 301);
+            this.dtpDatumZetveStvarni.Location = new System.Drawing.Point(338, 299);
             this.dtpDatumZetveStvarni.Name = "dtpDatumZetveStvarni";
             this.dtpDatumZetveStvarni.Size = new System.Drawing.Size(150, 22);
             this.dtpDatumZetveStvarni.TabIndex = 113;
@@ -160,7 +161,7 @@
             // dtpDatumZetvePlanirani
             // 
             this.dtpDatumZetvePlanirani.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumZetvePlanirani.Location = new System.Drawing.Point(200, 258);
+            this.dtpDatumZetvePlanirani.Location = new System.Drawing.Point(338, 256);
             this.dtpDatumZetvePlanirani.Name = "dtpDatumZetvePlanirani";
             this.dtpDatumZetvePlanirani.Size = new System.Drawing.Size(150, 22);
             this.dtpDatumZetvePlanirani.TabIndex = 112;
@@ -168,14 +169,14 @@
             // dtpDatumSetve
             // 
             this.dtpDatumSetve.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDatumSetve.Location = new System.Drawing.Point(200, 215);
+            this.dtpDatumSetve.Location = new System.Drawing.Point(338, 213);
             this.dtpDatumSetve.Name = "dtpDatumSetve";
             this.dtpDatumSetve.Size = new System.Drawing.Size(150, 22);
             this.dtpDatumSetve.TabIndex = 111;
             // 
             // numPovrsina
             // 
-            this.numPovrsina.Location = new System.Drawing.Point(200, 129);
+            this.numPovrsina.Location = new System.Drawing.Point(338, 127);
             this.numPovrsina.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -197,28 +198,28 @@
             // 
             // txtKomentar
             // 
-            this.txtKomentar.Location = new System.Drawing.Point(200, 389);
+            this.txtKomentar.Location = new System.Drawing.Point(338, 387);
             this.txtKomentar.Name = "txtKomentar";
             this.txtKomentar.Size = new System.Drawing.Size(150, 22);
             this.txtKomentar.TabIndex = 109;
             // 
             // txtKvalitetZemljista
             // 
-            this.txtKvalitetZemljista.Location = new System.Drawing.Point(200, 172);
+            this.txtKvalitetZemljista.Location = new System.Drawing.Point(338, 170);
             this.txtKvalitetZemljista.Name = "txtKvalitetZemljista";
             this.txtKvalitetZemljista.Size = new System.Drawing.Size(150, 22);
             this.txtKvalitetZemljista.TabIndex = 108;
             // 
             // txtLokacija
             // 
-            this.txtLokacija.Location = new System.Drawing.Point(200, 82);
+            this.txtLokacija.Location = new System.Drawing.Point(338, 80);
             this.txtLokacija.Name = "txtLokacija";
             this.txtLokacija.Size = new System.Drawing.Size(150, 22);
             this.txtLokacija.TabIndex = 107;
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(200, 39);
+            this.txtNaziv.Location = new System.Drawing.Point(338, 37);
             this.txtNaziv.Name = "txtNaziv";
             this.txtNaziv.Size = new System.Drawing.Size(150, 22);
             this.txtNaziv.TabIndex = 106;
@@ -235,7 +236,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(394, 173);
+            this.label13.Location = new System.Drawing.Point(583, 179);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(97, 16);
             this.label13.TabIndex = 104;
@@ -271,7 +272,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(394, 85);
+            this.label9.Location = new System.Drawing.Point(583, 91);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(82, 16);
             this.label9.TabIndex = 100;
@@ -280,7 +281,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(394, 129);
+            this.label8.Location = new System.Drawing.Point(583, 135);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(42, 16);
             this.label8.TabIndex = 99;
@@ -289,7 +290,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(394, 42);
+            this.label7.Location = new System.Drawing.Point(583, 48);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(98, 16);
             this.label7.TabIndex = 98;
@@ -340,11 +341,22 @@
             this.label1.TabIndex = 93;
             this.label1.Text = "Naziv:";
             // 
+            // btnZatvori
+            // 
+            this.btnZatvori.Location = new System.Drawing.Point(795, 333);
+            this.btnZatvori.Name = "btnZatvori";
+            this.btnZatvori.Size = new System.Drawing.Size(154, 41);
+            this.btnZatvori.TabIndex = 122;
+            this.btnZatvori.Text = "Zatvori";
+            this.btnZatvori.UseVisualStyleBackColor = true;
+            this.btnZatvori.Click += new System.EventHandler(this.btnZatvori_Click);
+            // 
             // Form_Edit_Vocnjak
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1023, 450);
+            this.Controls.Add(this.btnZatvori);
             this.Controls.Add(this.dtpDatumRezidbe);
             this.Controls.Add(this.txtRodniCiklus);
             this.Controls.Add(this.txtSorta);
@@ -375,7 +387,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form_Edit_Vocnjak";
-            this.Text = "Form_Edit_Vocnjak";
+            this.Text = "Promeni podatke o voćnjaku";
             this.Load += new System.EventHandler(this.Form_Edit_Vocnjak_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numBrojStabala)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numGodinaSadnje)).EndInit();
@@ -416,5 +428,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnZatvori;
     }
 }

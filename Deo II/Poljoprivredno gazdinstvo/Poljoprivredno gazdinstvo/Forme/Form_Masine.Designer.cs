@@ -38,7 +38,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1123, 437);
+            this.button4.Location = new System.Drawing.Point(1142, 435);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(129, 53);
             this.button4.TabIndex = 11;
@@ -48,9 +48,9 @@
             // 
             // btnObrisiMasinu
             // 
-            this.btnObrisiMasinu.Location = new System.Drawing.Point(1123, 203);
+            this.btnObrisiMasinu.Location = new System.Drawing.Point(1133, 206);
             this.btnObrisiMasinu.Name = "btnObrisiMasinu";
-            this.btnObrisiMasinu.Size = new System.Drawing.Size(129, 55);
+            this.btnObrisiMasinu.Size = new System.Drawing.Size(148, 55);
             this.btnObrisiMasinu.TabIndex = 10;
             this.btnObrisiMasinu.Text = "Obrisi masinu";
             this.btnObrisiMasinu.UseVisualStyleBackColor = true;
@@ -58,9 +58,9 @@
             // 
             // btnDodajMasinu
             // 
-            this.btnDodajMasinu.Location = new System.Drawing.Point(1123, 313);
+            this.btnDodajMasinu.Location = new System.Drawing.Point(1111, 312);
             this.btnDodajMasinu.Name = "btnDodajMasinu";
-            this.btnDodajMasinu.Size = new System.Drawing.Size(129, 64);
+            this.btnDodajMasinu.Size = new System.Drawing.Size(182, 64);
             this.btnDodajMasinu.TabIndex = 9;
             this.btnDodajMasinu.Text = "Dodaj novu masinu";
             this.btnDodajMasinu.UseVisualStyleBackColor = true;
@@ -78,9 +78,9 @@
             // 
             // btnPromeniMasinu
             // 
-            this.btnPromeniMasinu.Location = new System.Drawing.Point(1118, 94);
+            this.btnPromeniMasinu.Location = new System.Drawing.Point(1109, 86);
             this.btnPromeniMasinu.Name = "btnPromeniMasinu";
-            this.btnPromeniMasinu.Size = new System.Drawing.Size(134, 57);
+            this.btnPromeniMasinu.Size = new System.Drawing.Size(184, 77);
             this.btnPromeniMasinu.TabIndex = 7;
             this.btnPromeniMasinu.Text = "Promeni podatke o masini";
             this.btnPromeniMasinu.UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1331, 618);
+            this.ClientSize = new System.Drawing.Size(1381, 618);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnObrisiMasinu);
             this.Controls.Add(this.btnDodajMasinu);
@@ -99,7 +99,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Masine";
-            this.Text = "Form_Masine";
+            this.Text = "Masine na poljoprivrednom gazdinstvu";
             this.Load += new System.EventHandler(this.Form_Masine_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMasin)).EndInit();
             this.ResumeLayout(false);

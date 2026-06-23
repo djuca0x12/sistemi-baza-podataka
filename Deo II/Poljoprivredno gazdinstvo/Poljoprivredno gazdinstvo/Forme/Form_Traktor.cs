@@ -19,6 +19,11 @@ namespace Poljoprivredno_gazdinstvo.Forme
             Form_Start.ApplyStardewStyle(this);
             this.BackColor = Color.FromArgb(243, 208, 144);
             //UcitajTraktoreUListView();
+            this.MinimumSize = new Size(1195, 520);
+            this.MaximumSize = new Size(1395, 520);
+            this.Size = new Size(1195, 520);
+
+            dataGridViewTraktori.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
 
@@ -52,6 +57,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
             Form DodajTraktor = new Form_Dodaj_Traktor();
 
             DodajTraktor.ShowDialog();
+
+            UcitajTraktore();
         }
 
         private void button4_Click(object sender, EventArgs e)

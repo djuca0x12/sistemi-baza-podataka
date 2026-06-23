@@ -45,7 +45,7 @@
             // 
             // btn_Zivotinje
             // 
-            this.btn_Zivotinje.Location = new System.Drawing.Point(64, 71);
+            this.btn_Zivotinje.Location = new System.Drawing.Point(65, 107);
             this.btn_Zivotinje.Name = "btn_Zivotinje";
             this.btn_Zivotinje.Size = new System.Drawing.Size(154, 41);
             this.btn_Zivotinje.TabIndex = 1;
@@ -55,7 +55,7 @@
             // 
             // btnProdaje
             // 
-            this.btnProdaje.Location = new System.Drawing.Point(712, 311);
+            this.btnProdaje.Location = new System.Drawing.Point(714, 347);
             this.btnProdaje.Name = "btnProdaje";
             this.btnProdaje.Size = new System.Drawing.Size(154, 41);
             this.btnProdaje.TabIndex = 2;
@@ -65,7 +65,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(712, 229);
+            this.button3.Location = new System.Drawing.Point(714, 265);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(154, 41);
             this.button3.TabIndex = 4;
@@ -75,7 +75,7 @@
             // 
             // btnProizvode
             // 
-            this.btnProizvode.Location = new System.Drawing.Point(712, 392);
+            this.btnProizvode.Location = new System.Drawing.Point(714, 428);
             this.btnProizvode.Name = "btnProizvode";
             this.btnProizvode.Size = new System.Drawing.Size(154, 41);
             this.btnProizvode.TabIndex = 5;
@@ -85,7 +85,7 @@
             // 
             // btn_Voćnjaci
             // 
-            this.btn_Voćnjaci.Location = new System.Drawing.Point(64, 229);
+            this.btn_Voćnjaci.Location = new System.Drawing.Point(65, 265);
             this.btn_Voćnjaci.Name = "btn_Voćnjaci";
             this.btn_Voćnjaci.Size = new System.Drawing.Size(154, 41);
             this.btn_Voćnjaci.TabIndex = 6;
@@ -95,7 +95,7 @@
             // 
             // btn_KrmnoBilje
             // 
-            this.btn_KrmnoBilje.Location = new System.Drawing.Point(64, 392);
+            this.btn_KrmnoBilje.Location = new System.Drawing.Point(65, 428);
             this.btn_KrmnoBilje.Name = "btn_KrmnoBilje";
             this.btn_KrmnoBilje.Size = new System.Drawing.Size(154, 41);
             this.btn_KrmnoBilje.TabIndex = 7;
@@ -105,7 +105,7 @@
             // 
             // btn_Povrce
             // 
-            this.btn_Povrce.Location = new System.Drawing.Point(64, 311);
+            this.btn_Povrce.Location = new System.Drawing.Point(65, 347);
             this.btn_Povrce.Name = "btn_Povrce";
             this.btn_Povrce.Size = new System.Drawing.Size(154, 41);
             this.btn_Povrce.TabIndex = 8;
@@ -115,7 +115,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(712, 71);
+            this.button8.Location = new System.Drawing.Point(714, 107);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(154, 41);
             this.button8.TabIndex = 9;
@@ -125,7 +125,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(712, 154);
+            this.button9.Location = new System.Drawing.Point(714, 190);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(154, 41);
             this.button9.TabIndex = 10;
@@ -135,7 +135,7 @@
             // 
             // btn_Zitarice
             // 
-            this.btn_Zitarice.Location = new System.Drawing.Point(64, 154);
+            this.btn_Zitarice.Location = new System.Drawing.Point(65, 190);
             this.btn_Zitarice.Name = "btn_Zitarice";
             this.btn_Zitarice.Size = new System.Drawing.Size(154, 41);
             this.btn_Zitarice.TabIndex = 11;
@@ -145,7 +145,7 @@
             // 
             // btnSubvencije
             // 
-            this.btnSubvencije.Location = new System.Drawing.Point(712, 471);
+            this.btnSubvencije.Location = new System.Drawing.Point(400, 26);
             this.btnSubvencije.Name = "btnSubvencije";
             this.btnSubvencije.Size = new System.Drawing.Size(154, 41);
             this.btnSubvencije.TabIndex = 12;
@@ -155,7 +155,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(385, 511);
+            this.button2.Location = new System.Drawing.Point(400, 511);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(154, 41);
             this.button2.TabIndex = 13;
@@ -166,7 +166,7 @@
             // btnImage
             // 
             this.btnImage.Image = global::Poljoprivredno_gazdinstvo.Properties.Resources.Pocetna1_ig_profile_photo_320_320;
-            this.btnImage.Location = new System.Drawing.Point(267, 61);
+            this.btnImage.Location = new System.Drawing.Point(275, 87);
             this.btnImage.Name = "btnImage";
             this.btnImage.Size = new System.Drawing.Size(404, 397);
             this.btnImage.TabIndex = 14;

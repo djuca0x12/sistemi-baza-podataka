@@ -52,7 +52,7 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(490, 230);
+            this.btnSacuvaj.Location = new System.Drawing.Point(667, 273);
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(106, 41);
             this.btnSacuvaj.TabIndex = 1;
@@ -72,7 +72,7 @@
             // dateTimePickerDatumOd
             // 
             this.dateTimePickerDatumOd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDatumOd.Location = new System.Drawing.Point(64, 247);
+            this.dateTimePickerDatumOd.Location = new System.Drawing.Point(85, 280);
             this.dateTimePickerDatumOd.Name = "dateTimePickerDatumOd";
             this.dateTimePickerDatumOd.Size = new System.Drawing.Size(200, 22);
             this.dateTimePickerDatumOd.TabIndex = 3;
@@ -80,7 +80,7 @@
             // cBoxMasina
             // 
             this.cBoxMasina.FormattingEnabled = true;
-            this.cBoxMasina.Location = new System.Drawing.Point(314, 124);
+            this.cBoxMasina.Location = new System.Drawing.Point(401, 124);
             this.cBoxMasina.Name = "cBoxMasina";
             this.cBoxMasina.Size = new System.Drawing.Size(178, 24);
             this.cBoxMasina.TabIndex = 5;
@@ -89,7 +89,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(311, 58);
+            this.label2.Location = new System.Drawing.Point(398, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(146, 16);
             this.label2.TabIndex = 4;
@@ -98,7 +98,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(61, 198);
+            this.label3.Location = new System.Drawing.Point(57, 231);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(228, 16);
             this.label3.TabIndex = 6;
@@ -106,7 +106,7 @@
             // 
             // btnZatvori
             // 
-            this.btnZatvori.Location = new System.Drawing.Point(642, 230);
+            this.btnZatvori.Location = new System.Drawing.Point(867, 273);
             this.btnZatvori.Name = "btnZatvori";
             this.btnZatvori.Size = new System.Drawing.Size(106, 41);
             this.btnZatvori.TabIndex = 7;
@@ -117,7 +117,7 @@
             // cBoxPrinos
             // 
             this.cBoxPrinos.FormattingEnabled = true;
-            this.cBoxPrinos.Location = new System.Drawing.Point(570, 124);
+            this.cBoxPrinos.Location = new System.Drawing.Point(739, 124);
             this.cBoxPrinos.Name = "cBoxPrinos";
             this.cBoxPrinos.Size = new System.Drawing.Size(178, 24);
             this.cBoxPrinos.TabIndex = 9;
@@ -125,7 +125,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(567, 58);
+            this.label4.Location = new System.Drawing.Point(736, 58);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(140, 16);
             this.label4.TabIndex = 8;
@@ -133,7 +133,7 @@
             // 
             // PonistiIzbor
             // 
-            this.PonistiIzbor.Location = new System.Drawing.Point(351, 230);
+            this.PonistiIzbor.Location = new System.Drawing.Point(473, 273);
             this.PonistiIzbor.Name = "PonistiIzbor";
             this.PonistiIzbor.Size = new System.Drawing.Size(106, 41);
             this.PonistiIzbor.TabIndex = 10;
@@ -145,7 +145,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 343);
+            this.ClientSize = new System.Drawing.Size(1041, 397);
             this.Controls.Add(this.PonistiIzbor);
             this.Controls.Add(this.cBoxPrinos);
             this.Controls.Add(this.label4);
@@ -160,7 +160,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Dodaj_KoristiZa";
-            this.Text = "Form_Dodaj_KoristiZa";
+            this.Text = "Dodaj podatak o korišćenju";
             this.Load += new System.EventHandler(this.Form_Dodaj_KoristiZa_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

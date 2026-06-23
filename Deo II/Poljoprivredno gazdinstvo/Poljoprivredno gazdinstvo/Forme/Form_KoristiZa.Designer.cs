@@ -44,14 +44,14 @@
             this.dataGridViewPrikaz.Name = "dataGridViewPrikaz";
             this.dataGridViewPrikaz.RowHeadersWidth = 51;
             this.dataGridViewPrikaz.RowTemplate.Height = 24;
-            this.dataGridViewPrikaz.Size = new System.Drawing.Size(740, 466);
+            this.dataGridViewPrikaz.Size = new System.Drawing.Size(912, 466);
             this.dataGridViewPrikaz.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(850, 311);
+            this.button1.Location = new System.Drawing.Point(1003, 315);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(220, 52);
+            this.button1.Size = new System.Drawing.Size(323, 52);
             this.button1.TabIndex = 1;
             this.button1.Text = "Dodaj podatak o koriscenju";
             this.button1.UseVisualStyleBackColor = true;
@@ -59,9 +59,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(850, 242);
+            this.button2.Location = new System.Drawing.Point(977, 247);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(220, 52);
+            this.button2.Size = new System.Drawing.Size(374, 52);
             this.button2.TabIndex = 2;
             this.button2.Text = "Promeni podatke o koriscenju";
             this.button2.UseVisualStyleBackColor = true;
@@ -69,7 +69,7 @@
             // 
             // btnZatvori
             // 
-            this.btnZatvori.Location = new System.Drawing.Point(906, 446);
+            this.btnZatvori.Location = new System.Drawing.Point(1105, 450);
             this.btnZatvori.Name = "btnZatvori";
             this.btnZatvori.Size = new System.Drawing.Size(118, 44);
             this.btnZatvori.TabIndex = 3;
@@ -80,7 +80,7 @@
             // button3
             // 
             this.button3.Image = global::Poljoprivredno_gazdinstvo.Properties.Resources.KoristiZa1_ig_thumbnail_161_161;
-            this.button3.Location = new System.Drawing.Point(850, 24);
+            this.button3.Location = new System.Drawing.Point(1064, 24);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(220, 194);
             this.button3.TabIndex = 4;
@@ -88,9 +88,9 @@
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(881, 382);
+            this.btnObrisi.Location = new System.Drawing.Point(1063, 387);
             this.btnObrisi.Name = "btnObrisi";
-            this.btnObrisi.Size = new System.Drawing.Size(160, 44);
+            this.btnObrisi.Size = new System.Drawing.Size(197, 44);
             this.btnObrisi.TabIndex = 5;
             this.btnObrisi.Text = "Obrisi podatak";
             this.btnObrisi.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1136, 502);
+            this.ClientSize = new System.Drawing.Size(1380, 502);
             this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnZatvori);

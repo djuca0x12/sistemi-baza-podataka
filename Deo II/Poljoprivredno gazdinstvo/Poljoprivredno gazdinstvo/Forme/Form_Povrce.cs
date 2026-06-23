@@ -29,6 +29,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
         private void Form_Povrce_Load(object sender, EventArgs e)
         {
             PopuniPodacima();
+
+            dgvPovrce.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
         private void PopuniPodacima()
         {

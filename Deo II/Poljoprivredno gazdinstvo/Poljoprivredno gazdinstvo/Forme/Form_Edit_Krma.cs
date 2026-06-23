@@ -26,6 +26,10 @@ namespace Poljoprivredno_gazdinstvo.Forme
         {
             InitializeComponent();
             krma = k;
+
+            // stilizovanje forme
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
         }
 
         private void Form_Edit_Krma_Load(object sender, EventArgs e)
@@ -82,6 +86,11 @@ namespace Poljoprivredno_gazdinstvo.Forme
                 MessageBox.Show("Ažuriranje krmnog bilja je uspešno izvršeno!");
                 this.Close();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

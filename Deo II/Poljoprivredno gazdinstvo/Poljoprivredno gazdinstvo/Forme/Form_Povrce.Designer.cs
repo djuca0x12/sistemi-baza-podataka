@@ -45,14 +45,14 @@
             this.dgvPovrce.ReadOnly = true;
             this.dgvPovrce.RowHeadersWidth = 51;
             this.dgvPovrce.RowTemplate.Height = 24;
-            this.dgvPovrce.Size = new System.Drawing.Size(1178, 308);
+            this.dgvPovrce.Size = new System.Drawing.Size(1178, 358);
             this.dgvPovrce.TabIndex = 15;
             // 
             // btnProdajPovrce
             // 
             this.btnProdajPovrce.Location = new System.Drawing.Point(1266, 292);
             this.btnProdajPovrce.Name = "btnProdajPovrce";
-            this.btnProdajPovrce.Size = new System.Drawing.Size(154, 41);
+            this.btnProdajPovrce.Size = new System.Drawing.Size(236, 41);
             this.btnProdajPovrce.TabIndex = 14;
             this.btnProdajPovrce.Text = "Proizvedi prinos";
             this.btnProdajPovrce.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@
             // 
             this.btnObrisiPovrce.Location = new System.Drawing.Point(1266, 203);
             this.btnObrisiPovrce.Name = "btnObrisiPovrce";
-            this.btnObrisiPovrce.Size = new System.Drawing.Size(154, 41);
+            this.btnObrisiPovrce.Size = new System.Drawing.Size(236, 41);
             this.btnObrisiPovrce.TabIndex = 13;
             this.btnObrisiPovrce.Text = "Obriši povrće";
             this.btnObrisiPovrce.UseVisualStyleBackColor = true;
@@ -70,9 +70,9 @@
             // 
             // btnIzmeniPovrce
             // 
-            this.btnIzmeniPovrce.Location = new System.Drawing.Point(1266, 114);
+            this.btnIzmeniPovrce.Location = new System.Drawing.Point(1266, 115);
             this.btnIzmeniPovrce.Name = "btnIzmeniPovrce";
-            this.btnIzmeniPovrce.Size = new System.Drawing.Size(154, 41);
+            this.btnIzmeniPovrce.Size = new System.Drawing.Size(236, 41);
             this.btnIzmeniPovrce.TabIndex = 12;
             this.btnIzmeniPovrce.Text = "Izmeni povrće";
             this.btnIzmeniPovrce.UseVisualStyleBackColor = true;
@@ -82,7 +82,7 @@
             // 
             this.btnDodajPovrce.Location = new System.Drawing.Point(1266, 25);
             this.btnDodajPovrce.Name = "btnDodajPovrce";
-            this.btnDodajPovrce.Size = new System.Drawing.Size(154, 41);
+            this.btnDodajPovrce.Size = new System.Drawing.Size(236, 41);
             this.btnDodajPovrce.TabIndex = 11;
             this.btnDodajPovrce.Text = "Dodaj povrće";
             this.btnDodajPovrce.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@
             // 
             this.btnSubvencije.Location = new System.Drawing.Point(1266, 374);
             this.btnSubvencije.Name = "btnSubvencije";
-            this.btnSubvencije.Size = new System.Drawing.Size(154, 40);
+            this.btnSubvencije.Size = new System.Drawing.Size(236, 84);
             this.btnSubvencije.TabIndex = 16;
             this.btnSubvencije.Text = "Podnesi zahtev za dobijanje subvencije";
             this.btnSubvencije.UseVisualStyleBackColor = true;
@@ -102,13 +102,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1452, 450);
+            this.ClientSize = new System.Drawing.Size(1525, 483);
             this.Controls.Add(this.btnSubvencije);
             this.Controls.Add(this.dgvPovrce);
             this.Controls.Add(this.btnProdajPovrce);
             this.Controls.Add(this.btnObrisiPovrce);
             this.Controls.Add(this.btnIzmeniPovrce);
             this.Controls.Add(this.btnDodajPovrce);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form_Povrce";
             this.Text = "Povrće";
             this.Load += new System.EventHandler(this.Form_Povrce_Load);

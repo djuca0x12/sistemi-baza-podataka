@@ -21,6 +21,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
             _izmena = koristiZa;
 
             UcitajPodatke();
+
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
         }
 
         private void UcitajPodatke()

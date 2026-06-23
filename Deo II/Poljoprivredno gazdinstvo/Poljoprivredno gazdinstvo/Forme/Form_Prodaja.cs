@@ -18,6 +18,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
             // stilizovanje forme
             Form_Start.ApplyStardewStyle(this);
             this.BackColor = Color.FromArgb(243, 208, 144);
+
+            dataGridViewProdaja.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void UcitajProdajeUGrid()
@@ -39,6 +41,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
         private void Form_Prodaja_Load(object sender, EventArgs e)
         {
             UcitajProdajeUGrid();
+
+            dataGridViewProdaja.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void btnZatvori_Click(object sender, EventArgs e)

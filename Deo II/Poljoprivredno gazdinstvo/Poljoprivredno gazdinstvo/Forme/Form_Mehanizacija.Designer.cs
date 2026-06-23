@@ -105,7 +105,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 450);
+            this.ClientSize = new System.Drawing.Size(1007, 450);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.imageTraktor);
             this.Controls.Add(this.imageMasina);
@@ -116,7 +116,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Mehanizacija";
-            this.Text = "Form_Mehanizacija";
+            this.Text = "Mehanizacija na poljoprivrednom gazdinstvu";
             this.ResumeLayout(false);
             this.PerformLayout();
 
