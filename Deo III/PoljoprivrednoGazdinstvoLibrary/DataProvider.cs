@@ -12,7 +12,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
     public static class DataProvider
     {
         #region Mehanizacije
-        public static List<TraktorBasic> UcitajTraktore()
+        public async static Task<Result<List<TraktorBasic>, ErrorMessage>> UcitajTraktore()
         {
             List<TraktorBasic> traktori = new List<TraktorBasic>();
 
@@ -20,7 +20,11 @@ namespace PoljoprivrednoGazdinstvoLibrary
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    traktori = session.Query<Traktor>()
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+                    traktori = await session.Query<Traktor>()
                     .Select(t => new TraktorBasic(
                         t.IdMehanizacija,
                         t.BrojSasije,
@@ -34,23 +38,27 @@ namespace PoljoprivrednoGazdinstvoLibrary
                         t.BrojMotora
 
                     ))
-                    .ToList();
+                    .ToListAsync();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška pri čitanju podataka: {ex.FormatExceptionMessage()}");
+                return "Greška pri čitanju podataka o traktorima".ToError(400);
             }
 
             return traktori;
         }
 
-        public static void DodajTraktor(TraktorBasic traktorDTO)
+        public async static Task<Result<bool, ErrorMessage>> DodajTraktor(TraktorBasic traktorDTO)
         {
             try
             {
                 using (var session = DataLayer.GetSession())
                 {
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
                     Traktor noviTraktor = new Traktor
                     {
                         BrojSasije = traktorDTO.BrojSasije,
@@ -64,25 +72,31 @@ namespace PoljoprivrednoGazdinstvoLibrary
                         BrojMotora = traktorDTO.BrojMotora
                     };
 
-                    session.Save(noviTraktor);
+                    await session.SaveAsync(noviTraktor);
 
-                    session.Flush();
+                    await session.FlushAsync();
+                    return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom dodavanja traktora u bazu: {ex.FormatExceptionMessage()}");
+                return "Greška prilikom dodavanja traktora u bazu".ToError(400);
             }
         }
 
 
-        public static bool ProveriDaLiBrojSasijePostoji(string brojSasije, int trenutniId = 0)
+        public async static Task<Result<bool, ErrorMessage>> ProveriDaLiBrojSasijePostoji(string brojSasije, int trenutniId = 0)
         {
             using (var session = DataLayer.GetSession())
             {
-                var postojeci = session.Query<Mehanizacija>()
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
+                var postojeci = await session.Query<Mehanizacija>()
                     .Where(m => m.BrojSasije == brojSasije)
-                    .FirstOrDefault();
+                    .FirstOrDefaultAsync();
 
                 // Ne postoji
                 if (postojeci == null)
@@ -101,7 +115,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
             }
         }
 
-        public static TraktorBasic VratiTraktorPoId(int id)
+        public async static Task<Result<TraktorBasic, ErrorMessage>> VratiTraktorPoId(int id)
         {
             TraktorBasic traktorDTO = null;
 
@@ -109,7 +123,12 @@ namespace PoljoprivrednoGazdinstvoLibrary
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    Traktor t = session.Get<Traktor>(id);
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
+                    Traktor t = await session.GetAsync<Traktor>(id);
 
                     if (t != null)
                     {
@@ -129,21 +148,26 @@ namespace PoljoprivrednoGazdinstvoLibrary
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom učitavanja traktora: {ex.FormatExceptionMessage()}");
+                return "Greška prilikom učitavanja traktora".ToError(400);
             }
 
             return traktorDTO;
         }
 
-        public static void IzmeniTraktor(TraktorBasic traktorDTO)
+        public async static Task<Result<bool, ErrorMessage>> IzmeniTraktor(TraktorBasic traktorDTO)
         {
             try
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    Traktor t = session.Load<Traktor>(traktorDTO.IdMehanizacija);
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
+                    Traktor t = await session.LoadAsync<Traktor>(traktorDTO.IdMehanizacija);
 
                     // Azuriramo podatke
                     t.BrojSasije = traktorDTO.BrojSasije;
@@ -157,38 +181,46 @@ namespace PoljoprivrednoGazdinstvoLibrary
                     t.BrojMotora = traktorDTO.BrojMotora;
 
                     // Cuvamo izmene
-                    session.Update(t);
-                    session.Flush();
+                    await session.UpdateAsync(t);
+                    await session.FlushAsync();
+                    return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom izmene traktora: {ex.FormatExceptionMessage()}");
+                return "Greška prilikom izmene traktora".ToError(400);
             }
         }
 
-        public static void ObrisiTraktor(int id)
+        public async static Task<Result<bool, ErrorMessage>> ObrisiTraktor(int id)
         {
             try
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    Traktor t = session.Load<Traktor>(id);
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
+                    Traktor t = await session.LoadAsync<Traktor>(id);
 
                     if (t != null)
                     {
-                        session.Delete(t);
-                        session.Flush();
+                        await session.DeleteAsync(t);
+                        await session.FlushAsync();
+                        return true;
                     }
+                    return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom brisanja traktora: {ex.FormatExceptionMessage()}");
+                return "Greška prilikom brisanja traktora".ToError(400);
             }
         }
 
-        public static List<MasinaBasic> VratiSvePrskalice()
+        public async static Task<Result<List<MasinaBasic>, ErrorMessage>> VratiSvePrskalice()
         {
             List<MasinaBasic> masine = new List<MasinaBasic>();
 
@@ -196,7 +228,12 @@ namespace PoljoprivrednoGazdinstvoLibrary
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    var sveMasine = session.Query<Masina>().ToList();
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
+                    var sveMasine = await session.Query<Masina>().ToListAsync();
 
                     foreach (var p in sveMasine)
                     {
@@ -213,20 +250,25 @@ namespace PoljoprivrednoGazdinstvoLibrary
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom učitavanja masine: {ex.FormatExceptionMessage()}");
+                return "Greška prilikom učitavanja mašine".ToError(400);
             }
 
             return masine;
         }
 
-        public static void DodajMasinu(MasinaBasic masina)
+        public async static Task<Result<bool, ErrorMessage>> DodajMasinu(MasinaBasic masina)
         {
             try
             {
                 using (var session = DataLayer.GetSession())
                 {
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
                     MasinaBasic novaMasina = new MasinaBasic
                     {
                         BrojSasije = masina.BrojSasije,
@@ -238,23 +280,29 @@ namespace PoljoprivrednoGazdinstvoLibrary
                         BrojTockova = masina.BrojTockova
                     };
 
-                    session.Save(novaMasina);
-                    session.Flush();
+                    await session.SaveAsync(novaMasina);
+                    await session.FlushAsync();
+                    return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom dodavanja masine: {ex.FormatExceptionMessage()}");
+                return "Greška prilikom dodavanja mašine".ToError(400);
             }
         }
 
-        public static bool ProveriDaLiBrojSasijePostojiZaMasinu(string brojSasije, int trenutniId = 0)
+        public async static Task<Result<bool, ErrorMessage>> ProveriDaLiBrojSasijePostojiZaMasinu(string brojSasije, int trenutniId = 0)
         {
             using (var session = DataLayer.GetSession())
             {
-                var postojeci = session.Query<Masina>()
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
+                var postojeci = await session.Query<Masina>()
                     .Where(p => p.BrojSasije == brojSasije)
-                    .FirstOrDefault();
+                    .FirstOrDefaultAsync();
 
                 if (postojeci == null) return false;
 
@@ -264,7 +312,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
             }
         }
 
-        public static MasinaBasic VratiMasinuPoId(int id)
+        public async static Task<Result<MasinaBasic, ErrorMessage>> VratiMasinuPoId(int id)
         {
             MasinaBasic MasinaDTO = null;
 
@@ -272,7 +320,11 @@ namespace PoljoprivrednoGazdinstvoLibrary
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    Masina m = session.Get<Masina>(id);
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+                    Masina m = await session.GetAsync<Masina>(id);
 
                     if (m != null)
                     {
@@ -289,20 +341,25 @@ namespace PoljoprivrednoGazdinstvoLibrary
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom učitavanja masine: {ex.Message}");
+                "Greška prilikom učitavanja mašine".ToError(400);
             }
             return MasinaDTO;
         }
 
-        public static void IzmeniMasinu(MasinaBasic masinaDTO)
+        public async static Task<Result<bool, ErrorMessage>> IzmeniMasinu(MasinaBasic masinaDTO)
         {
             try
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    Masina p = session.Load<Masina>(masinaDTO.IdMehanizacija);
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
+                    Masina p = await session.LoadAsync<Masina>(masinaDTO.IdMehanizacija);
 
                     p.BrojSasije = masinaDTO.BrojSasije;
                     p.Status = masinaDTO.Status;
@@ -312,34 +369,42 @@ namespace PoljoprivrednoGazdinstvoLibrary
                     p.GodinaProizvodnje = masinaDTO.GodinaProizvodnje;
                     p.BrojTockova = masinaDTO.BrojTockova;
 
-                    session.Update(p);
-                    session.Flush();
+                    await session.UpdateAsync(p);
+                    await session.FlushAsync();
+                    return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom izmene masine: {ex.Message}");
+                return "Greška prilikom izmene mašine".ToError(400);
             }
         }
 
-        public static void ObrisiMasinu(int id)
+        public async static Task<Result<bool, ErrorMessage>> ObrisiMasinu(int id)
         {
             try
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    Masina m = session.Load<Masina>(id);
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
+                    Masina m = await session.LoadAsync<Masina>(id);
 
                     if (m != null)
                     {
-                        session.Delete(m);
-                        session.Flush();
+                        await session.DeleteAsync(m);
+                        await session.FlushAsync();
+                        return true;
                     }
+                    return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom brisanja masine: {ex.Message}");
+                return "Greška prilikom brisanja mašine".ToError(400);
             }
         }
 
@@ -347,12 +412,17 @@ namespace PoljoprivrednoGazdinstvoLibrary
 
         #region Prinos
 
-        public static void DodajPrinos(PrinosBasic prinosDTO)
+        public async static Task<Result<bool, ErrorMessage>> DodajPrinos(PrinosBasic prinosDTO)
         {
             try
             {
                 using (var session = DataLayer.GetSession())
                 {
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
                     Prinos noviPrinos = new Prinos
                     {
                         Tip = prinosDTO.Tip,
@@ -362,23 +432,29 @@ namespace PoljoprivrednoGazdinstvoLibrary
                         JedinicaMere = prinosDTO.JedinicaMere
                     };
 
-                    session.Save(noviPrinos);
-                    session.Flush();
+                    await session.SaveAsync(noviPrinos);
+                    await session.FlushAsync();
+                    return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom dodavanja prinosa: {ex.Message}");
+                return "Greška prilikom dodavanja prinosa".ToError(400);
             }
         }
 
-        public static bool ProveriDaLiTipPostoji(string tip, int trenutniId = 0)
+        public async static Task<Result<bool, ErrorMessage>> ProveriDaLiTipPostoji(string tip, int trenutniId = 0)
         {
             using (var session = DataLayer.GetSession())
             {
-                var postojeci = session.Query<Prinos>()
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
+                var postojeci = await session.Query<Prinos>()
                                 .Where(p => p.Tip == tip)
-                                .FirstOrDefault();
+                                .FirstOrDefaultAsync();
 
                 if (postojeci == null) return false;
 
@@ -388,7 +464,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
             }
         }
 
-        public static List<PrinosBasic> VratiSvePrinose()
+        public async static Task<Result<List<PrinosBasic>, ErrorMessage>> VratiSvePrinose()
         {
             List<PrinosBasic> prinosiDTO = new List<PrinosBasic>();
 
@@ -396,7 +472,11 @@ namespace PoljoprivrednoGazdinstvoLibrary
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    var sviPrinosi = session.Query<Prinos>().ToList();
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+                    var sviPrinosi = await session.Query<Prinos>().ToListAsync();
 
                     foreach (var p in sviPrinosi)
                     {
@@ -411,15 +491,15 @@ namespace PoljoprivrednoGazdinstvoLibrary
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom učitavanja prinosa: {ex.Message}");
+                "Greška prilikom učitavanja prinosa".ToError(400);
             }
 
             return prinosiDTO;
         }
 
-        public static PrinosBasic VratiPrinosPoId(int id)
+        public async static Task<Result<PrinosBasic, ErrorMessage>> VratiPrinosPoId(int id)
         {
             PrinosBasic prinosDTO = null;
 
@@ -427,7 +507,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    Prinos p = session.Get<Prinos>(id);
+                    Prinos p = await session.GetAsync<Prinos>(id);
 
                     if (p != null)
                     {
@@ -442,20 +522,25 @@ namespace PoljoprivrednoGazdinstvoLibrary
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom učitavanja prinosa: {ex.Message}");
+                "Greška prilikom učitavanja prinosa".ToError(400);
             }
             return prinosDTO;
         }
 
-        public static void IzmeniPrinos(PrinosBasic prinosDTO)
+        public async static Task<Result<bool, ErrorMessage>> IzmeniPrinos(PrinosBasic prinosDTO)
         {
             try
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    Prinos p = session.Load<Prinos>(prinosDTO.IdPrinosa);
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
+                    Prinos p = await session.LoadAsync<Prinos>(prinosDTO.IdPrinosa);
 
                     p.Tip = prinosDTO.Tip;
                     p.Kolicina = (double)prinosDTO.Kolicina;
@@ -463,33 +548,41 @@ namespace PoljoprivrednoGazdinstvoLibrary
                     p.KvalitetProizvoda = prinosDTO.KvalitetProizvoda;
                     p.JedinicaMere = prinosDTO.JedinicaMere;
 
-                    session.Update(p);
-                    session.Flush();
+                    await session.UpdateAsync(p);
+                    await session.FlushAsync();
+                    return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom izmene prinosa: {ex.Message}");
+                return "Greška prilikom izmene prinosa".ToError(400);
             }
         }
 
-        public static void ObrisiPrinos(int id)
+        public async static Task<Result<bool, ErrorMessage>> ObrisiPrinos(int id)
         {
             try
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    Prinos p = session.Load<Prinos>(id);
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
+                    Prinos p = await session.LoadAsync<Prinos>(id);
                     if (p != null)
                     {
-                        session.Delete(p);
-                        session.Flush();
+                        await session.DeleteAsync(p);
+                        await session.FlushAsync();
+                        return true;
                     }
+                    return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom brisanja prinosa: {ex.Message}");
+                return "Greška prilikom brisanja prinosa".ToError(400);
             }
         }
 
@@ -497,17 +590,21 @@ namespace PoljoprivrednoGazdinstvoLibrary
 
         #region Prodaja
 
-        public static bool DodajProdaju(ProdajaBasic prodaja)
+        public async static Task<Result<bool, ErrorMessage>> DodajProdaju(ProdajaBasic prodaja)
         {
             try
             {
                 using (ISession session = DataLayer.GetSession())
                 {
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
                     // Transtakcija
                     using (ITransaction transaction = session.BeginTransaction())
                     {
                         // Prinos
-                        Prinos prinos = session.Load<Prinos>(prodaja.IdPrinosa);
+                        Prinos prinos = await session.LoadAsync<Prinos>(prodaja.IdPrinosa);
 
                         // Azuriramo kolicinu
                         prinos.Kolicina -= (double)prodaja.Kolicina;
@@ -526,29 +623,33 @@ namespace PoljoprivrednoGazdinstvoLibrary
                             Kupac = prodaja.Kupac
                         };
 
-                        session.Save(novaProdaja);
-                        session.Update(prinos);
+                        await session.SaveAsync(novaProdaja);
+                        await session.UpdateAsync(prinos);
 
-                        transaction.Commit();
+                        await transaction.CommitAsync();
                         return true;
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Ako bilo šta pođe po zlu, transakcija se neće potvrditi (Commit)
-                Console.WriteLine(ex.Message);
-                return false;
+                //Console.WriteLine(ex.Message);
+                return "Greška pri dodavanju prodaje".ToError(400);
             }
         }
 
-        public static bool ProveriDaLiBrojFakturePostoji(string brojFakture, int trenutniId = 0)
+        public async static Task<Result<bool, ErrorMessage>> ProveriDaLiBrojFakturePostoji(string brojFakture, int trenutniId = 0)
         {
             using (var session = DataLayer.GetSession())
             {
-                var postojeci = session.Query<Prodaja>()
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+                var postojeci = await session.Query<Prodaja>()
                     .Where(p => p.BrojFakture == brojFakture)
-                    .FirstOrDefault();
+                    .FirstOrDefaultAsync();
 
                 if (postojeci == null) return false;
 
@@ -558,7 +659,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
             }
         }
 
-        public static List<ProdajaBasic> VratiSveProdaje()
+        public async static Task<Result<List<ProdajaBasic>, ErrorMessage>> VratiSveProdaje()
         {
             List<ProdajaBasic> prodajeDTO = new List<ProdajaBasic>();
 
@@ -566,7 +667,11 @@ namespace PoljoprivrednoGazdinstvoLibrary
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    var sveProdaje = session.Query<Prodaja>().ToList();
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+                    var sveProdaje = await session.Query<Prodaja>().ToListAsync();
 
                     foreach (var p in sveProdaje)
                     {
@@ -585,22 +690,27 @@ namespace PoljoprivrednoGazdinstvoLibrary
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom učitavanja prodaja: {ex.FormatExceptionMessage()}");
+                return "Greška prilikom učitavanja prodaja".ToError(400);
             }
 
             return prodajeDTO;
         }
 
-        public static ProdajaBasic VratiProdajuPoId(int id)
+        public async static Task<Result<ProdajaBasic, ErrorMessage>> VratiProdajuPoId(int id)
         {
             ProdajaBasic prodajaDTO = null;
             try
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    Prodaja p = session.Get<Prodaja>(id);
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
+                    Prodaja p = await session.GetAsync<Prodaja>(id);
                     if (p != null)
                     {
                         prodajaDTO = new ProdajaBasic(
@@ -618,20 +728,25 @@ namespace PoljoprivrednoGazdinstvoLibrary
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom učitavanja prodaje: {ex.Message}");
+                return "Greška prilikom učitavanja prodaje".ToError(400);
             }
             return prodajaDTO;
         }
 
-        public static void IzmeniProdaju(ProdajaBasic prodajaDTO)
+        public async static Task<Result<bool, ErrorMessage>> IzmeniProdaju(ProdajaBasic prodajaDTO)
         {
             try
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    Prodaja p = session.Load<Prodaja>(prodajaDTO.IdProdaja);
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
+                    Prodaja p = await session.LoadAsync<Prodaja>(prodajaDTO.IdProdaja);
 
                     p.BrojFakture = prodajaDTO.BrojFakture;
                     p.TipPlacanja = prodajaDTO.TipPlacanja;
@@ -642,41 +757,54 @@ namespace PoljoprivrednoGazdinstvoLibrary
                     p.Kolicina = (double)prodajaDTO.Kolicina;
                     p.Kupac = prodajaDTO.Kupac;
 
-                    session.Update(p);
-                    session.Flush();
+                    await session.UpdateAsync(p);
+                    await session.FlushAsync();
+                    return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom izmene prodaje: {ex.Message}");
+                return "Greška prilikom izmene prodaje".ToError(400);
             }
         }
 
-        public static void ObrisiProdaju(int id)
+        public async static Task<Result<bool, ErrorMessage>> ObrisiProdaju(int id)
         {
             try
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    Prodaja p = session.Load<Prodaja>(id);
+                    if (!(session?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
+                    Prodaja p = await session.LoadAsync<Prodaja>(id);
                     if (p != null)
                     {
-                        session.Delete(p);
-                        session.Flush();
+                        await session.DeleteAsync(p);
+                        await session.FlushAsync();
+                        return true;
                     }
+                    return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show($"Greška prilikom brisanja prodaje: {ex.Message}");
+                return "Greška prilikom brisanja prodaje".ToError(400);
             }
         }
 
-        public static bool DaLiImaDovoljnoPrinosa(int idPrinosa, decimal kolicinaZaProdaju, string jedinicaSaForme)
+        public async static Task<Result<bool, ErrorMessage>> DaLiImaDovoljnoPrinosa(int idPrinosa, decimal kolicinaZaProdaju, string jedinicaSaForme)
         {
             using (var session = DataLayer.GetSession())
             {
-                var prinos = session.Get<Prinos>(idPrinosa);
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
+                var prinos = await session.GetAsync<Prinos>(idPrinosa);
 
                 if (prinos == null) return false;
 
@@ -695,11 +823,15 @@ namespace PoljoprivrednoGazdinstvoLibrary
 
         #region KoristiZa
 
-        public static List<KoristiZaBasic> VratiPregledKoriscenja()
+        public async static Task<Result<List<KoristiZaBasic>, ErrorMessage>> VratiPregledKoriscenja()
         {
             using (var session = DataLayer.GetSession())
             {
-                // LINQ to NHibernate join
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
                 var rezultat = from k in session.Query<KoristiZa>()
                                join m in session.Query<Mehanizacija>() on k.Mehanizacija.IdMehanizacija equals m.IdMehanizacija
                                join p in session.Query<Prinos>() on k.Prinos.IdPrinosa equals p.IdPrinosa
@@ -714,16 +846,21 @@ namespace PoljoprivrednoGazdinstvoLibrary
                                    IdPrinos = p.IdPrinosa
                                };
 
-                return rezultat.ToList();
+                return await rezultat.ToListAsync();
             }
         }
 
-        public static void PoveziMehanizacijuIPrinos(int idMehanizacija, int idPrinos, DateTime datumOd)
+        public async static Task<Result<bool, ErrorMessage>> PoveziMehanizacijuIPrinos(int idMehanizacija, int idPrinos, DateTime datumOd)
         {
             using (var session = DataLayer.GetSession())
             {
-                var meh = session.Load<Mehanizacija>(idMehanizacija);
-                var pr = session.Load<Prinos>(idPrinos);
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
+                var meh = await session.LoadAsync<Mehanizacija>(idMehanizacija);
+                var pr = await session.LoadAsync<Prinos>(idPrinos);
 
                 KoristiZa novaVeza = new KoristiZa
                 {
@@ -732,17 +869,22 @@ namespace PoljoprivrednoGazdinstvoLibrary
                     DatumOd = datumOd
                 };
 
-                session.Save(novaVeza);
-                session.Flush();
+                await session.SaveAsync(novaVeza);
+                await session.FlushAsync();
+                return true;
             }
         }
 
-        public static string VratiTipMehanizacije(int idMehanizacija)
+        public async static Task<Result<string, ErrorMessage>> VratiTipMehanizacije(int idMehanizacija)
         {
             using (var session = DataLayer.GetSession())
             {
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
                 // Ucitavamo traktor/masina
-                var meh = session.Get<Mehanizacija>(idMehanizacija);
+                var meh = await session.GetAsync<Mehanizacija>(idMehanizacija);
 
                 if (meh is Traktor) return "Traktor";
                 if (meh is Masina) return "Masina";
@@ -751,12 +893,16 @@ namespace PoljoprivrednoGazdinstvoLibrary
             }
         }
 
-        public static void AzurirajKoriscenje(int stariIdMehanizacija, int idPrinos, DateTime datumOd, int noviIdMehanizacija, DateTime? noviDatumDo)
+        public async static Task<Result<bool, ErrorMessage>> AzurirajKoriscenje(int stariIdMehanizacija, int idPrinos, DateTime datumOd, int noviIdMehanizacija, DateTime? noviDatumDo)
         {
             using (var session = DataLayer.GetSession())
             {
-                var zapis = session.Query<KoristiZa>()
-                    .FirstOrDefault(k => k.Mehanizacija.IdMehanizacija == stariIdMehanizacija
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+                var zapis = await session.Query<KoristiZa>()
+                    .FirstOrDefaultAsync(k => k.Mehanizacija.IdMehanizacija == stariIdMehanizacija
                                       && k.Prinos.IdPrinosa == idPrinos
                                       && k.DatumOd == datumOd);
 
@@ -769,29 +915,37 @@ namespace PoljoprivrednoGazdinstvoLibrary
 
                     zapis.DatumDo = noviDatumDo;
 
-                    session.Update(zapis);
-                    session.Flush();
+                    await session.UpdateAsync(zapis);
+                    await session.FlushAsync();
+                    return true;
                 }
+                return false;
             }
         }
 
-        public static void ObrisiKoriscenje(int idMehanizacija, int idPrinos, DateTime datumOd)
+        public async static Task<Result<bool, ErrorMessage>> ObrisiKoriscenje(int idMehanizacija, int idPrinos, DateTime datumOd)
         {
             using (var session = DataLayer.GetSession())
             {
-                var zapis = session.Query<KoristiZa>()
-                    .FirstOrDefault(k => k.Mehanizacija.IdMehanizacija == idMehanizacija
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
+                var zapis = await session.Query<KoristiZa>()
+                    .FirstOrDefaultAsync(k => k.Mehanizacija.IdMehanizacija == idMehanizacija
                                       && k.Prinos.IdPrinosa == idPrinos
                                       && k.DatumOd == datumOd);
 
                 if (zapis != null)
                 {
-                    session.Delete(zapis);
-                    session.Flush();
+                    await session.DeleteAsync(zapis);
+                    await session.FlushAsync();
+                    return true;
                 }
                 else
                 {
-                    throw new Exception("Zapis o korišćenju nije pronađen.");
+                    return "Zapis o korišćenju nije pronađen".ToError(404);
                 }
             }
         }
@@ -800,11 +954,16 @@ namespace PoljoprivrednoGazdinstvoLibrary
 
         #region Subvencija
 
-        public static List<SubvencijaBasic> VratiSveSubvencije()
+        public async static Task<Result<List<SubvencijaBasic>, ErrorMessage>> VratiSveSubvencije()
         {
             using (var session = DataLayer.GetSession())
             {
-                return session.Query<Subvencija>()
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
+                return await session.Query<Subvencija>()
                     .Select(s => new SubvencijaBasic
                     {
                         IdSubvencija = s.IdSubvencija,
@@ -817,29 +976,41 @@ namespace PoljoprivrednoGazdinstvoLibrary
                         Status = s.Status,
                         Komentar = s.Komentar,
                         UseviZivotinjeId = s.Kategorija.UseviZivotinjeId
-                    }).ToList();
+                    }).ToListAsync();
             }
         }
 
-        public static void ObrisiSubvenciju(int id)
+        public async static Task<Result<bool, ErrorMessage>> ObrisiSubvenciju(int id)
         {
             using (var session = DataLayer.GetSession())
             {
-                var subvencija = session.Get<Subvencija>(id);
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
+                var subvencija = await session.GetAsync<Subvencija>(id);
                 if (subvencija != null)
                 {
-                    session.Delete(subvencija);
-                    session.Flush();
+                    await session.DeleteAsync(subvencija);
+                    await session.FlushAsync();
+                    return true;
                 }
+                return false;
             }
         }
 
-        public static bool DaLiBrojResenjaPostoji(string brojResenja, int? trenutniId = null)
+        public async static Task<Result<bool, ErrorMessage>> DaLiBrojResenjaPostoji(string brojResenja, int? trenutniId = null)
         {
             using (var session = DataLayer.GetSession())
             {
-                var postojeca = session.Query<Subvencija>()
-                    .FirstOrDefault(s => s.BrojResenja == brojResenja);
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
+                var postojeca = await session.Query<Subvencija>()
+                    .FirstOrDefaultAsync(s => s.BrojResenja == brojResenja);
 
                 if (postojeca != null && (trenutniId == null || postojeca.IdSubvencija != trenutniId))
                 {
@@ -850,11 +1021,16 @@ namespace PoljoprivrednoGazdinstvoLibrary
             }
         }
 
-        public static void AzurirajSubvenciju(SubvencijaBasic s)
+        public async static Task<Result<bool, ErrorMessage>> AzurirajSubvenciju(SubvencijaBasic s)
         {
             using (var session = DataLayer.GetSession())
             {
-                var subvencija = session.Get<Subvencija>(s.IdSubvencija);
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
+                var subvencija = await session.GetAsync<Subvencija>(s.IdSubvencija);
                 if (subvencija != null)
                 {
                     subvencija.BrojResenja = s.BrojResenja;
@@ -867,18 +1043,25 @@ namespace PoljoprivrednoGazdinstvoLibrary
                     subvencija.Komentar = s.Komentar;
 
                     // Azuriranje kategorije
-                    subvencija.Kategorija = session.Load<UseviZivotinje>(s.UseviZivotinjeId);
+                    subvencija.Kategorija = await session.LoadAsync<UseviZivotinje>(s.UseviZivotinjeId);
 
-                    session.Update(subvencija);
-                    session.Flush();
+                    await session.UpdateAsync(subvencija);
+                    await session.FlushAsync();
+                    return true;
                 }
+                return false;
             }
         }
 
-        public static void DodajSubvenciju(SubvencijaBasic s)
+        public async static Task<Result<bool, ErrorMessage>> DodajSubvenciju(SubvencijaBasic s)
         {
             using (var session = DataLayer.GetSession())
             {
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
                 Subvencija nova = new Subvencija();
                 nova.BrojResenja = s.BrojResenja;
                 nova.Vrsta = s.Vrsta;
@@ -890,10 +1073,11 @@ namespace PoljoprivrednoGazdinstvoLibrary
                 nova.Komentar = s.Komentar;
 
                 // Povezivanje sa kategorijom
-                nova.Kategorija = session.Load<UseviZivotinje>(s.UseviZivotinjeId);
+                nova.Kategorija = await session.LoadAsync<UseviZivotinje>(s.UseviZivotinjeId);
 
-                session.Save(nova);
-                session.Flush();
+                await session.SaveAsync(nova);
+                await session.FlushAsync();
+                return true;
             }
         }
 
@@ -918,7 +1102,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
 
                 s.Close();
             }
-            catch (Exception ec)
+            catch (Exception)
             {
                 return "Greška pri čitanju podataka o životinjama.".ToError(400);
             }
@@ -963,7 +1147,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
                         await transaction.CommitAsync();
                         return true;
                     }
-                    catch (Exception ec)
+                    catch (Exception)
                     {
                         if (transaction != null && transaction.IsActive)
                         {
@@ -1122,7 +1306,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
                 await s.FlushAsync();
                 s.Close();
             }
-            catch (Exception ec)
+            catch (Exception)
             {
                 return "Greška pri pribavljanju žitarice.".ToError(400);
             }
@@ -1315,7 +1499,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
                 await s.FlushAsync();
                 s.Close();
             }
-            catch (Exception ec)
+            catch (Exception)
             {
                 return "Greška pri pribavljanju voćnjaka.".ToError(400);
             }
@@ -1487,7 +1671,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
                         p.BrojSetviGodisnje, p.ZastitneMere, p.NacinGajenja, p.Tip));
                 s.Close();
             }
-            catch (Exception ec)
+            catch (Exception)
             {
                 return "Greška pri čitanju podataka o povrću.".ToError(400);
             }
@@ -1679,7 +1863,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
 
                 s.Close();
             }
-            catch (Exception ec)
+            catch (Exception)
             {
                 return "Greška pri čitanju podataka o krmnom bilju.".ToError(400);
             }
@@ -1758,7 +1942,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
                         await transaction.CommitAsync();
                         return true;
                     }
-                    catch (Exception ec)
+                    catch (Exception)
                     {
                         if (transaction != null && transaction.IsActive)
                         {
@@ -1808,7 +1992,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
 
                 return true;
             }
-            catch (Exception ec)
+            catch (Exception)
             {
                 return "Greška pri izmeni krmnog bilja.".ToError(400);
             }
@@ -1858,10 +2042,14 @@ namespace PoljoprivrednoGazdinstvoLibrary
 
         #region Proizvode
 
-        public static void DodajPrinosIKategoriju(PrinosBasic prinosDTO, int idKategorije)
+        public async static Task<Result<bool, ErrorMessage>> DodajPrinosIKategoriju(PrinosBasic prinosDTO, int idKategorije)
         {
             using (var session = DataLayer.GetSession())
             {
+                if (!(session?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
                 // Transakcija - da ne bi puklo na pola
                 using (var transaction = session.BeginTransaction())
                 {
@@ -1877,84 +2065,94 @@ namespace PoljoprivrednoGazdinstvoLibrary
                             JedinicaMere = prinosDTO.JedinicaMere
                         };
 
-                        session.Save(noviPrinos);
+                        await session.SaveAsync(noviPrinos);
 
                         // Da bi smo bili sigurni da je prinos upisan u bazi
-                        session.Flush();
+                        await session.FlushAsync();
 
                         // Podatak da je prinos proizveden i od koga
-                        var kat = session.Get<UseviZivotinje>(idKategorije);
+                        var kat = await session.GetAsync<UseviZivotinje>(idKategorije);
 
                         Proizvode novaVeza = new Proizvode();
                         novaVeza.Prinos = noviPrinos;
                         novaVeza.Kategorija = kat;
                         novaVeza.DatumProizvodnje = DateTime.Now;
 
-                        session.Save(novaVeza);
+                        await session.SaveAsync(novaVeza);
 
-                        transaction.Commit();
+                        await transaction.CommitAsync();
+                        return true;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         transaction.Rollback();
-                        throw new Exception("Greška prilikom čuvanja prinosa u bazu: " + ex.Message);
+                        return "Greška prilikom čuvanja prinosa u bazu".ToError(400);
                     }
                 }
             }
         }
 
-        public static int DohvatiIdKategorije(int idEntiteta, string tipEntiteta)
-        {
-            using (var s = DataLayer.GetSession())
-            {
-                switch (tipEntiteta)
-                {
-                    // Da bi smo bili sigurni da se izvlaci id kategorije
-                    // pre zatvaranja sesije koristimo Get
-                    case "POVRCE":
-                        return s.Get<Povrce>(idEntiteta).Kategorija.UseviZivotinjeId;
-                    case "ZITARICE":
-                        return s.Get<Zitarice>(idEntiteta).Kategorija.UseviZivotinjeId; ;
-                    case "VOCNJACI":
-                        return s.Get<Vocnjaci>(idEntiteta).Kategorija.UseviZivotinjeId; ;
-                    case "KRMNO_BILJE":
-                        return s.Get<KrmnoBilje>(idEntiteta).Kategorija.UseviZivotinjeId;
-                    case "ZIVOTINJE":
-                        return s.Get<Zivotinje>(idEntiteta).Kategorija.UseviZivotinjeId; ;
-                    default:
-                        return -1;
-                }
-            }
-        }
+        // todo: konvertovati na web api format
+        //public static int DohvatiIdKategorije(int idEntiteta, string tipEntiteta)
+        //{
+        //    using (var s = DataLayer.GetSession())
+        //    {
+        //        switch (tipEntiteta)
+        //        {
+        //            // Da bi smo bili sigurni da se izvlaci id kategorije
+        //            // pre zatvaranja sesije koristimo Get
+        //            case "POVRCE":
+        //                return s.Get<Povrce>(idEntiteta).Kategorija.UseviZivotinjeId;
+        //            case "ZITARICE":
+        //                return s.Get<Zitarice>(idEntiteta).Kategorija.UseviZivotinjeId; ;
+        //            case "VOCNJACI":
+        //                return s.Get<Vocnjaci>(idEntiteta).Kategorija.UseviZivotinjeId; ;
+        //            case "KRMNO_BILJE":
+        //                return s.Get<KrmnoBilje>(idEntiteta).Kategorija.UseviZivotinjeId;
+        //            case "ZIVOTINJE":
+        //                return s.Get<Zivotinje>(idEntiteta).Kategorija.UseviZivotinjeId; ;
+        //            default:
+        //                return -1;
+        //        }
+        //    }
+        //}
 
-        public static void ObrisiProizvodnuVezu(int proizvodeId)
+        public async static Task<Result<bool, ErrorMessage>> ObrisiProizvodnuVezu(int proizvodeId)
         {
             using (ISession s = DataLayer.GetSession())
             {
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
                 using (ITransaction t = s.BeginTransaction())
                 {
-                    Proizvode veza = s.Load<Proizvode>(proizvodeId);
+                    Proizvode veza = await s.LoadAsync<Proizvode>(proizvodeId);
 
                     if (veza != null)
                     {
-                        s.Delete(veza);
-                        s.Flush();
+                        await s.DeleteAsync(veza);
+                        await s.FlushAsync();
+                        return true;
                     }
+                    return false;
                 }
             }
         }
 
-        // todo: morala sam da zakomentarišem, javljalo mi je grešku u konzoli
+        // todo: morala sam da zakomentarišem, javljalo mi je grešku u konzoli (pre konvertovanja)
         // pa baci pogled kad stigneš
+        // todo: konvertovati u web api format
 
-        //public static List<ProizvodniIzvestajDTO> VratiSveProizvodneIzvestaje()
+        //public async static List<ProizvodniIzvestajDTO> VratiSveProizvodneIzvestaje()
         //{
         //    using (ISession s = DataLayer.GetSession())
         //    {
         //        var sviZapisi = s.Query<Proizvode>()
         //                         .Fetch(x => x.Prinos)
         //                         .Fetch(x => x.Kategorija)
-        //                         .ToList();               
+        //                         .ToListAsync();               
 
         //        // Ono sto se prikazuje u DataGridView
         //        List<ProizvodniIzvestajDTO> izvestaj = new List<ProizvodniIzvestajDTO>();
