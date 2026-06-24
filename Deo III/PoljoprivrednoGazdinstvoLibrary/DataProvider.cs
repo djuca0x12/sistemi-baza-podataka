@@ -2092,30 +2092,89 @@ namespace PoljoprivrednoGazdinstvoLibrary
             }
         }
 
-        // todo: konvertovati na web api format
-        //public static int DohvatiIdKategorije(int idEntiteta, string tipEntiteta)
-        //{
-        //    using (var s = DataLayer.GetSession())
-        //    {
-        //        switch (tipEntiteta)
-        //        {
-        //            // Da bi smo bili sigurni da se izvlaci id kategorije
-        //            // pre zatvaranja sesije koristimo Get
-        //            case "POVRCE":
-        //                return s.Get<Povrce>(idEntiteta).Kategorija.UseviZivotinjeId;
-        //            case "ZITARICE":
-        //                return s.Get<Zitarice>(idEntiteta).Kategorija.UseviZivotinjeId; ;
-        //            case "VOCNJACI":
-        //                return s.Get<Vocnjaci>(idEntiteta).Kategorija.UseviZivotinjeId; ;
-        //            case "KRMNO_BILJE":
-        //                return s.Get<KrmnoBilje>(idEntiteta).Kategorija.UseviZivotinjeId;
-        //            case "ZIVOTINJE":
-        //                return s.Get<Zivotinje>(idEntiteta).Kategorija.UseviZivotinjeId; ;
-        //            default:
-        //                return -1;
-        //        }
-        //    }
-        //}
+        // // todo: konvertovati na web api format
+        // //public static int DohvatiIdKategorije(int idEntiteta, string tipEntiteta)
+        // //{
+        // //    using (var s = DataLayer.GetSession())
+        // //    {
+        // //        switch (tipEntiteta)
+        // //        {
+        // //            // Da bi smo bili sigurni da se izvlaci id kategorije
+        // //            // pre zatvaranja sesije koristimo Get
+        // //            case "POVRCE":
+        // //                return s.Get<Povrce>(idEntiteta).Kategorija.UseviZivotinjeId;
+        // //            case "ZITARICE":
+        // //                return s.Get<Zitarice>(idEntiteta).Kategorija.UseviZivotinjeId; ;
+        // //            case "VOCNJACI":
+        // //                return s.Get<Vocnjaci>(idEntiteta).Kategorija.UseviZivotinjeId; ;
+        // //            case "KRMNO_BILJE":
+        // //                return s.Get<KrmnoBilje>(idEntiteta).Kategorija.UseviZivotinjeId;
+        // //            case "ZIVOTINJE":
+        // //                return s.Get<Zivotinje>(idEntiteta).Kategorija.UseviZivotinjeId; ;
+        // //            default:
+        // //                return -1;
+        // //        }
+        // //    }
+        // //}
+
+        public async static Task<Result<int, ErrorMessage>> DohvatiIdKategorije(int idEntiteta, string tipEntiteta)
+        {
+            try
+            {
+                using (ISession s = DataLayer.GetSession())
+                {
+                    if (!(s?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
+                    int kategorijaId = -1;
+                    string tipUpper = tipEntiteta?.ToUpper().Trim() ?? "";
+
+                    switch (tipUpper)
+                    {
+                        case "POVRCE":
+                            var povrce = await s.GetAsync<Povrce>(idEntiteta);
+                            if (povrce != null) kategorijaId = povrce.Kategorija!.UseviZivotinjeId;
+                            break;
+
+                        case "VOCNJACI":
+                            var vocnjak = await s.GetAsync<Vocnjaci>(idEntiteta);
+                            if (vocnjak != null) kategorijaId = vocnjak.Kategorija!.UseviZivotinjeId;
+                            break;
+
+                        case "KRMNO_BILJE":
+                            var krmno = await s.GetAsync<KrmnoBilje>(idEntiteta);
+                            if (krmno != null) kategorijaId = krmno.Kategorija!.UseviZivotinjeId;
+                            break;
+
+                        case "ZIVOTINJE":
+                            var zivotinja = await s.GetAsync<Zivotinje>(idEntiteta);
+                            if (zivotinja != null) kategorijaId = zivotinja.Kategorija!.UseviZivotinjeId;
+                            break;
+
+                        case "ZITARICE":
+                            var zitarice = await s.GetAsync<Zitarice>(idEntiteta);
+                            if (zitarice != null) kategorijaId = zitarice.Kategorija!.UseviZivotinjeId;
+                            break;
+
+                        default:
+                            return "Nepoznat tip entiteta.".ToError(400);
+                    }
+
+                    if (kategorijaId == -1)
+                    {
+                        return "Entitet sa zadatim ID-em nije pronađen.".ToError(404);
+                    }
+
+                    return kategorijaId;
+                }
+            }
+            catch (Exception)
+            {
+                return "Greška pri dohvatanju ID-ja kategorije.".ToError(400);
+            }
+        }
 
         public async static Task<Result<bool, ErrorMessage>> ObrisiProizvodnuVezu(int proizvodeId)
         {
@@ -2219,6 +2278,82 @@ namespace PoljoprivrednoGazdinstvoLibrary
         //        return izvestaj;
         //    }
         //}
+
+        public async static Task<Result<List<ProizvodniIzvestajDTO>, ErrorMessage>> VratiSveProizvodneIzvestaje()
+        {
+            try
+            {
+                using (ISession s = DataLayer.GetSession())
+                {
+                    if (!(s?.IsConnected ?? false))
+                    {
+                        return "Nemoguće otvoriti sesiju.".ToError(403);
+                    }
+
+                    // Await-ujemo asinhrono dovlacenje sa
+                    // Fetch-ovanjem da izbegnemo LazyInitializationException
+                    var sviZapisi = await s.Query<Proizvode>()
+                                        .Fetch(x => x.Prinos)
+                                        .Fetch(x => x.Kategorija)
+                                        .ToListAsync();
+
+                    List<ProizvodniIzvestajDTO> izvestaj = new List<ProizvodniIzvestajDTO>();
+
+                    foreach (var z in sviZapisi)
+                    {
+                        if (z.Kategorija == null || z.Prinos == null)
+                        {
+                            continue;
+                        }
+
+                        var dto = new ProizvodniIzvestajDTO
+                        {
+                            Id = z.Id,
+                            DatumProizvodnje = z.DatumProizvodnje,
+                            TipPrinosa = z.Prinos.Tip,
+                            Kolicina = (decimal)z.Prinos.Kolicina,
+                            JedinicaMere = z.Prinos.JedinicaMere,
+                            Kvalitet = z.Prinos.KvalitetProizvoda,
+                            KategorijaTip = z.Kategorija.KategorijaTip
+                        };
+
+                        int idKat = z.Kategorija.UseviZivotinjeId;
+                        
+                        // Osiguravamo se da imamo bar jedno slovo za switch-case
+                        string tipString = z.Kategorija.KategorijaTip.ToString().Trim().ToLower();
+                        char tipChar = tipString.Length > 0 ? tipString[0] : ' ';
+
+                        switch (tipChar)
+                        {
+                            case 'u':
+                                // Asinhroni upit unutar petlje 
+                                var usev = await s.Query<Usevi>()
+                                                .FirstOrDefaultAsync(x => x.Kategorija != null && x.Kategorija.UseviZivotinjeId == idKat);
+                                dto.NazivIzvora = usev != null ? usev.Naziv : "Nepoznat usev";
+                                break;
+
+                            case 'z':
+                                var ziv = await s.Query<Zivotinje>()
+                                                .FirstOrDefaultAsync(x => x.Kategorija != null && x.Kategorija.UseviZivotinjeId == idKat);
+                                dto.NazivIzvora = ziv != null ? ziv.Vrsta : "Nepoznata životinja";
+                                break;
+
+                            default:
+                                dto.NazivIzvora = "Nepoznat izvor";
+                                break;
+                        }
+
+                        izvestaj.Add(dto);
+                    }
+
+                    return izvestaj;
+                }
+            }
+            catch (Exception)
+            {
+                return "Greška pri generisanju proizvodnih izveštaja.".ToError(400);
+            }
+        }
 
         #endregion
     }
