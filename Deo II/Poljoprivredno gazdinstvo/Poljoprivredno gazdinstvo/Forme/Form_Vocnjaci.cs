@@ -37,6 +37,11 @@ namespace Poljoprivredno_gazdinstvo.Forme
             dgvVocnjaci.Rows.Clear();
             dgvVocnjaci.DataSource = DTOManager.VratiSveVocnjake();
             dgvVocnjaci.Refresh();
+
+            if (dgvVocnjaci.Columns["Id"] != null)
+            {
+                dgvVocnjaci.Columns["Id"].Visible = false;
+            }
         }
 
         private void btnDodajVocnjak_Click(object sender, EventArgs e)

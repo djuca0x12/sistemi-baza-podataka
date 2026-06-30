@@ -70,9 +70,9 @@
             "podsticaj za setvu",
             "subvencija za stocarstvo",
             "ekoloska mera"});
-            this.cmbVrsta.Location = new System.Drawing.Point(235, 127);
+            this.cmbVrsta.Location = new System.Drawing.Point(183, 127);
             this.cmbVrsta.Name = "cmbVrsta";
-            this.cmbVrsta.Size = new System.Drawing.Size(105, 24);
+            this.cmbVrsta.Size = new System.Drawing.Size(204, 24);
             this.cmbVrsta.TabIndex = 33;
             // 
             // label7
@@ -124,7 +124,7 @@
             // 
             this.btnZatvori.Location = new System.Drawing.Point(680, 223);
             this.btnZatvori.Name = "btnZatvori";
-            this.btnZatvori.Size = new System.Drawing.Size(86, 34);
+            this.btnZatvori.Size = new System.Drawing.Size(116, 34);
             this.btnZatvori.TabIndex = 25;
             this.btnZatvori.Text = "Zatvori";
             this.btnZatvori.UseVisualStyleBackColor = true;
@@ -132,9 +132,9 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(523, 223);
+            this.btnSacuvaj.Location = new System.Drawing.Point(493, 223);
             this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(86, 34);
+            this.btnSacuvaj.Size = new System.Drawing.Size(116, 34);
             this.btnSacuvaj.TabIndex = 24;
             this.btnSacuvaj.Text = "Sačuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
@@ -198,7 +198,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Dodaj_Subevnciju";
-            this.Text = "Podnesi zahtev za suvencijom";
+            this.Text = "Podnesi zahtev za subvencijom";
             ((System.ComponentModel.ISupportInitialize)(this.numIznos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

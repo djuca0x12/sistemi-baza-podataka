@@ -26,6 +26,21 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
         private void btnDodajPovrce_Click(object sender, EventArgs e)
         {
+            string unetiNaziv = txtNaziv.Text.Trim();
+            string unetaLokacija = txtLokacija.Text.Trim();
+
+            if (string.IsNullOrEmpty(unetiNaziv) || string.IsNullOrEmpty(unetaLokacija))
+            {
+                MessageBox.Show("Naziv i lokacija su obavezna polja!", "Upozorenje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (DTOManager.DaLiPostojiUsevSaNazivomILokacijom(unetiNaziv, unetaLokacija, povrce.Id))
+            {
+                MessageBox.Show("Druga žitarica (usev) sa ovim nazivom na datoj lokaciji već postoji u bazi!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             string poruka = "Da li zelite da dodate novo povrće?";
             string title = "Pitanje";
             MessageBoxButtons buttons = MessageBoxButtons.OKCancel;

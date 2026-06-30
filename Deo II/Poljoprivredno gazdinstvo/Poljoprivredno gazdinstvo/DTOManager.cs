@@ -227,7 +227,7 @@ namespace Poljoprivredno_gazdinstvo
             {
                 using (var session = DataLayer.GetSession())
                 {
-                    MasinaBasic novaMasina = new MasinaBasic
+                    Masina novaMasina = new Masina
                     {
                         BrojSasije = masina.BrojSasije,
                         Status = masina.Status,
@@ -751,7 +751,9 @@ namespace Poljoprivredno_gazdinstvo
             }
         }
 
-        public static void AzurirajKoriscenje(int stariIdMehanizacija, int idPrinos, DateTime datumOd, int noviIdMehanizacija, DateTime? noviDatumDo)
+        // KoristiZa poseduje kompozitni kljuc, koji nam sprecava izmenu?
+        // Da li mozemo izmenu da napravimo kao delete + insert?
+        /*public static void AzurirajKoriscenje(int stariIdMehanizacija, int idPrinos, DateTime datumOd, int noviIdMehanizacija, DateTime? noviDatumDo)
         {
             using (var session = DataLayer.GetSession())
             {
@@ -767,10 +769,55 @@ namespace Poljoprivredno_gazdinstvo
                         zapis.Mehanizacija = session.Load<Mehanizacija>(noviIdMehanizacija);
                     }
 
-                    zapis.DatumDo = noviDatumDo;
+                    zapis.DatumDo = noviDatumDo;                   
 
                     session.Update(zapis);
                     session.Flush();
+                }
+            }
+        }*/
+
+        public static void AzurirajKoriscenje(int stariIdMehanizacija, int idPrinos, DateTime datumOd, int noviIdMehanizacija, DateTime? noviDatumDo)
+        {
+            using (var session = DataLayer.GetSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    try
+                    {
+                        // Pronalazimo red
+                        var stariZapis = session.Query<KoristiZa>()
+                            .FirstOrDefault(k => k.Mehanizacija.IdMehanizacija == stariIdMehanizacija
+                                              && k.Prinos.IdPrinosa == idPrinos
+                                              && k.DatumOd == datumOd);
+
+                        if (stariZapis != null)
+                        {
+                            // Brisemo ga iz baze
+                            session.Delete(stariZapis);
+
+                            // Forsiramo brisanje
+                            session.Flush();
+                        }
+
+                        // Kreiramo novi red
+                        KoristiZa noviZapis = new KoristiZa
+                        {
+                            Mehanizacija = session.Load<Mehanizacija>(noviIdMehanizacija),
+                            Prinos = session.Load<Prinos>(idPrinos),
+                            DatumOd = datumOd,
+                            DatumDo = noviDatumDo
+                        };
+
+                        session.Save(noviZapis);
+                      
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
+                    }
                 }
             }
         }
@@ -1054,9 +1101,36 @@ namespace Poljoprivredno_gazdinstvo
                 }
             }
         }
+
+        public static bool DaLiPostojiZivotinjaSaBrojemUha(string brojUha, int trenutniId = 0)
+        {
+            using (var session = DataLayer.GetSession())
+            {               
+                string proveraBroja = brojUha.Trim().ToUpper();
+
+                return session.Query<Zivotinje>()
+                    .Any(z => z.BrojUha.Trim().ToUpper() == proveraBroja
+                           && z.IdZivotinje != trenutniId);
+            }
+        }
+
         #endregion
 
         #region Zitarice
+
+        public static bool DaLiPostojiUsevSaNazivomILokacijom(string naziv, string lokacija, int trenutniId = 0)
+        {
+            using (var session = DataLayer.GetSession())
+            {
+                string nazivTrimmed = naziv.Trim().ToLower();
+                string lokacijaTrimmed = lokacija.Trim().ToLower();
+
+                return session.Query<Usevi>() 
+                    .Any(u => (u.Naziv.Trim().ToLower() == nazivTrimmed
+                           || u.Lokacija.Trim().ToLower() == lokacijaTrimmed)
+                           && u.Id != trenutniId);
+            }
+        }
         public static List<ZitariceBasic> VratiSveZitarice()
         {
             List<ZitariceBasic> zitarice = new();

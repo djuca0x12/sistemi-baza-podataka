@@ -88,7 +88,7 @@
             // 
             // numGodinaProizvodnje
             // 
-            this.numGodinaProizvodnje.Location = new System.Drawing.Point(618, 130);
+            this.numGodinaProizvodnje.Location = new System.Drawing.Point(653, 130);
             this.numGodinaProizvodnje.Maximum = new decimal(new int[] {
             9999,
             0,
@@ -106,7 +106,7 @@
             // dateDatumKupovine
             // 
             this.dateDatumKupovine.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateDatumKupovine.Location = new System.Drawing.Point(618, 56);
+            this.dateDatumKupovine.Location = new System.Drawing.Point(653, 56);
             this.dateDatumKupovine.Name = "dateDatumKupovine";
             this.dateDatumKupovine.Size = new System.Drawing.Size(159, 22);
             this.dateDatumKupovine.TabIndex = 32;
@@ -116,7 +116,7 @@
             this.cBoxStatus.FormattingEnabled = true;
             this.cBoxStatus.Items.AddRange(new object[] {
             "u upotrebi",
-            "u kvraru",
+            "u kvaru",
             "na servisu",
             "prodat"});
             this.cBoxStatus.Location = new System.Drawing.Point(189, 122);
@@ -192,7 +192,7 @@
             // 
             // numBrojTockova
             // 
-            this.numBrojTockova.Location = new System.Drawing.Point(618, 198);
+            this.numBrojTockova.Location = new System.Drawing.Point(653, 198);
             this.numBrojTockova.Maximum = new decimal(new int[] {
             6,
             0,

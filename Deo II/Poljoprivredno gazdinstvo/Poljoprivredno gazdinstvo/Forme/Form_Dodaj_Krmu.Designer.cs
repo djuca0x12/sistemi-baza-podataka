@@ -63,9 +63,9 @@
             // 
             // btnDodajKrmnoBilje
             // 
-            this.btnDodajKrmnoBilje.Location = new System.Drawing.Point(681, 262);
+            this.btnDodajKrmnoBilje.Location = new System.Drawing.Point(641, 262);
             this.btnDodajKrmnoBilje.Name = "btnDodajKrmnoBilje";
-            this.btnDodajKrmnoBilje.Size = new System.Drawing.Size(154, 41);
+            this.btnDodajKrmnoBilje.Size = new System.Drawing.Size(245, 41);
             this.btnDodajKrmnoBilje.TabIndex = 88;
             this.btnDodajKrmnoBilje.Text = "Dodaj krmno bilje";
             this.btnDodajKrmnoBilje.UseVisualStyleBackColor = true;

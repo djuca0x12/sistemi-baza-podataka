@@ -39,6 +39,11 @@ namespace Poljoprivredno_gazdinstvo.Forme
             dgvZitarice.Rows.Clear();
             dgvZitarice.DataSource = DTOManager.VratiSveZitarice();
             dgvZitarice.Refresh();
+
+            if (dgvZitarice.Columns["Id"] != null)
+            {
+                dgvZitarice.Columns["Id"].Visible = false;
+            }
         }
 
         private void btnDodajZitaricu_Click(object sender, EventArgs e)

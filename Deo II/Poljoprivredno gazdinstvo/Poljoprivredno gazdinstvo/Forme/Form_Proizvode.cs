@@ -73,8 +73,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
             if (dataGridViewProizvode.Columns["Id"] != null)
                 dataGridViewProizvode.Columns["Id"].Visible = false;
 
-           /*if (dataGridViewProizvode.Columns["KategorijaTip"] != null)
-                dataGridViewProizvode.Columns["KategorijaTip"].Visible = false;*/
+           if (dataGridViewProizvode.Columns["KategorijaTip"] != null)
+                dataGridViewProizvode.Columns["KategorijaTip"].Visible = false;
         }
     }
 }

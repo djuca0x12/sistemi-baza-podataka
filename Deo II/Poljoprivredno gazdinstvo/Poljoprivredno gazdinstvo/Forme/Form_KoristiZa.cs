@@ -49,6 +49,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
             Form dodajKoristiZa = new Form_Dodaj_KoristiZa();
 
             dodajKoristiZa.ShowDialog();
+
+            UcitajPodatke();
         }
 
         private void button2_Click(object sender, EventArgs e)

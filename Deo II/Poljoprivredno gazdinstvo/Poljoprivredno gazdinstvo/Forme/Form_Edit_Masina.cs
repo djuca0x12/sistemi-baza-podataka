@@ -18,6 +18,9 @@ namespace Poljoprivredno_gazdinstvo.Forme
             InitializeComponent();
             this.selektovaniId = selektovaniId;
             UcitajPodatkePrskalice();
+
+            Form_Start.ApplyStardewStyle(this);
+            this.BackColor = Color.FromArgb(243, 208, 144);
         }
 
         private void UcitajPodatkePrskalice()

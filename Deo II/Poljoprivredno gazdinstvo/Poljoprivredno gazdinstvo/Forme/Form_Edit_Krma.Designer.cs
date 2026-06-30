@@ -83,9 +83,9 @@
             // 
             // btnIzmeniKrmnoBilje
             // 
-            this.btnIzmeniKrmnoBilje.Location = new System.Drawing.Point(637, 262);
+            this.btnIzmeniKrmnoBilje.Location = new System.Drawing.Point(608, 262);
             this.btnIzmeniKrmnoBilje.Name = "btnIzmeniKrmnoBilje";
-            this.btnIzmeniKrmnoBilje.Size = new System.Drawing.Size(154, 41);
+            this.btnIzmeniKrmnoBilje.Size = new System.Drawing.Size(207, 41);
             this.btnIzmeniKrmnoBilje.TabIndex = 115;
             this.btnIzmeniKrmnoBilje.Text = "Izmeni krmno bilje";
             this.btnIzmeniKrmnoBilje.UseVisualStyleBackColor = true;

@@ -112,7 +112,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Zitarice";
-            this.Text = "Žitarice";
+            this.Text = "Žitarice pregled";
             this.Load += new System.EventHandler(this.Form_Zitarice_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvZitarice)).EndInit();
             this.ResumeLayout(false);

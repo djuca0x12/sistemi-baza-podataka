@@ -99,9 +99,9 @@
             // 
             // btnSacuvaj
             // 
-            this.btnSacuvaj.Location = new System.Drawing.Point(490, 285);
+            this.btnSacuvaj.Location = new System.Drawing.Point(498, 300);
             this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(107, 34);
+            this.btnSacuvaj.Size = new System.Drawing.Size(129, 34);
             this.btnSacuvaj.TabIndex = 5;
             this.btnSacuvaj.Text = "Sačuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
@@ -109,9 +109,9 @@
             // 
             // btnZatvori
             // 
-            this.btnZatvori.Location = new System.Drawing.Point(668, 285);
+            this.btnZatvori.Location = new System.Drawing.Point(722, 300);
             this.btnZatvori.Name = "btnZatvori";
-            this.btnZatvori.Size = new System.Drawing.Size(121, 34);
+            this.btnZatvori.Size = new System.Drawing.Size(153, 34);
             this.btnZatvori.TabIndex = 6;
             this.btnZatvori.Text = "Zatvori";
             this.btnZatvori.UseVisualStyleBackColor = true;
@@ -187,9 +187,9 @@
             "podsticaj za setvu",
             "subvencija za stocarstvo",
             "ekoloska mera"});
-            this.cmbVrsta.Location = new System.Drawing.Point(219, 111);
+            this.cmbVrsta.Location = new System.Drawing.Point(165, 111);
             this.cmbVrsta.Name = "cmbVrsta";
-            this.cmbVrsta.Size = new System.Drawing.Size(105, 24);
+            this.cmbVrsta.Size = new System.Drawing.Size(201, 24);
             this.cmbVrsta.TabIndex = 14;
             // 
             // cmbValuta

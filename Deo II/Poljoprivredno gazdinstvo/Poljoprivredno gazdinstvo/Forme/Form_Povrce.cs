@@ -38,6 +38,11 @@ namespace Poljoprivredno_gazdinstvo.Forme
             dgvPovrce.Rows.Clear();
             dgvPovrce.DataSource = DTOManager.VratiSvoPovrce();
             dgvPovrce.Refresh();
+
+            if (dgvPovrce.Columns["Id"] != null)
+            {
+                dgvPovrce.Columns["Id"].Visible = false;
+            }
         }
         private void btnDodajPovrce_Click(object sender, EventArgs e)
         {

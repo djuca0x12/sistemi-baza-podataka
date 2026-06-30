@@ -42,6 +42,11 @@ namespace Poljoprivredno_gazdinstvo.Forme
             dgvKrmnoBilje.Rows.Clear();
             dgvKrmnoBilje.DataSource = DTOManager.VratiSvoKrmnoBilje();
             dgvKrmnoBilje.Refresh();
+
+            if (dgvKrmnoBilje.Columns["Id"] != null)
+            {
+                dgvKrmnoBilje.Columns["Id"].Visible = false;
+            }
         }
 
         private void btnDodajKrmnoBilje_Click(object sender, EventArgs e)

@@ -48,7 +48,7 @@
             // 
             this.btnZatvori.Location = new System.Drawing.Point(530, 128);
             this.btnZatvori.Name = "btnZatvori";
-            this.btnZatvori.Size = new System.Drawing.Size(87, 36);
+            this.btnZatvori.Size = new System.Drawing.Size(115, 36);
             this.btnZatvori.TabIndex = 24;
             this.btnZatvori.Text = "Zatvori";
             this.btnZatvori.UseVisualStyleBackColor = true;
@@ -58,7 +58,7 @@
             // 
             this.btnSacuvaj.Location = new System.Drawing.Point(530, 59);
             this.btnSacuvaj.Name = "btnSacuvaj";
-            this.btnSacuvaj.Size = new System.Drawing.Size(87, 35);
+            this.btnSacuvaj.Size = new System.Drawing.Size(115, 35);
             this.btnSacuvaj.TabIndex = 23;
             this.btnSacuvaj.Text = "Sacuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
@@ -185,7 +185,7 @@
             this.Controls.Add(this.numKolicina);
             this.Controls.Add(this.txtTip);
             this.Name = "Form_Edit_Prinos";
-            this.Text = "Form_Edit_Prinos";
+            this.Text = "Promeni podatke o izabranom prinosu";
             ((System.ComponentModel.ISupportInitialize)(this.numKolicina)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

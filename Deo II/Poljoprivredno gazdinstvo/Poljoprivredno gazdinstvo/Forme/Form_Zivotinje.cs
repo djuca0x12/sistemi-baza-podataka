@@ -45,6 +45,11 @@ namespace Poljoprivredno_gazdinstvo.Forme
             dgvZivotinje.Rows.Clear();
             dgvZivotinje.DataSource = DTOManager.VratiSveZivotinje();
             dgvZivotinje.Refresh();
+
+            if (dgvZivotinje.Columns["IdZivotinje"] != null)
+            {
+                dgvZivotinje.Columns["IdZivotinje"].Visible = false;
+            }
         }
 
         private void btnDodajZivotinju_Click(object sender, EventArgs e)

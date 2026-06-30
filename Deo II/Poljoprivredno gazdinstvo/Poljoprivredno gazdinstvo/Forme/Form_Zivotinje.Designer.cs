@@ -112,7 +112,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Zivotinje";
-            this.Text = "Sve životinje";
+            this.Text = "Sve zivotinje";
             this.Load += new System.EventHandler(this.Form_Zivotinje_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvZivotinje)).EndInit();
             this.ResumeLayout(false);

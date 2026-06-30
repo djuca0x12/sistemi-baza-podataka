@@ -53,7 +53,7 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
             DTOManager.DodajMasinu(novaMasina);
 
-            MessageBox.Show("Prskalica je uspešno dodata!");
+            MessageBox.Show("Masina je uspešno dodata!");
 
             this.Close();
         }

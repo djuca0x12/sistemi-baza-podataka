@@ -34,7 +34,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
             if (dataGridViewProdaja.Columns["IdPrinosa"] != null)
                 dataGridViewProdaja.Columns["IdPrinosa"].Visible = false;
 
-            dataGridViewProdaja.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dataGridViewProdaja.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewProdaja.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewProdaja.Refresh();
         }
 

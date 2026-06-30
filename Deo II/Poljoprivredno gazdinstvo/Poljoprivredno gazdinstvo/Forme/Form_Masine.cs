@@ -53,6 +53,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
             Form_Dodaj_Masinu dodajMasinu = new Form_Dodaj_Masinu();
 
             dodajMasinu.ShowDialog();
+
+            UcitajPrskaliceUGrid();
         }
 
         private void btnObrisiMasinu_Click(object sender, EventArgs e)

@@ -112,7 +112,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Vocnjaci";
-            this.Text = "Voćnjaci";
+            this.Text = "Vocnjaci";
             this.Load += new System.EventHandler(this.Form_Vocnjaci_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVocnjaci)).EndInit();
             this.ResumeLayout(false);
