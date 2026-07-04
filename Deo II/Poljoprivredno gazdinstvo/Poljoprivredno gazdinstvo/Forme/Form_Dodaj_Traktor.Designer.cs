@@ -116,7 +116,7 @@
             this.cBoxStatus.FormattingEnabled = true;
             this.cBoxStatus.Items.AddRange(new object[] {
             "u upotrebi",
-            "u kvraru",
+            "u kvaru",
             "na servisu",
             "prodat"});
             this.cBoxStatus.Location = new System.Drawing.Point(194, 128);
@@ -144,7 +144,7 @@
             this.numGodinaProizvodnje.Size = new System.Drawing.Size(159, 22);
             this.numGodinaProizvodnje.TabIndex = 10;
             this.numGodinaProizvodnje.Value = new decimal(new int[] {
-            9999,
+            2000,
             0,
             0,
             0});
@@ -178,6 +178,7 @@
             // 
             // numSnaga
             // 
+            this.numSnaga.DecimalPlaces = 2;
             this.numSnaga.Location = new System.Drawing.Point(194, 326);
             this.numSnaga.Name = "numSnaga";
             this.numSnaga.Size = new System.Drawing.Size(121, 22);
@@ -214,7 +215,7 @@
             this.btnSacuvaj.Name = "btnSacuvaj";
             this.btnSacuvaj.Size = new System.Drawing.Size(116, 35);
             this.btnSacuvaj.TabIndex = 21;
-            this.btnSacuvaj.Text = "Sacuvaj";
+            this.btnSacuvaj.Text = "Sačuvaj";
             this.btnSacuvaj.UseVisualStyleBackColor = true;
             this.btnSacuvaj.Click += new System.EventHandler(this.btnSacuvaj_Click);
             // 
@@ -231,7 +232,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 35);
             this.button1.TabIndex = 23;
-            this.button1.Text = "Otkazi";
+            this.button1.Text = "Otkaži";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

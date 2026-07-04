@@ -38,7 +38,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(1142, 435);
+            this.button4.Location = new System.Drawing.Point(1142, 494);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(129, 53);
             this.button4.TabIndex = 11;
@@ -48,7 +48,7 @@
             // 
             // btnObrisiMasinu
             // 
-            this.btnObrisiMasinu.Location = new System.Drawing.Point(1133, 206);
+            this.btnObrisiMasinu.Location = new System.Drawing.Point(1123, 259);
             this.btnObrisiMasinu.Name = "btnObrisiMasinu";
             this.btnObrisiMasinu.Size = new System.Drawing.Size(148, 55);
             this.btnObrisiMasinu.TabIndex = 10;
@@ -58,7 +58,7 @@
             // 
             // btnDodajMasinu
             // 
-            this.btnDodajMasinu.Location = new System.Drawing.Point(1111, 312);
+            this.btnDodajMasinu.Location = new System.Drawing.Point(1111, 31);
             this.btnDodajMasinu.Name = "btnDodajMasinu";
             this.btnDodajMasinu.Size = new System.Drawing.Size(182, 64);
             this.btnDodajMasinu.TabIndex = 9;
@@ -78,7 +78,7 @@
             // 
             // btnPromeniMasinu
             // 
-            this.btnPromeniMasinu.Location = new System.Drawing.Point(1109, 86);
+            this.btnPromeniMasinu.Location = new System.Drawing.Point(1111, 138);
             this.btnPromeniMasinu.Name = "btnPromeniMasinu";
             this.btnPromeniMasinu.Size = new System.Drawing.Size(184, 77);
             this.btnPromeniMasinu.TabIndex = 7;

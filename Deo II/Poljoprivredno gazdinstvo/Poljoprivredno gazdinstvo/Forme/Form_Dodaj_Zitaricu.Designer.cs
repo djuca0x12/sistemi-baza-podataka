@@ -211,6 +211,7 @@
             // 
             // numPovrsina
             // 
+            this.numPovrsina.DecimalPlaces = 2;
             this.numPovrsina.Location = new System.Drawing.Point(317, 131);
             this.numPovrsina.Maximum = new decimal(new int[] {
             100000,
@@ -259,6 +260,7 @@
             // 
             // numGustinaSetve
             // 
+            this.numGustinaSetve.DecimalPlaces = 2;
             this.numGustinaSetve.Location = new System.Drawing.Point(818, 51);
             this.numGustinaSetve.Maximum = new decimal(new int[] {
             1000000,
@@ -271,6 +273,7 @@
             // 
             // numKolicinaSemenaPoHektaru
             // 
+            this.numKolicinaSemenaPoHektaru.DecimalPlaces = 2;
             this.numKolicinaSemenaPoHektaru.Location = new System.Drawing.Point(818, 94);
             this.numKolicinaSemenaPoHektaru.Maximum = new decimal(new int[] {
             1000000,
@@ -283,6 +286,7 @@
             // 
             // numPrinosPoHektaru
             // 
+            this.numPrinosPoHektaru.DecimalPlaces = 2;
             this.numPrinosPoHektaru.Location = new System.Drawing.Point(818, 138);
             this.numPrinosPoHektaru.Maximum = new decimal(new int[] {
             1000000,

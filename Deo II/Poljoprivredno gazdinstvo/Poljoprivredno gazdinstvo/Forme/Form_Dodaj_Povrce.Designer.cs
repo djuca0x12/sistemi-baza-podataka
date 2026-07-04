@@ -145,6 +145,7 @@
             // 
             // numPovrsina
             // 
+            this.numPovrsina.DecimalPlaces = 2;
             this.numPovrsina.Location = new System.Drawing.Point(300, 132);
             this.numPovrsina.Maximum = new decimal(new int[] {
             100000,

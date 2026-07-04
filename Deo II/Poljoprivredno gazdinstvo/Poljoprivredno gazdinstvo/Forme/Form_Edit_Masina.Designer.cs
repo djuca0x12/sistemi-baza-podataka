@@ -124,7 +124,7 @@
             this.numGodinaProizvodnje.Size = new System.Drawing.Size(159, 22);
             this.numGodinaProizvodnje.TabIndex = 55;
             this.numGodinaProizvodnje.Value = new decimal(new int[] {
-            9999,
+            2000,
             0,
             0,
             0});

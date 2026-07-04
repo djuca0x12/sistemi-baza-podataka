@@ -125,12 +125,6 @@
     <Compile Include="Entiteti\Zitarice.cs" />
     <Compile Include="Entiteti\Zivotinje.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forme\Form_Dodaj_KoristiZa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,12 +347,6 @@
     <Compile Include="Forme\Form_Zivotinje.Designer.cs">
       <DependentUpon>Form_Zivotinje.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Usevi_Zivotinje.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_Usevi_Zivotinje.Designer.cs">
-      <DependentUpon>Form_Usevi_Zivotinje.cs</DependentUpon>
-    </Compile>
     <Compile Include="Implicit.cs" />
     <Compile Include="Mapiranja\KoristiZaMapiranja.cs" />
     <Compile Include="Mapiranja\KrmnoBiljeMapiranja.cs" />
@@ -380,9 +368,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource1.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Dodaj_KoristiZa.resx">
       <DependentUpon>Form_Dodaj_KoristiZa.cs</DependentUpon>
     </EmbeddedResource>
@@ -490,9 +475,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\Form_Zivotinje.resx">
       <DependentUpon>Form_Zivotinje.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_Usevi_Zivotinje.resx">
-      <DependentUpon>Form_Usevi_Zivotinje.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

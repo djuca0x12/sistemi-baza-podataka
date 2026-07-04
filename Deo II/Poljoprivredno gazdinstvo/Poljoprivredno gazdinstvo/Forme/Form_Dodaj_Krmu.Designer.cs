@@ -73,6 +73,7 @@
             // 
             // numProcenatProteina
             // 
+            this.numProcenatProteina.DecimalPlaces = 2;
             this.numProcenatProteina.Location = new System.Drawing.Point(762, 127);
             this.numProcenatProteina.Name = "numProcenatProteina";
             this.numProcenatProteina.Size = new System.Drawing.Size(150, 22);
@@ -123,6 +124,7 @@
             // 
             // numPovrsina
             // 
+            this.numPovrsina.DecimalPlaces = 2;
             this.numPovrsina.Location = new System.Drawing.Point(326, 129);
             this.numPovrsina.Maximum = new decimal(new int[] {
             100000,
