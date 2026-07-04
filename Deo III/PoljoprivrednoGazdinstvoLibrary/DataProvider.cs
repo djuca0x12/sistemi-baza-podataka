@@ -1399,6 +1399,17 @@ namespace PoljoprivrednoGazdinstvoLibrary
 
         public async static Task<Result<bool, ErrorMessage>> DodajZitaricu(ZitariceBasic z)
         {
+            var provera = await DaLiPostojiUsevSaNazivomILokacijom(z.Naziv, z.Lokacija, z.Id);
+
+            if (provera.IsError)
+            {
+                return provera.Error;
+            }
+
+            if (provera.Data)
+            {
+                return $"Usev sa kombinacijom {z.Naziv}, {z.Lokacija} već postoji u bazi.".ToError(400);
+            }
             using (ISession s = DataLayer.GetSession())
             {
                 if (!(s?.IsConnected ?? false))
@@ -1617,6 +1628,17 @@ namespace PoljoprivrednoGazdinstvoLibrary
 
         public async static Task<Result<bool, ErrorMessage>> DodajVocnjak(VocnjaciBasic v)
         {
+            var provera = await DaLiPostojiUsevSaNazivomILokacijom(v.Naziv, v.Lokacija, v.Id);
+
+            if (provera.IsError)
+            {
+                return provera.Error;
+            }
+
+            if (provera.Data)
+            {
+                return $"Usev sa kombinacijom {v.Naziv}, {v.Lokacija} već postoji u bazi.".ToError(400);
+            }
             using (ISession s = DataLayer.GetSession())
             {
                 if (!(s?.IsConnected ?? false))
@@ -1840,6 +1862,17 @@ namespace PoljoprivrednoGazdinstvoLibrary
 
         public async static Task<Result<bool, ErrorMessage>> DodajPovrce(PovrceBasic p)
         {
+            var provera = await DaLiPostojiUsevSaNazivomILokacijom(p.Naziv, p.Lokacija, p.Id);
+
+            if (provera.IsError)
+            {
+                return provera.Error;
+            }
+
+            if (provera.Data)
+            {
+                return $"Usev sa kombinacijom {p.Naziv}, {p.Lokacija} već postoji u bazi.".ToError(400);
+            }
             using (ISession s = DataLayer.GetSession())
             {
                 if (!(s?.IsConnected ?? false))
@@ -2056,6 +2089,17 @@ namespace PoljoprivrednoGazdinstvoLibrary
 
         public async static Task<Result<bool, ErrorMessage>> DodajKrmnoBilje(KrmnoBiljeBasic k)
         {
+            var provera = await DaLiPostojiUsevSaNazivomILokacijom(k.Naziv, k.Lokacija, k.Id);
+
+            if (provera.IsError)
+            {
+                return provera.Error;
+            }
+
+            if (provera.Data)
+            {
+                return $"Usev sa kombinacijom {k.Naziv}, {k.Lokacija} već postoji u bazi.".ToError(400);
+            }
             using (ISession s = DataLayer.GetSession())
             {
                 if (!(s?.IsConnected ?? false))
