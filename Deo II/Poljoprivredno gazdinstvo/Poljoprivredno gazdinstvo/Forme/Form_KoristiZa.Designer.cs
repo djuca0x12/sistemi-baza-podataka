@@ -110,7 +110,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_KoristiZa";
-            this.Text = "Form_KoristiZa";
+            this.Text = "Pregled podataka o korišćenju mehanizacije za proizvodnju prinosa ";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrikaz)).EndInit();
             this.ResumeLayout(false);
 
