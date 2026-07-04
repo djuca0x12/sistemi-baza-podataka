@@ -42,6 +42,8 @@ namespace Poljoprivredno_gazdinstvo.Forme
             {
                 dgvVocnjaci.Columns["Id"].Visible = false;
             }
+
+            dgvVocnjaci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void btnDodajVocnjak_Click(object sender, EventArgs e)

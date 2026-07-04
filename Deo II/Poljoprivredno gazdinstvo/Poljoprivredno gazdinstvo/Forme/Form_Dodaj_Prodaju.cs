@@ -63,6 +63,7 @@ namespace Poljoprivredno_gazdinstvo.Forme
                 TipPlacanja = cBoxTipPlacanja.Text,
                 Komentar = txtKomentar.Text,    
                 JedinicaMere = cBoxJedinicaMere.Text,
+                CenaPoJedinici = numCena.Value,
                 Kolicina = kolicinaUnos,
                 Datum = DateTime.Now,
                 Kupac = txtKupac.Text,

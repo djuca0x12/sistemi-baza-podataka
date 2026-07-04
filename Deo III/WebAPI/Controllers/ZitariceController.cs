@@ -41,6 +41,8 @@ namespace WebAPI.Controllers
             return Ok(zitarica);
         }
 
+        
+
         [HttpPost("DodajZitaricu")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -89,6 +91,25 @@ namespace WebAPI.Controllers
             }
 
             return Ok(uspesno);
+        }
+
+
+        [HttpGet("ProveriPostojanjeUseva")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<ActionResult> ProveriPostojanjeUseva([FromQuery] string naziv, [FromQuery] string lokacija, [FromQuery] int trenutniId = 0)
+        {
+            // Pozivamo asinhronu metodu iz DataProvider-a
+            var (isError, postoji, error) = await DataProvider.DaLiPostojiUsevSaNazivomILokacijom(naziv, lokacija, trenutniId);
+
+            if (isError)
+            {
+                return StatusCode(error?.StatusCode ?? 400, error?.Message);
+            }
+
+            // Vraća true ako već postoji usev sa tim nazivom ili lokacijom, u suprotnom false
+            return Ok(postoji);
         }
     }
 }

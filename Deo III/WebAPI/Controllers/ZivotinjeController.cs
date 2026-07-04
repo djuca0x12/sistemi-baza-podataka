@@ -92,5 +92,23 @@ namespace WebAPI.Controllers
 
             return Ok(uspesno);
         }
+
+        [HttpGet("ProveriBrojUha")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<ActionResult> ProveriBrojUha([FromQuery] string brojUha, [FromQuery] int trenutniId = 0)
+        {
+            // Pozivamo asinhranu metodu iz DataProvider-a
+            var (isError, postoji, error) = await DataProvider.DaLiPostojiZivotinjaSaBrojemUha(brojUha, trenutniId);
+
+            if (isError)
+            {
+                return StatusCode(error?.StatusCode ?? 400, error?.Message);
+            }
+
+            // Vraća true ako broj uha već postoji kod neke druge životinje, inače false
+            return Ok(postoji);
+        }
     }
 }

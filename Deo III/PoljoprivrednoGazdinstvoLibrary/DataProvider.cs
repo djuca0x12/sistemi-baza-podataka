@@ -1235,6 +1235,31 @@ namespace PoljoprivrednoGazdinstvoLibrary
                         {
                             UseviZivotinje kategorija = z.Kategorija!;
 
+                            if (kategorija != null)
+                            {                                
+                                var subvencijeZaBrisanje = await s.Query<Subvencija>()
+                                                                .Where(sub => sub.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                                .ToListAsync(); 
+
+                                foreach (var sub in subvencijeZaBrisanje)
+                                {
+                                    await s.DeleteAsync(sub);
+                                }
+
+                                var vezeProizvodnje = await s.Query<Proizvode>()
+                                                            .Where(p => p.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                            .ToListAsync();
+
+                                foreach (var vp in vezeProizvodnje)
+                                {
+                                    if (vp.Prinos != null)
+                                    {
+                                        await s.DeleteAsync(vp.Prinos);
+                                    }
+                                    await s.DeleteAsync(vp);
+                                }
+                            }
+
                             await s.DeleteAsync(z);
 
                             if (kategorija != null)
@@ -1258,9 +1283,64 @@ namespace PoljoprivrednoGazdinstvoLibrary
                 }
             }
         }
+
+        public async static Task<Result<bool, ErrorMessage>> DaLiPostojiZivotinjaSaBrojemUha(string brojUha, int trenutniId = 0)
+        {
+            using (ISession s = DataLayer.GetSession())
+            {
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
+                try
+                {
+                    string proveraBroja = brojUha.Trim().ToUpper();
+
+                
+                    bool postoji = await s.Query<Zivotinje>()
+                        .AnyAsync(z => z.BrojUha.Trim().ToUpper() == proveraBroja
+                                    && z.IdZivotinje != trenutniId); 
+
+                    return postoji;
+                }
+                catch (Exception ex)
+                {
+                    return $"Greška pri proveri broja uha životinje: {ex.Message}".ToError(400);
+                }
+            }
+        }
         #endregion
 
         #region Zitarice
+
+        public async static Task<Result<bool, ErrorMessage>> DaLiPostojiUsevSaNazivomILokacijom(string naziv, string lokacija, int trenutniId = 0)
+        {
+            using (ISession s = DataLayer.GetSession())
+            {
+                if (!(s?.IsConnected ?? false))
+                {
+                    return "Nemoguće otvoriti sesiju.".ToError(403);
+                }
+
+                try
+                {
+                    string nazivTrimmed = naziv.Trim().ToLower();
+                    string lokacijaTrimmed = lokacija.Trim().ToLower();
+
+                    bool postoji = await s.Query<Usevi>()
+                        .AnyAsync(u => (u.Naziv.Trim().ToLower() == nazivTrimmed
+                                    || u.Lokacija.Trim().ToLower() == lokacijaTrimmed)
+                                    && u.Id != trenutniId);
+
+                    return postoji;
+                }
+                catch (Exception ex)
+                {
+                    return $"Greška pri proveri useva: {ex.Message}".ToError(400);
+                }
+            }
+        }
         public async static Task<Result<List<ZitariceBasic>, ErrorMessage>> VratiSveZitarice()
         {
             List<ZitariceBasic> zitarice = new();
@@ -1429,6 +1509,31 @@ namespace PoljoprivrednoGazdinstvoLibrary
                         if (z != null)
                         {
                             UseviZivotinje kategorija = z.Kategorija!;
+
+                            if (kategorija != null)
+                            {                                
+                                var subvencijeZaBrisanje = await s.Query<Subvencija>()
+                                                                .Where(sub => sub.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                                .ToListAsync(); 
+
+                                foreach (var sub in subvencijeZaBrisanje)
+                                {
+                                    await s.DeleteAsync(sub);
+                                }
+
+                                var vezeProizvodnje = await s.Query<Proizvode>()
+                                                            .Where(p => p.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                            .ToListAsync();
+
+                                foreach (var vp in vezeProizvodnje)
+                                {
+                                    if (vp.Prinos != null)
+                                    {
+                                        await s.DeleteAsync(vp.Prinos);
+                                    }
+                                    await s.DeleteAsync(vp);
+                                }
+                            }
 
                             await s.DeleteAsync(z);
 
@@ -1625,6 +1730,31 @@ namespace PoljoprivrednoGazdinstvoLibrary
                         {
                             UseviZivotinje kategorija = v.Kategorija!;
 
+                            if (kategorija != null)
+                            {                                
+                                var subvencijeZaBrisanje = await s.Query<Subvencija>()
+                                                                .Where(sub => sub.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                                .ToListAsync(); 
+
+                                foreach (var sub in subvencijeZaBrisanje)
+                                {
+                                    await s.DeleteAsync(sub);
+                                }
+
+                                var vezeProizvodnje = await s.Query<Proizvode>()
+                                                            .Where(p => p.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                            .ToListAsync();
+
+                                foreach (var vp in vezeProizvodnje)
+                                {
+                                    if (vp.Prinos != null)
+                                    {
+                                        await s.DeleteAsync(vp.Prinos);
+                                    }
+                                    await s.DeleteAsync(vp);
+                                }
+                            }
+
                             await s.DeleteAsync(v);
 
                             if (kategorija != null)
@@ -1816,6 +1946,31 @@ namespace PoljoprivrednoGazdinstvoLibrary
                         if (p != null)
                         {
                             UseviZivotinje kategorija = p.Kategorija!;
+
+                            if (kategorija != null)
+                            {                                
+                                var subvencijeZaBrisanje = await s.Query<Subvencija>()
+                                                                .Where(sub => sub.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                                .ToListAsync(); 
+
+                                foreach (var sub in subvencijeZaBrisanje)
+                                {
+                                    await s.DeleteAsync(sub);
+                                }
+
+                                var vezeProizvodnje = await s.Query<Proizvode>()
+                                                            .Where(p => p.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                            .ToListAsync();
+
+                                foreach (var vp in vezeProizvodnje)
+                                {
+                                    if (vp.Prinos != null)
+                                    {
+                                        await s.DeleteAsync(vp.Prinos);
+                                    }
+                                    await s.DeleteAsync(vp);
+                                }
+                            }
 
                             await s.DeleteAsync(p);
 
@@ -2014,6 +2169,31 @@ namespace PoljoprivrednoGazdinstvoLibrary
                         if (k != null)
                         {
                             UseviZivotinje kategorija = k.Kategorija!;
+
+                            if (kategorija != null)
+                            {                                
+                                var subvencijeZaBrisanje = await s.Query<Subvencija>()
+                                                                .Where(sub => sub.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                                .ToListAsync(); 
+
+                                foreach (var sub in subvencijeZaBrisanje)
+                                {
+                                    await s.DeleteAsync(sub);
+                                }
+
+                                var vezeProizvodnje = await s.Query<Proizvode>()
+                                                            .Where(p => p.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                            .ToListAsync();
+
+                                foreach (var vp in vezeProizvodnje)
+                                {
+                                    if (vp.Prinos != null)
+                                    {
+                                        await s.DeleteAsync(vp.Prinos);
+                                    }
+                                    await s.DeleteAsync(vp);
+                                }
+                            }
 
                             await s.DeleteAsync(k);
 

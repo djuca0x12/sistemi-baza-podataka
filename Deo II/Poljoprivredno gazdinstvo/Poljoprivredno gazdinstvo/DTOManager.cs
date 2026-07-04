@@ -1073,11 +1073,38 @@ namespace Poljoprivredno_gazdinstvo
                 {
                     try
                     {
-                        Zivotinje z = s.Load<Zivotinje>(id);
+                        Zivotinje z = s.Get<Zivotinje>(id);
 
                         if (z != null)
                         {
                             UseviZivotinje kategorija = z.Kategorija;
+
+                            if (kategorija != null)
+                            {
+                                // Brisanje subvencija
+                                var subvencijeZaBrisanje = s.Query<Subvencija>()
+                                                    .Where(sub => sub.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                    .ToList();
+
+                                foreach (var sub in subvencijeZaBrisanje)
+                                {
+                                    s.Delete(sub);
+                                }
+
+                                // Brisanje prinosa
+                                var vezeProizvodnje = s.Query<Proizvode>()
+                                                        .Where(p => p.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                        .ToList();
+                                foreach (var vp in vezeProizvodnje)
+                                {
+                                    if (vp.Prinos != null)
+                                    {
+                                        s.Delete(vp.Prinos);
+                                    }
+
+                                    s.Delete(vp);
+                                }
+                            }
 
                             s.Delete(z);
 
@@ -1270,10 +1297,38 @@ namespace Poljoprivredno_gazdinstvo
                 {
                     try
                     {
-                        Zitarice z = s.Load<Zitarice>(id);
+                        Zitarice z = s.Get<Zitarice>(id);
+
                         if (z != null)
                         {
                             UseviZivotinje kategorija = z.Kategorija;
+
+                            if (kategorija != null)
+                            {
+                                // Brisanje subvencija
+                                var subvencijeZaBrisanje = s.Query<Subvencija>()
+                                                            .Where(sub => sub.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                            .ToList();
+
+                                foreach (var sub in subvencijeZaBrisanje)
+                                {
+                                    s.Delete(sub);
+                                }
+
+                                // Brisanje prinosa 
+                                var vezeProizvodnje = s.Query<Proizvode>()
+                                                        .Where(p => p.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                        .ToList();
+
+                                foreach (var vp in vezeProizvodnje)
+                                {
+                                    if (vp.Prinos != null)
+                                    {
+                                        s.Delete(vp.Prinos);
+                                    }
+                                    s.Delete(vp);
+                                }
+                            }
 
                             s.Delete(z);
 
@@ -1439,10 +1494,37 @@ namespace Poljoprivredno_gazdinstvo
                 {
                     try
                     {
-                        Vocnjaci v = s.Load<Vocnjaci>(id);
+                        Vocnjaci v = s.Get<Vocnjaci>(id);
                         if (v != null)
                         {
                             UseviZivotinje kategorija = v.Kategorija;
+
+                            if (kategorija != null)
+                            {
+                                // Brisanje subvencija
+                                var subvencijeZaBrisanje = s.Query<Subvencija>()
+                                                            .Where(sub => sub.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                            .ToList();
+
+                                foreach (var sub in subvencijeZaBrisanje)
+                                {
+                                    s.Delete(sub);
+                                }
+
+                                // Brisanje prinosa 
+                                var vezeProizvodnje = s.Query<Proizvode>()
+                                                        .Where(p => p.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                        .ToList();
+
+                                foreach (var vp in vezeProizvodnje)
+                                {
+                                    if (vp.Prinos != null)
+                                    {
+                                        s.Delete(vp.Prinos);
+                                    }
+                                    s.Delete(vp);
+                                }
+                            }
 
                             s.Delete(v);
 
@@ -1601,10 +1683,35 @@ namespace Poljoprivredno_gazdinstvo
                 {
                     try
                     {
-                        Povrce p = s.Load<Povrce>(id);
+                        Povrce p = s.Get<Povrce>(id);
                         if (p != null)
                         {
                             UseviZivotinje kategorija = p.Kategorija;
+
+                            if (kategorija != null)
+                            {
+                                // Brisanje subvencija
+                                var subvencijeZaBrisanje = s.Query<Subvencija>()
+                                                            .Where(sub => sub.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                            .ToList();
+                                foreach (var sub in subvencijeZaBrisanje)
+                                {
+                                    s.Delete(sub);
+                                }
+
+                                // Brisanje prinosa 
+                                var vezeProizvodnje = s.Query<Proizvode>()
+                                                        .Where(p => p.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                        .ToList();
+                                foreach (var vp in vezeProizvodnje)
+                                {
+                                    if (vp.Prinos != null)
+                                    {
+                                        s.Delete(vp.Prinos);
+                                    }
+                                    s.Delete(vp);
+                                }
+                            }
 
                             s.Delete(p);
 
@@ -1769,11 +1876,36 @@ namespace Poljoprivredno_gazdinstvo
                 {
                     try
                     {
-                        KrmnoBilje k = s.Load<KrmnoBilje>(id);
+                        KrmnoBilje k = s.Get<KrmnoBilje>(id);
                         if (k != null)
                         {
                             // Uzimamo referencu na kategoriju pre nego što obrišemo životinju
                             UseviZivotinje kategorija = k.Kategorija;
+
+                            if (kategorija != null)
+                            {
+                                // Brisanje subvencija
+                                var subvencijeZaBrisanje = s.Query<Subvencija>()
+                                                            .Where(sub => sub.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                            .ToList();
+                                foreach (var sub in subvencijeZaBrisanje)
+                                {
+                                    s.Delete(sub);
+                                }
+
+                                // Brisanje prinosa 
+                                var vezeProizvodnje = s.Query<Proizvode>()
+                                                        .Where(p => p.Kategorija.UseviZivotinjeId == kategorija.UseviZivotinjeId)
+                                                        .ToList();
+                                foreach (var vp in vezeProizvodnje)
+                                {
+                                    if (vp.Prinos != null)
+                                    {
+                                        s.Delete(vp.Prinos);
+                                    }
+                                    s.Delete(vp);
+                                }
+                            }
 
                             // 1. Brišemo životinju (dete)
                             s.Delete(k);
