@@ -41,6 +41,27 @@ namespace Poljoprivredno_gazdinstvo.Forme
                 MessageBox.Show("Druga žitarica (usev) sa ovim nazivom na datoj lokaciji već postoji u bazi!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            // da li su uneti validni datumi?
+            if (dtpDatumSetve.Value > dtpDatumZetvePlanirani.Value)
+            {
+                MessageBox.Show("Datum setve mora biti pre datuma žetve!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDatumSetve.Focus();
+                return;
+            }
+
+            if (dtpDatumSetve.Value > dtpDatumZetveStvarni.Value)
+            {
+                MessageBox.Show("Datum setve mora biti pre stvarnog datuma žetve!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDatumZetveStvarni.Focus();
+                return;
+            }
+
+            if (dtpDatumZetvePlanirani.Value > dtpDatumZetveStvarni.Value)
+            {
+                MessageBox.Show("Planirani datum žetve mora biti pre stvarnog datuma žetve!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDatumZetvePlanirani.Focus();
+                return;
+            }
 
             string poruka = "Da li zelite da dodate novi voćnjak?";
             string title = "Pitanje";
@@ -49,12 +70,12 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
             if (result == DialogResult.OK)
             {
-                // pročitaj sve iz kontrola: šta sa kategorijom?
+                
                 vocnjak.Naziv = txtNaziv.Text;
                 vocnjak.Lokacija = txtLokacija.Text;
-                vocnjak.Vrsta = "voce";    // ili se nekako prenosi od useva idk?
+                vocnjak.Vrsta = "voce";   
                 vocnjak.Povrsina = (double)numPovrsina.Value;
-                vocnjak.KvalitetZemljista = txtKvalitetZemljista.Text; // možda cbx?
+                vocnjak.KvalitetZemljista = txtKvalitetZemljista.Text;
                 vocnjak.DatumSetve = dtpDatumSetve.Value;
                 vocnjak.DatumZetvePlanirani = dtpDatumZetvePlanirani.Value;
                 vocnjak.DatumZetveStvarni = dtpDatumZetveStvarni.Value;

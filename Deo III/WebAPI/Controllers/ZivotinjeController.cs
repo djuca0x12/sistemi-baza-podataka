@@ -10,7 +10,6 @@ namespace WebAPI.Controllers
     public class ZivotinjeController : ControllerBase
     {
         [HttpGet("VratiSveZivotinje")]
-        // koje sve kodove korisnik može da očekuje na webapi?
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -99,7 +98,6 @@ namespace WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult> ProveriBrojUha([FromQuery] string brojUha, [FromQuery] int trenutniId = 0)
         {
-            // Pozivamo asinhranu metodu iz DataProvider-a
             var (isError, postoji, error) = await DataProvider.DaLiPostojiZivotinjaSaBrojemUha(brojUha, trenutniId);
 
             if (isError)

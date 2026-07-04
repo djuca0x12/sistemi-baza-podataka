@@ -749,33 +749,7 @@ namespace Poljoprivredno_gazdinstvo
 
                 return "Nepoznato";
             }
-        }
-
-        // KoristiZa poseduje kompozitni kljuc, koji nam sprecava izmenu?
-        // Da li mozemo izmenu da napravimo kao delete + insert?
-        /*public static void AzurirajKoriscenje(int stariIdMehanizacija, int idPrinos, DateTime datumOd, int noviIdMehanizacija, DateTime? noviDatumDo)
-        {
-            using (var session = DataLayer.GetSession())
-            {
-                var zapis = session.Query<KoristiZa>()
-                    .FirstOrDefault(k => k.Mehanizacija.IdMehanizacija == stariIdMehanizacija
-                                      && k.Prinos.IdPrinosa == idPrinos
-                                      && k.DatumOd == datumOd);
-
-                if (zapis != null)
-                {
-                    if (stariIdMehanizacija != noviIdMehanizacija)
-                    {
-                        zapis.Mehanizacija = session.Load<Mehanizacija>(noviIdMehanizacija);
-                    }
-
-                    zapis.DatumDo = noviDatumDo;                   
-
-                    session.Update(zapis);
-                    session.Flush();
-                }
-            }
-        }*/
+        }        
 
         public static void AzurirajKoriscenje(int stariIdMehanizacija, int idPrinos, DateTime datumOd, int noviIdMehanizacija, DateTime? noviDatumDo)
         {
@@ -1907,16 +1881,13 @@ namespace Poljoprivredno_gazdinstvo
                                 }
                             }
 
-                            // 1. Brišemo životinju (dete)
                             s.Delete(k);
-
-                            // 2. Brišemo kategoriju (roditelj) - Rešen TODO!
+                          
                             if (kategorija != null)
                             {
                                 s.Delete(kategorija);
                             }
 
-                            // Potvrđujemo transakciju
                             transaction.Commit();
                         }
                     }
@@ -2053,28 +2024,14 @@ namespace Poljoprivredno_gazdinstvo
                     };
 
                     int idKat = z.Kategorija.UseviZivotinjeId;
-
-                    
-                    //string tip = z.Kategorija.KategorijaTip.ToString().Trim().ToLower();
+                                        
                     char tipChar = z.Kategorija.KategorijaTip.ToString().Trim()[0];
-
-                    /*if (tipChar == 'u')
-                    {
-                        dto.NazivIzvora = "Usev";
-                    }
-                    else
-                    {
-                        dto.NazivIzvora = "Zivotinja";
-                    }*/
-
-                    //System.Diagnostics.Debug.WriteLine($"DB Vrednost: '{tip}', Dužina: {tip?.Length}");
 
                     switch (tipChar)
                     {
                         case 'u':
                             var usev = s.Query<Usevi>().FirstOrDefault(x => x.Kategorija != null && x.Kategorija.UseviZivotinjeId == idKat);
                             dto.NazivIzvora = usev != null ? usev.Naziv : "Nepoznat usev";
-                            //dto.NazivIzvora = "Usev";
                             break;
 
                         case 'z':

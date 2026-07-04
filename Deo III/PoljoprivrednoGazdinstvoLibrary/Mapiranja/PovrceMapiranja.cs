@@ -12,7 +12,7 @@
             Map(x => x.BrojSetviGodisnje);
             Map(x => x.ZastitneMere);
             Map(x => x.NacinGajenja);
-            Map(x => x.Tip);    // korenasto, listato, plodovito ili null
+            Map(x => x.Tip);
         }
     }
 }

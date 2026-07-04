@@ -80,9 +80,6 @@ namespace WebAPI.Controllers
         }
     }
 
-    /// <summary>
-    /// Pomoćni DTO za prihvat podataka pri kreiranju prinosa i vezivanju za kategoriju
-    /// </summary>
     public class DodajPrinosIKategorijuDto
     {
         public PrinosBasic PrinosDTO { get; set; } = null!;

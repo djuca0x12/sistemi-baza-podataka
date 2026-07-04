@@ -98,9 +98,6 @@ namespace WebAPI.Controllers
         }
     }
 
-    /// <summary>
-    /// Pomoćni DTO unutar kontrolera za čistiji prihvat složenog Body-ja pri ažuriranju veze
-    /// </summary>
     public class AzurirajKoriscenjeDto
     {
         public int StariIdMehanizacija { get; set; }

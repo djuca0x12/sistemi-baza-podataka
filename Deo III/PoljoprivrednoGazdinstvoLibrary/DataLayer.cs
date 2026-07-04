@@ -1,6 +1,5 @@
 ﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-//using PoljoprivrednoGazdinstvoLibrary.Mapiranja;
 
 namespace PoljoprivrednoGazdinstvoLibrary
 {
@@ -13,7 +12,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
         // Funkcija na zahtev otvara sesiju
         public static ISession GetSession()
         {
-            //ukoliko session factory nije kreiran
+            // ukoliko session factory nije kreiran
             if (_factory == null)
             {
                 lock (objLock)
@@ -43,14 +42,7 @@ namespace PoljoprivrednoGazdinstvoLibrary
             }
             catch (Exception ec)
             {
-                if (ec.InnerException != null)
-                {
-                    //MessageBox.Show("Stvarna greška: " + ec.InnerException.Message);
-                }
-                else
-                {
-                    //MessageBox.Show("Glavna greška: " + ec.Message);
-                }
+                string error = ec.HandleError();
                 return null;
             }
 

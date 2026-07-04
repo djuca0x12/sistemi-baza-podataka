@@ -74,6 +74,28 @@ namespace Poljoprivredno_gazdinstvo.Forme
                 return;
             }
 
+            // da li su uneti validni datumi?
+            if (dtpDatumSetve.Value > dtpDatumZetvePlanirani.Value)
+            {
+                MessageBox.Show("Datum setve mora biti pre datuma žetve!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDatumSetve.Focus();
+                return;
+            }
+
+            if (dtpDatumSetve.Value > dtpDatumZetveStvarni.Value)
+            {
+                MessageBox.Show("Datum setve mora biti pre stvarnog datuma žetve!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDatumZetveStvarni.Focus();
+                return;
+            }
+
+            if (dtpDatumZetvePlanirani.Value > dtpDatumZetveStvarni.Value)
+            {
+                MessageBox.Show("Planirani datum žetve mora biti pre stvarnog datuma žetve!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDatumZetvePlanirani.Focus();
+                return;
+            }
+
             string poruka = "Da li želite da izvršite izmene krmnog bilja?";
             string title = "Pitanje";
             MessageBoxButtons buttons = MessageBoxButtons.OKCancel;

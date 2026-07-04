@@ -67,7 +67,6 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
             if (result == DialogResult.OK)
             {
-                // pročitaj sve iz kontrola: šta sa kategorijom?
                 zivotinja.BrojUha = txtBrojUha.Text;
                 zivotinja.Vrsta = txtVrsta.Text;
                 zivotinja.Pol = cbxPol.SelectedItem.ToString()[0];

@@ -14,11 +14,7 @@ namespace PoljoprivrednoGazdinstvoLibrary.Mapiranja
 
             Id(x => x.Id).Column("PROIZVODEID").GeneratedBy.TriggerIdentity();
 
-            // Trebalo bi da references popunjava ove podatke!?
-            //Map(x => x.UseviZivotinjeId, "USEVIZIVOTINJEID");
-            //Map(x => x.IdPrinosa, "IDPRINOSA");
             Map(x => x.DatumProizvodnje, "DATUMPROIZVODNJE");
-
 
             References(x => x.Kategorija, "UseviZivotinjeId");
             References(x => x.Prinos, "IdPrinosa");

@@ -35,11 +35,32 @@ namespace Poljoprivredno_gazdinstvo.Forme
                 return;
             }
 
-            // Provera jedinstvenosti, jer moraju da
-            // budu unique u bazi
+            // provera jedinstvenosti, jer moraju da budu unique u bazi
             if (DTOManager.DaLiPostojiUsevSaNazivomILokacijom(unetiNaziv, unetaLokacija, zitarica.Id))
             {
                 MessageBox.Show("Naziv i lokacija useva moraju da budu jedinstveni u bazi!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // da li su uneti validni datumi?
+            if (dtpDatumSetve.Value > dtpDatumZetvePlanirani.Value)
+            {
+                MessageBox.Show("Datum setve mora biti pre datuma žetve!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDatumSetve.Focus();
+                return;
+            }
+
+            if (dtpDatumSetve.Value > dtpDatumZetveStvarni.Value)
+            {
+                MessageBox.Show("Datum setve mora biti pre stvarnog datuma žetve!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDatumZetveStvarni.Focus();
+                return;
+            }
+
+            if (dtpDatumZetvePlanirani.Value > dtpDatumZetveStvarni.Value)
+            {
+                MessageBox.Show("Planirani datum žetve mora biti pre stvarnog datuma žetve!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDatumZetvePlanirani.Focus();
                 return;
             }
 
@@ -50,12 +71,11 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
             if (result == DialogResult.OK)
             {
-                // pročitaj sve iz kontrola: šta sa kategorijom?
                 zitarica.Naziv = txtNaziv.Text;
                 zitarica.Lokacija = txtLokacija.Text;
-                zitarica.Vrsta = "zitarice";    // ili se nekako prenosi od useva idk?
+                zitarica.Vrsta = "zitarice";    
                 zitarica.Povrsina = (double)numPovrsina.Value;
-                zitarica.KvalitetZemljista = txtKvalitetZemljista.Text; // možda cbx?
+                zitarica.KvalitetZemljista = txtKvalitetZemljista.Text; 
                 zitarica.DatumSetve = dtpDatumSetve.Value;
                 zitarica.DatumZetvePlanirani = dtpDatumZetvePlanirani.Value;
                 zitarica.DatumZetveStvarni = dtpDatumZetveStvarni.Value;

@@ -41,6 +41,28 @@ namespace Poljoprivredno_gazdinstvo.Forme
                 return;
             }
 
+            // da li su uneti validni datumi?
+            if (dtpDatumSetve.Value > dtpDatumZetvePlanirani.Value)
+            {
+                MessageBox.Show("Datum setve mora biti pre datuma žetve!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDatumSetve.Focus();
+                return;
+            }
+
+            if (dtpDatumSetve.Value > dtpDatumZetveStvarni.Value)
+            {
+                MessageBox.Show("Datum setve mora biti pre stvarnog datuma žetve!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDatumZetveStvarni.Focus();
+                return;
+            }
+
+            if (dtpDatumZetvePlanirani.Value > dtpDatumZetveStvarni.Value)
+            {
+                MessageBox.Show("Planirani datum žetve mora biti pre stvarnog datuma žetve!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dtpDatumZetvePlanirani.Focus();
+                return;
+            }
+
             string poruka = "Da li zelite da dodate novo krmno bilje?";
             string title = "Pitanje";
             MessageBoxButtons buttons = MessageBoxButtons.OKCancel;
@@ -48,12 +70,11 @@ namespace Poljoprivredno_gazdinstvo.Forme
 
             if (result == DialogResult.OK)
             {
-                // pročitaj sve iz kontrola: šta sa kategorijom?
                 krma.Naziv = txtNaziv.Text;
                 krma.Lokacija = txtLokacija.Text;
                 krma.Vrsta = "krmno bilje";
                 krma.Povrsina = (double)numPovrsina.Value;
-                krma.KvalitetZemljista = txtKvalitetZemljista.Text; // možda cbx?
+                krma.KvalitetZemljista = txtKvalitetZemljista.Text;
                 krma.DatumSetve = dtpDatumSetve.Value;
                 krma.DatumZetvePlanirani = dtpDatumZetvePlanirani.Value;
                 krma.DatumZetveStvarni = dtpDatumZetveStvarni.Value;

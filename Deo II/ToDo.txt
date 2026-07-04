@@ -1,4 +1,0 @@
-1. Promena naslova.
-2. Izbaciti dodatne atribute.
-
-- srediti eer i relacione dijagrame, insert into naredbe

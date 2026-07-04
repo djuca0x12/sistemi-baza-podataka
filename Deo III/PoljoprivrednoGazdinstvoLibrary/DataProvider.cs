@@ -1,14 +1,6 @@
 ﻿
 namespace PoljoprivrednoGazdinstvoLibrary
 {
-    // beleške sa lab vežbi:
-    // metode iz forms aplikacije
-    // komunikacija sa bazom: greške i poruke o njima su bitne!
-    // prosleđuju se nazad webapi-ju
-    // -> tip Result sa povratnim tipom metode željenim i ErrorMessage (status code + message)
-    //
-    // u suštini: jedan veliki TODO za prepakovanje ovih metoda na željeni format za web api!
-    //
     public static class DataProvider
     {
         #region Mehanizacije
@@ -1110,6 +1102,18 @@ namespace PoljoprivrednoGazdinstvoLibrary
         }
         public async static Task<Result<bool, ErrorMessage>> DodajZivotinju(ZivotinjeBasic z)
         {
+            var provera = await DaLiPostojiZivotinjaSaBrojemUha(z.BrojUha);
+
+            if (provera.IsError)
+            {
+                return provera.Error;
+            }
+
+            if (provera.Data)
+            {
+                return $"Životinja sa brojem uha '{z.BrojUha}' već postoji u bazi.".ToError(400);
+            }
+
             using (ISession s = DataLayer.GetSession())
             {
                 if (!(s?.IsConnected ?? false))
@@ -2272,31 +2276,6 @@ namespace PoljoprivrednoGazdinstvoLibrary
             }
         }
 
-        // // todo: konvertovati na web api format
-        // //public static int DohvatiIdKategorije(int idEntiteta, string tipEntiteta)
-        // //{
-        // //    using (var s = DataLayer.GetSession())
-        // //    {
-        // //        switch (tipEntiteta)
-        // //        {
-        // //            // Da bi smo bili sigurni da se izvlaci id kategorije
-        // //            // pre zatvaranja sesije koristimo Get
-        // //            case "POVRCE":
-        // //                return s.Get<Povrce>(idEntiteta).Kategorija.UseviZivotinjeId;
-        // //            case "ZITARICE":
-        // //                return s.Get<Zitarice>(idEntiteta).Kategorija.UseviZivotinjeId; ;
-        // //            case "VOCNJACI":
-        // //                return s.Get<Vocnjaci>(idEntiteta).Kategorija.UseviZivotinjeId; ;
-        // //            case "KRMNO_BILJE":
-        // //                return s.Get<KrmnoBilje>(idEntiteta).Kategorija.UseviZivotinjeId;
-        // //            case "ZIVOTINJE":
-        // //                return s.Get<Zivotinje>(idEntiteta).Kategorija.UseviZivotinjeId; ;
-        // //            default:
-        // //                return -1;
-        // //        }
-        // //    }
-        // //}
-
         public async static Task<Result<int, ErrorMessage>> DohvatiIdKategorije(int idEntiteta, string tipEntiteta)
         {
             try
@@ -2379,86 +2358,6 @@ namespace PoljoprivrednoGazdinstvoLibrary
                 }
             }
         }
-
-        // todo: morala sam da zakomentarišem, javljalo mi je grešku u konzoli (pre konvertovanja)
-        // pa baci pogled kad stigneš
-        // todo: konvertovati u web api format
-
-        //public async static List<ProizvodniIzvestajDTO> VratiSveProizvodneIzvestaje()
-        //{
-        //    using (ISession s = DataLayer.GetSession())
-        //    {
-        //        var sviZapisi = s.Query<Proizvode>()
-        //                         .Fetch(x => x.Prinos)
-        //                         .Fetch(x => x.Kategorija)
-        //                         .ToListAsync();               
-
-        //        // Ono sto se prikazuje u DataGridView
-        //        List<ProizvodniIzvestajDTO> izvestaj = new List<ProizvodniIzvestajDTO>();
-
-        //        foreach (var z in sviZapisi)
-        //        {
-
-        //            /*if (z.Kategorija == null || z.Kategorija.KategorijaTip == null)
-        //            {
-        //                continue;  
-        //            }*/
-
-        //            var dto = new ProizvodniIzvestajDTO
-        //            {
-        //                Id = z.Id,
-        //                DatumProizvodnje = z.DatumProizvodnje,
-        //                TipPrinosa = z.Prinos.Tip,
-        //                Kolicina = (decimal)z.Prinos.Kolicina,
-        //                JedinicaMere = z.Prinos.JedinicaMere,
-        //                Kvalitet = z.Prinos.KvalitetProizvoda,
-        //                KategorijaTip = z.Kategorija.KategorijaTip
-        //            };
-
-        //            int idKat = z.Kategorija.UseviZivotinjeId;
-
-
-        //            //string tip = z.Kategorija.KategorijaTip.ToString().Trim().ToLower();
-        //            char tipChar = z.Kategorija.KategorijaTip.ToString().Trim()[0];
-
-        //            /*if (tipChar == 'u')
-        //            {
-        //                dto.NazivIzvora = "Usev";
-        //            }
-        //            else
-        //            {
-        //                dto.NazivIzvora = "Zivotinja";
-        //            }*/
-
-        //            //System.Diagnostics.Debug.WriteLine($"DB Vrednost: '{tip}', Dužina: {tip?.Length}");
-
-        //            switch (tipChar)
-        //            {
-        //                case 'u':
-        //                    var usev = s.Query<Usevi>().FirstOrDefault(x => x.Kategorija != null && x.Kategorija.UseviZivotinjeId == idKat);
-        //                    dto.NazivIzvora = usev != null ? usev.Naziv : "Nepoznat usev";
-        //                    //dto.NazivIzvora = "Usev";
-        //                    break;
-
-        //                case 'z':
-        //                    var ziv = s.Query<Zivotinje>().FirstOrDefault(x => x.Kategorija != null && x.Kategorija.UseviZivotinjeId == idKat);
-        //                    dto.NazivIzvora = ziv != null ? ziv.Vrsta : "Nepoznata životinja";                            
-        //                    break;                     
-
-        //                default:
-        //                    dto.NazivIzvora = "Nepoznat izvor";
-        //                   break;
-        //            }
-
-
-
-        //            izvestaj.Add(dto);
-        //        }
-
-        //        return izvestaj;
-        //    }
-        //}
-
         public async static Task<Result<List<ProizvodniIzvestajDTO>, ErrorMessage>> VratiSveProizvodneIzvestaje()
         {
             try
